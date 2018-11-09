@@ -1,0 +1,6 @@
+{
+  "docs": {
+    "Introduction": ["introduction/intro", "introduction/core-concepts"],
+    "Getting Started": ["getting-started/requirements", "getting-started/installation", "getting-started/installing-magento2"]
+  }
+}
