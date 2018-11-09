@@ -14,7 +14,7 @@ const users = [
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
+    image: '/img/deity-logo.svg',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
@@ -78,10 +78,10 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'default',
+    theme: 'atom-one-dark',
   },
 
-  editUrl : 'https://github.com/deity-io/falcon/edit/master/docs/',
+  editUrl : 'https://github.com/deity-io/falcon-docs/edit/master/docs/',
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
@@ -92,8 +92,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/deity-logo-full.png',
+  twitterImage: 'img/deity-logo-full.png',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,

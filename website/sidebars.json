@@ -1,6 +1,9 @@
 {
   "docs": {
     "Introduction": ["introduction/intro", "introduction/core-concepts"],
-    "Getting Started": ["getting-started/requirements", "getting-started/installation", "getting-started/installing-magento2"]
+    "Getting Started": ["getting-started/requirements", "getting-started/installation"],
+    "Basics": ["basics/project-overview", "basics/falcon-client", "basics/falcon-server"],
+    "Magento": ["magento/installing-magento2"],
+    "Wordpress": ["wordpress/installing-wordpress"]
   }
 }

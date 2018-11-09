@@ -1,5 +1,5 @@
 ---
-title: Installing in Magento 2
+title: Installing Magento 2 Module
 ---
 
 ## Getting Started
