@@ -1,5 +1,5 @@
 ---
-title: Installing Wordpress Module
+title: Wordpress Module
 ---
 
 This Wordpress Module registers required endpoints and filters for DEITY Falcon
