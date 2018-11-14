@@ -11,11 +11,11 @@
 // List of projects/orgs using your project for the users page.
 const users = [
   {
-    caption: 'User1',
+    caption: 'Gene Commerce',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/deity-logo.svg',
-    infoLink: 'https://www.facebook.com',
+    image: '/img/gene.jpg',
+    infoLink: 'https://www.gene.co.uk/',
     pinned: true,
   },
 ];
@@ -103,7 +103,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  repoUrl: 'https://github.com/deity-io/falcon',
+  repoUrl: 'https://github.com/deity-io/falcon-docs',
 };
 
 module.exports = siteConfig;
