@@ -14,4 +14,4 @@ title: Requirements
 - [NodeJS](https://nodejs.org) (>=8.10)
 - [Yarn](https://yarnpkg.com) (>=1.12)
 
-> We run our tests against major Node versions - 8, 10 and 11
+> Falcon Tests are ran against major Node version - 8, 10 and 11.

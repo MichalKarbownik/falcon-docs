@@ -2,22 +2,22 @@
 title: Core Concepts
 ---
 
-Deity Falcon was built with a principle we called F.I.R.E:
+DEITY Falcon was built with the F.I.R.E. principal in mind:
 
-- **Flexible** - developers should be able to build any kind of PWA they want
-- **Integrable** - it should be possible to integrate any kind of data source with it
-- **Reliable** - developers should not have to worry about high traffic and scalability
-- **Extensible** - it should be able to extend it with as many custom features as the need
+- **Flexible** - Allow you to build any kind of website; e-commerce, blogs, portfolio's, you name it
+- **Integrable** - Allow you to integrate any kind of data source with it
+- **Reliable** - You do not have to worry about high traffic and scalability
+- **Extensible** - Allow you to extend your project with as many custom features as necessary
 
 ## Client-Server concept
 
 The main idea that stands behind having separate applications for Client and Server parts
-is to provide developers/project owners/DevOps with a scaling abilities per your needs:
+is to provide developers/project owners/DevOps with scaling abilities:
 
-- You can define special server requirements for Falcon Server instance, but keeping Falcon Client
+- You can define special server requirements for a Falcon Server instance, but keeping the Falcon Client
 server instance more "lightweight"
 - You can have multiple Falcon Client instances (geo-distributed) connected to a single Falcon Server application
-- Falcon Server is stateless, so you could scale it up as you need as well (for example, you don't want to be stuck
+- Falcon Server is stateless, so you could scale it up as you need (for example, you don't want to be stuck
 with a single Falcon Server instance while supporting your mobile visitors with a dedicated application
 that uses Falcon Server as data provider)
 
@@ -30,7 +30,7 @@ that can be used by GraphQL Clients to work with the data.
 ### Falcon Extension
 
 Falcon Server uses **Extension** as an abstract layer to work with a specific *entity* (for example,
-`shop-extension`, `blog-extension` etc) in order to provide "agnostic" data access and be
+`shop-extension`, `blog-extension`, etc) in order to provide "agnostic" data access and be a
 platform-independent data provider.
 
 Falcon Extension must define abstract Queries, Mutations and types as a part of Falcon Server API, which
@@ -48,6 +48,6 @@ class must deliver all required Queries and Mutations defined in `blog-extension
 its GraphQL types (Falcon Extension does not care how this data is being fetched and pre/post-processed by
 Falcon API, it's important to "meet" the schema definition). All optional methods depend on the Extension configuration.
 
-## Overall Deity Falcon data flow schema
+## Overall DEITY Falcon data flow schema
 
-![Deity Falcon schema](assets/falcon-schema.png)
+![DEITY Falcon schema](assets/falcon-schema.png)
