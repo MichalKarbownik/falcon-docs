@@ -28,60 +28,6 @@ Use the project generator:
 
 Out of the box, it connects to a public back-end service (Magento & WordPress), so you can start developing right away.
 
-<!--
-## How to use [TODO]
-
-below description is almost done, but it require some changes inside `falcon-client`, for example:
-- TypeScript should be optional,
-- make sure that peerDependencies are configured in right way
-- webmanifest should be also optional
-- ./index.js should be transpiled by babel (right now only files from ./src/ are)
- -->
-
-<!--
-In order to configure `falcon-client` you need to initialize empty project, make sure that entry point is `index.js`
-
-```bash
-mkdir my-shop && cd my-shop
-npm init
-```
-
-install minimal set of dependencies:
-
-```bash
-npm install --save @deity/falcon-client graphql graphql-tag i18next prop-types react react-apollo react-async-component react-dom react-i18next react-router-dom typescript
-```
-
-according to [API contract](#api-contract) following files `index.js`, `falcon-client.config.js` and `razzle.config.js` needs to be created:
-
-```bash
-touch index.js falcon-client.config.js razzle.config.js
-```
-
-in `index.js` add
-
-```jsx
-import React from 'react';
-
-export default () => <p>my app</p>;
-```
-
-and in `razzle.config.js`
-
-```js
-const { razzlePluginFalconClient } = require('@deity/falcon-client');
-
-module.exports = {
-  plugins: [razzlePluginFalconClient({})]
-};
-```
-
-after that you are ready to run `my-shop` application:
-
-```bash
-node_modules/.bin/falcon-client start
-``` -->
-
 ## Exposed Commands
 
 Falcon Client exposes set of handy commands:

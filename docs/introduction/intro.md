@@ -1,19 +1,18 @@
 ---
 id: intro
 title: Introduction
-sidebar_label: Introduction
 ---
 
 DEITY Falcon is a platform agnostic PWA, stand-alone but modular library to be used with any e-commerce platform.
 
 ## Technologies inside
 
-- Apollo
 - NodeJS
 - GraphQL
 - React
+- Apollo
 - Koa
-- Jest (testing)
+- Jest
 
 ## Community
 
