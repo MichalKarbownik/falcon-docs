@@ -1,6 +1,28 @@
 ---
-title: Core Concepts
+id: intro
+title: Introduction
 ---
+
+DEITY Falcon is a platform agnostic PWA, stand-alone but modular library to be used with any e-commerce platform.
+
+## Technologies inside
+
+- NodeJS
+- GraphQL
+- React
+- Apollo
+- Koa
+- Jest
+
+## Community
+
+Any contributions, small or big, are very welcome! Please take a look at our [Contributor guidelines](https://github.com/deity-io/falcon/blob/master/.github/CONTRIBUTING.md) and [Code of Conduct](https://github.com/deity-io/falcon/blob/master/.github/CODE_OF_CONDUCT.md)
+
+Join the official chat channel
+
+[Deity Community Slack](http://slack.deity.io)
+
+## Core concepts
 
 DEITY Falcon was built with the F.I.R.E. principal in mind:
 
@@ -9,7 +31,7 @@ DEITY Falcon was built with the F.I.R.E. principal in mind:
 - **Reliable** - You do not have to worry about high traffic and scalability
 - **Extensible** - Allow you to extend your project with as many custom features as necessary
 
-## Client-Server concept
+### Client-Server concept
 
 The main idea that stands behind having separate applications for Client and Server parts
 is to provide developers/project owners/DevOps with scaling abilities:
@@ -21,13 +43,13 @@ server instance more "lightweight"
 with a single Falcon Server instance while supporting your mobile visitors with a dedicated application
 that uses Falcon Server as data provider)
 
-## Extension-API concept
+### Extension-API concept
 
 Falcon Server itself does not provide any data, but rather acts as a glue for your data extensions.
 As a result of its work - Falcon Server generates a unified [GraphQL](https://graphql.org/) Schema
 that can be used by GraphQL Clients to work with the data.
 
-### Falcon Extension
+#### Falcon Extension
 
 Falcon Server uses **Extension** as an abstract layer to work with a specific *entity* (for example,
 `shop-extension`, `blog-extension`, etc) in order to provide "agnostic" data access and be a
@@ -37,7 +59,7 @@ Falcon Extension must define abstract Queries, Mutations and types as a part of 
 will be "stitched" into the unified GraphQL Schema by Falcon Server. All defined methods must be proxied
 to the assigned Falcon API (defined in Falcon Server [configuration](/docs/basics/falcon-server#extensions-configuration)).
 
-### Falcon API
+#### Falcon API
 
 Falcon Extension uses **API** as a transport layer to work with a specific back-end service (for example,
 `magento-api`, `wordpress-api` etc), which has to implement all Queries and Mutations methods along with
