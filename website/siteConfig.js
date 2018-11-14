@@ -9,16 +9,7 @@
 // site configuration options.
 
 // List of projects/orgs using your project for the users page.
-const users = [
-  {
-    caption: 'Gene Commerce',
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/gene.jpg',
-    infoLink: 'https://www.gene.co.uk/',
-    pinned: true,
-  },
-];
+const users = [];
 
 const siteConfig = {
   title: 'DEITY Falcon', // Title for your website.
