@@ -4,12 +4,14 @@ title: Requirements
 
 ## Minimal Requirements to run Falcon
 
-- [NodeJS (>=8.10)](https://nodejs.org)
-- [Yarn (Optional, but highly recommended)](https://yarnpkg.com)
+- [NodeJS](https://nodejs.org) (>=8.10)
+- [Yarn](https://yarnpkg.com) (Optional, but highly recommended)
+
+> To install Yarn, see https://yarnpkg.com/lang/en/docs/install
 
 ## Requirements for Falcon local development
 
-- [NodeJS (>=8.10)](https://nodejs.org)
-- [Yarn (>=1.12)](https://yarnpkg.com)
+- [NodeJS](https://nodejs.org) (>=8.10)
+- [Yarn](https://yarnpkg.com) (>=1.12)
 
-> To install Yarn, see https://yarnpkg.com/lang/en/docs/install
+> We run our tests against major Node versions - 8, 10 and 11

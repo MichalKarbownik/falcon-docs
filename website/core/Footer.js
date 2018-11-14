@@ -68,6 +68,9 @@ class Footer extends React.Component {
               aria-label="Star this project on GitHub">
               Star
             </a>
+            <a href="https://travis-ci.org/deity-io/falcon" target="_blank">
+              <img src="https://travis-ci.org/deity-io/falcon.svg?branch=master" />
+            </a>
           </div>
         </section>
 
