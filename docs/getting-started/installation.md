@@ -2,9 +2,10 @@
 title: Installation
 ---
 
-# [WIP]
+There are 2 possible ways of installing DEITY Falcon (depends on what you want to do):
 
-Installation procedure goes here. Differentiate between implementation and development of Falcon
+1. Install DEITY Falcon within an example template (using [`create-falcon-app`](#create-falcon-app-cli-tool))
+2. Install DEITY Falcon [sources](#development) to work on Falcon itself
 
 ## Create Falcon App (CLI tool)
 
@@ -34,9 +35,11 @@ npm start
 
 then open http://localhost:3000 in your browser
 
+![DEITY create-falcon-app](assets/create-falcon-app.gif)
+
 ## Longer version
 
-### How to generate application?
+### How to generate application
 
 You can use either npx (installed with npm) or yarn to generate the application.
 
@@ -91,7 +94,7 @@ You can also use `npx create-falcon-app -h` (or `yarn create falcon-app -h`) to 
 
 ### Using your backend services
 
-By default `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works. If you cannot start the server part (from server folder) or you see any problems with server behavior please contact us via our [community slack channel](http://slack.deity.io). 
+By default `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works. If you cannot start the server part (from server folder) or you see any problems with server behavior please contact us via our [community slack channel](http://slack.deity.io).
 
 #### Magento 2
 
@@ -107,4 +110,22 @@ See [Installing Wordpress 2 Module](platforms/installing-wordpress.md) for more.
 
 ## Development
 
-[TODO] Clone repository, etc...
+If you want to help us building new features or fixing any [reported issues](https://github.com/deity-io/falcon/issues) for Falcon,
+there are several simple steps required:
+
+- You need to [fork](https://help.github.com/articles/fork-a-repo/) DEITY [Falcon](https://github.com/deity-io/falcon) repository
+- Create a [local clone of your fork](https://help.github.com/articles/fork-a-repo/#step-2-create-a-local-clone-of-your-fork)
+- Navigate to your local clone folder and run `yarn` command (which is required for local development)
+- You are ready to go!
+
+> `yarn` is required to be installed to work with [Lerna](https://lernajs.io/) to ensure a proper Falcon's
+[mono-repository](https://developer.atlassian.com/blog/2015/10/monorepos-in-git/) installation.
+
+Yarn will:
+
+- Install all required packages
+- Create symlinks between Falcon packages for you, so you don't have to bother about that
+- Pre-build (compile) all required packages for you
+
+Having this setup locally - you could use any of `examples` for local development, all examples
+will get Falcon packages "installed" (symlinked) directly from your local folder.
