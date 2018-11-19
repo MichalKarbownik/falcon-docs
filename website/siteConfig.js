@@ -32,6 +32,7 @@ const siteConfig = {
     // {doc: 'doc1', label: 'Docs'},
     // {doc: 'doc4', label: 'API'},
     // {page: 'help', label: 'Help'},
+    {href: 'https://falcon-ui.docs.deity.io/', label: 'Falcon UI'},
     {href: 'https://github.com/deity-io/falcon', label: 'GitHub'},
     {search: true}
   ],
