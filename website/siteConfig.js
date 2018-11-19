@@ -96,9 +96,8 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/deity-io/falcon',
-
-  // TODO: Add tracking ID
-  //gaTrackingId: '',
+  
+  gaTrackingId: 'UA-115774797-1',
 };
 
 module.exports = siteConfig;
