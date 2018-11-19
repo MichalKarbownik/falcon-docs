@@ -2,7 +2,7 @@
   "docs": {
     "Getting Started": ["getting-started/intro", "getting-started/requirements", "getting-started/installation"],
     "Basics": ["basics/project-overview", "basics/example", "basics/falcon-client", "basics/falcon-server", "basics/falcon-ui", "basics/falcon-shop-extension"],
-    "Advanced": ["advanced/falcon-api", "advanced/falcon-server-env", "advanced/falcon-logger"],
+    "Advanced": ["advanced/internationalization", "advanced/falcon-api", "advanced/falcon-server-env", "advanced/falcon-logger"],
     "Platforms": ["platforms/installing-magento2", "platforms/installing-wordpress"],
     "API": ["api/falcon-server-env-api"],
     "Deployment": ["deployment/intro"],
