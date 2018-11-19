@@ -37,15 +37,9 @@ class Footer extends React.Component {
             <a href={this.docUrl('getting-started/requirements')}>
               Getting Started
             </a>
-            <a href={this.docUrl('examples/examples', this.props.language)}>
-              Examples
-            </a>
           </div>
           <div>
             <h5>Community</h5>
-            <a href={this.pageUrl('users.html', this.props.language)}>
-              User Showcase
-            </a>
             <a href="http://slack.deity.io/">Community Chat</a>
             <a
               href="https://twitter.com/deity_pwa"

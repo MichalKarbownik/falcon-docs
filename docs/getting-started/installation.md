@@ -2,10 +2,6 @@
 title: Installation
 ---
 
-# [WIP]
-
-Installation procedure goes here. Differentiate between implementation and development of Falcon
-
 ## Create Falcon App (CLI tool)
 
 This CLI tool helps you to create your application based on [DEITY Falcon](https://github.com/deity-io/falcon) with just one command.
@@ -36,7 +32,7 @@ then open http://localhost:3000 in your browser
 
 ## Longer version
 
-### How to generate application?
+### How to generate application
 
 You can use either npx (installed with npm) or yarn to generate the application.
 
@@ -104,7 +100,3 @@ See [Installing Magento 2 Module](platforms/installing-magento2.md) for more.
 Also if you want to connect DEITY Falcon app to your WordPress server you'll have to to install [Falcon WordPress module](https://github.com/deity-io/falcon-wordpress-module) and also change configuration file (`server/config/default.json`) to point the application to the correct server.
 
 See [Installing Wordpress 2 Module](platforms/installing-wordpress.md) for more.
-
-## Development
-
-[TODO] Clone repository, etc...
