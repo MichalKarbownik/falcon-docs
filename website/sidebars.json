@@ -12,27 +12,28 @@
       "falcon-client/configurations",
       "falcon-client/code-splitting",
       "falcon-client/state-management",
-      "falcon-client/internationalization"
+      "falcon-client/internationalization",
+      "falcon-client/falcon-ui"
     ],
     "Falcon Server": [
       "falcon-server/basics",
       "falcon-server/apicontainer",
       "falcon-server/extensioncontainer",
       "falcon-server/dynamic-route-resolver",
-      "falcon-server/schema-stitching"
+      "falcon-server/schema-stitching",
+      "falcon-server/shop-extension",
+      "falcon-server/blog-extension",
+      "falcon-server/falcon-magento2-api",
+      "falcon-server/falcon-wordpress-api",
+      "falcon-server/falcon-server-env",
+      "falcon-server/falcon-server-env-api"
     ],
-    "Advanced": [
-      "advanced/falcon-api",
-      "advanced/falcon-server-env",
-      "advanced/falcon-logger",
-      "advanced/falcon-shop-extension"
+    "Backend": [
+      "backend/installing-magento2",
+      "backend/installing-wordpress"
     ],
-    "Platforms": [
-      "platforms/installing-magento2",
-      "platforms/installing-wordpress"
-    ],
-    "API": [
-      "api/falcon-server-env-api"
+    "Miscellaneous": [
+      "miscellaneous/falcon-logger"
     ],
     "Deployment": [
       "deployment/intro"

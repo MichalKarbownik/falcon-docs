@@ -12,7 +12,7 @@ This Wordpress Module registers required endpoints and filters for DEITY Falcon
 ## Currently handled features
 
 - fetch url method
-- get acf fields - You will need to install [Advanced Custom Fields plugin](https://www.advancedcustomfields.com/) 
+- get acf fields - You will need to install [Advanced Custom Fields plugin](https://www.advancedcustomfields.com/)
     ```text
     [apiPrefix]/acf/v3
     ```
@@ -75,10 +75,11 @@ This Wordpress Module registers required endpoints and filters for DEITY Falcon
     ```text
     [apiPrefix]/v2/posts/users
     ```
-    
+
 - 404 status
 
 ## Add cdn support
+
 To support CDN make sure that W3 Total Cache plugin is installed : https://wordpress.org/plugins/w3-total-cache/
 
 ## Versioning

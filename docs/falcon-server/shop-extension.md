@@ -1,5 +1,5 @@
 ---
-title: Falcon Shop Extension
+title: Shop Extension
 ---
 
 ## Overview and installation
