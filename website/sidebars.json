@@ -1,11 +1,44 @@
 {
   "docs": {
-    "Getting Started": ["getting-started/intro", "getting-started/requirements", "getting-started/installation"],
-    "Basics": ["basics/project-overview", "basics/example", "basics/falcon-client", "basics/falcon-server", "basics/falcon-ui", "basics/falcon-shop-extension"],
-    "Advanced": ["advanced/falcon-api", "advanced/falcon-server-env", "advanced/falcon-logger"],
-    "Platforms": ["platforms/installing-magento2", "platforms/installing-wordpress"],
-    "API": ["api/falcon-server-env-api"],
-    "Deployment": ["deployment/intro"],
-    "Cookbook": ["cookbook/intro"]
+    "Getting Started": [
+      "getting-started/intro",
+      "getting-started/requirements",
+      "getting-started/installation",
+      "getting-started/project-overview",
+      "getting-started/example"
+    ],
+    "Falcon Client": [
+      "falcon-client/basics",
+      "falcon-client/configurations",
+      "falcon-client/code-splitting",
+      "falcon-client/state-management",
+      "falcon-client/internationalization"
+    ],
+    "Falcon Server": [
+      "falcon-server/basics",
+      "falcon-server/apicontainer",
+      "falcon-server/extensioncontainer",
+      "falcon-server/dynamic-route-resolver",
+      "falcon-server/schema-stitching"
+    ],
+    "Advanced": [
+      "advanced/falcon-api",
+      "advanced/falcon-server-env",
+      "advanced/falcon-logger",
+      "advanced/falcon-shop-extension"
+    ],
+    "Platforms": [
+      "platforms/installing-magento2",
+      "platforms/installing-wordpress"
+    ],
+    "API": [
+      "api/falcon-server-env-api"
+    ],
+    "Deployment": [
+      "deployment/intro"
+    ],
+    "Cookbook": [
+      "cookbook/intro"
+    ]
   }
 }

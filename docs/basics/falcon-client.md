@@ -6,28 +6,6 @@ This is a `@deity/falcon-client` host for your shop.
 
 Falcon Client is the entrypoint for frontend features of Falcon stack. It acts as host for your shop - provides app building capabilities and features set which can be used to create your desired shop application.
 
-## Installation
-
-With npm:
-
-```bash
-npm install @deity/falcon-client
-```
-
-or with yarn:
-
-```bash
-yarn add @deity/falcon-client
-```
-
-## Quick Start
-
-Use the project generator:
-
-[Create-falcon-app](https://github.com/deity-io/falcon/tree/master/packages/create-falcon-app)
-
-Out of the box, it connects to a public back-end service (Magento & WordPress), so you can start developing right away.
-
 ## Exposed Commands
 
 Falcon Client exposes set of handy commands:
