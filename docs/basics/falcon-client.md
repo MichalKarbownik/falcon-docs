@@ -121,7 +121,7 @@ This is configuration object used to setup `@deity/falcon-client`
 - `menus: object` - menus configuration [TODO]
 - `apolloClient: object`
   - `connectToDevTools: boolean` - (default: `process.env.NODE_ENV !== 'production'`) enable "Apollo" tab in your chrome inspector [see the details](https://www.apollographql.com/docs/react/features/developer-tooling.html#configuration)
-  - `defaultOptions: object` - (default: `{}`) application wide defaults for the options supplied to `watchQuery`, `query` or `mutate` [see the details](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client)
+  - `defaultOptions: object` - (default: `{}`) application-wide defaults for the options supplied to `watchQuery`, `query` or `mutate` [see the details](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client)
   - `queryDeduplication: boolean` - (default: `true`) if false, will force a query to still be sent to the server even if a query with identical parameters (`query`, `variables`, `operationName`) is already in flight. [see the details](https://www.apollographql.com/docs/react/advanced/network-layer.html#query-deduplication)
   - `httpLink: object`
     - `uri: string` - (default: `http://localhost:4000/graphql`) graphQL server endpoint [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
