@@ -2,7 +2,7 @@
 title: Basics
 ---
 
-This is a `@deity/falcon-client` host for your shop.
+This is a `@deity/falcon-client` host for your application.
 
 Falcon Client is the entrypoint for frontend features of Falcon stack. It acts as host for your shop - provides app building capabilities and features set which can be used to create your desired shop application.
 
