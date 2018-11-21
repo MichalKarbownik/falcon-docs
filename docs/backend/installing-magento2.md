@@ -13,10 +13,6 @@ Full scale support of versions 2.0.* and 2.1.* is not our priority.
 However if you encounter an issue running with Magento version lower than 2.2 feel free
 to open an issue or reach out to our support channel.
 
-```text
-magento >= 2.2
-```
-
 ### Installing
 
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
