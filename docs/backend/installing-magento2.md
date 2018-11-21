@@ -14,7 +14,7 @@ However if you encounter an issue running with Magento version lower than 2.2 fe
 to open an issue or reach out to our support channel.
 
 ```text
-magento > 2.2
+magento >= 2.2
 ```
 
 ### Installing
