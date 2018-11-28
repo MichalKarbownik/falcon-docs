@@ -2,9 +2,9 @@
 title: Example Project
 ---
 
-# Shop with Blog Example
-
 This is a template which is used by [`create-falcon-app`](https://github.com/deity-io/falcon/tree/master/packages/create-falcon-app) to create shop with blog app.
+
+It uses [Falcon UI](https://github.com/deity-io/falcon/tree/master/packages/falcon-ui) components to create the presentational layer.
 
 ## Quick Start
 
@@ -33,7 +33,6 @@ yarn test
 
 This will run the test watcher (Jest) in an interactive mode. By default, runs tests related to files changed since the last commit.
 
-
 ## Debugging
 
 To run with debugger:
@@ -50,7 +49,7 @@ If the server should wait till debugger will attache then run:
 yarn start:dbg-brk
 ```
 
-For more information, see [`falcon-client start`](https://github.com/deity-io/falcon/tree/locales/packages/falcon-client#falcon-client-start------inspecthostport) command.
+For more information, see [`falcon-client start`](/docs/falcon-client/basics#exposed-commands) command.
 
 ## Production package
 
@@ -67,4 +66,4 @@ You could view your application at http://localhost:3000
 
 This is a basic example of Shop with Blog scenario.
 
-If you would like to find more information about how it works please read about [@deity/falcon-client](https://github.com/deity-io/falcon/tree/master/packages/falcon-client)
+If you would like to find more information about how it works please read about [@deity/falcon-client](/docs/falcon-client/basics)

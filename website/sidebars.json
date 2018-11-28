@@ -1,5 +1,6 @@
 {
   "docs": {
+<<<<<<< HEAD
     "Getting Started": ["getting-started/intro", "getting-started/requirements", "getting-started/installation"],
     "Basics": ["basics/project-overview", "basics/example", "basics/falcon-client", "basics/falcon-server", "basics/falcon-ui", "basics/falcon-shop-extension"],
     "Advanced": ["advanced/internationalization", "advanced/falcon-api", "advanced/falcon-server-env", "advanced/falcon-logger"],
@@ -7,5 +8,40 @@
     "API": ["api/falcon-server-env-api"],
     "Deployment": ["deployment/intro"],
     "Cookbook": ["cookbook/intro"]
+=======
+    "Getting Started": [
+      "getting-started/intro",
+      "getting-started/requirements",
+      "getting-started/installation",
+      "getting-started/project-overview",
+      "getting-started/example"
+    ],
+    "Falcon Client": [
+      "falcon-client/basics",
+      "falcon-client/configurations",
+      "falcon-client/code-splitting",
+      "falcon-client/state-management",
+      "falcon-client/internationalization",
+      "falcon-client/falcon-ui"
+    ],
+    "Falcon Server": [
+      "falcon-server/basics",
+      "falcon-server/schema-stitching",
+      "falcon-server/extensions",
+      "falcon-server/api-providers",
+      "falcon-server/falcon-server-env",
+      "falcon-server/falcon-server-env-api"
+    ],
+    "Backend": [
+      "backend/installing-magento2",
+      "backend/installing-wordpress"
+    ],
+    "Miscellaneous": [
+      "miscellaneous/falcon-logger"
+    ],
+    "Deployment": [
+      "deployment/intro"
+    ]
+>>>>>>> doc-updates
   }
 }

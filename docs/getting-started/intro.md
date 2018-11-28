@@ -57,7 +57,7 @@ platform-independent data provider.
 
 Falcon Extension must define abstract Queries, Mutations and types as a part of Falcon Server API, which
 will be "stitched" into the unified GraphQL Schema by Falcon Server. All defined methods must be proxied
-to the assigned Falcon API (defined in Falcon Server [configuration](/docs/basics/falcon-server#extensions-configuration)).
+to the assigned Falcon API (defined in Falcon Server [configuration](/docs/falcon-server/basics#extensions-configuration)).
 
 #### Falcon API
 

@@ -97,7 +97,15 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/deity-io/falcon',
   
+  //Google Tracking
   gaTrackingId: 'UA-115774797-1',
+
+  //Algolia search
+  algolia: {
+    apiKey: '873c5f29d2334cb9c44ef4a407d8b269',
+    indexName: 'deity_falcon',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
 };
 
 module.exports = siteConfig;

@@ -2,6 +2,11 @@
 .fixedHeaderContainer {
     background: #2d2d2d;
 }
+
+input#search_input_react {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
