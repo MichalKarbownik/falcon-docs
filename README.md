@@ -1,5 +1,7 @@
 # DEITY Falcon Documentation
 
+[**Visit Documentation Website**](https://falcon.deity.io)
+
 This is the [DEITY Falcon](https://github.com/deity-io/falcon) documentation website. It's built with [Docusaurus](https://docusaurus.io) - see [website/README.md](website/README.md) for more information
 
 To contribute please create a fork of this repository and clone it on your local machine.

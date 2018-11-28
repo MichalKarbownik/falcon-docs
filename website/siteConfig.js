@@ -98,7 +98,7 @@ const siteConfig = {
   repoUrl: 'https://github.com/deity-io/falcon',
   
   //Google Tracking
-  gaTrackingId: 'UA-115774797-1',
+  gaTrackingId: 'UA-115774797-2',
 
   //Algolia search
   algolia: {
