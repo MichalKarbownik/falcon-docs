@@ -12,6 +12,7 @@ DEITY Falcon is a platform agnostic, stand-alone but modular library to be used 
 - React
 - Apollo
 - Koa
+- Webpack
 - Jest
 
 ## Community
