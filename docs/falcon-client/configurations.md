@@ -62,11 +62,6 @@ This is configuration object used to setup `@deity/falcon-client`
     - `uri: string` - (default: `http://localhost:4000/graphql`) graphQL server endpoint [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
     - `useGETForQueries: boolean` - (default: `false`) switch to control whether to use the HTTP GET method for queries (but not for mutations) [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
 
-
-
-
-
-
 All configuration passed by `config` is accessible via `ApolloClient`, which mean you can access any of its property via graphQL query.
 
 In order to retrieve `logLevel` you can run following query:
