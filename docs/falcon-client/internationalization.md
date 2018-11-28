@@ -4,6 +4,8 @@ title: Internationalization
 
 Internationalization is based on [i18next](https://www.i18next.com/).
 
+## Basics
+
 All i18n resources should be placed in `./i18n` directory, and folder structure should follow pattern `{{lng}}/{{ns}}.json`. Which means each language needs to have own directory with `json` file per namespace:
 
 ```text

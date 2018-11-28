@@ -17,8 +17,6 @@
     ],
     "Falcon Server": [
       "falcon-server/basics",
-      "falcon-server/apicontainer",
-      "falcon-server/extensioncontainer",
       "falcon-server/dynamic-route-resolver",
       "falcon-server/schema-stitching",
       "falcon-server/shop-extension",
@@ -37,9 +35,6 @@
     ],
     "Deployment": [
       "deployment/intro"
-    ],
-    "Cookbook": [
-      "cookbook/intro"
     ]
   }
 }

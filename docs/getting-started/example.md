@@ -2,9 +2,9 @@
 title: Example Project
 ---
 
-# Shop with Blog Example
-
 This is a template which is used by [`create-falcon-app`](https://github.com/deity-io/falcon/tree/master/packages/create-falcon-app) to create shop with blog app.
+
+It uses [Falcon UI](https://falcon-ui.docs.deity.io) components to create the presentational layer.
 
 ## Quick Start
 
