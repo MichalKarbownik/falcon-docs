@@ -50,17 +50,22 @@ This is configuration object used to setup `@deity/falcon-client`
 - `logLevel: string` - (default: `'error'`) [@deity/falcon-logger](https://github.com/deity-io/falcon/tree/master/packages/falcon-logger) logger level
 - `serverSideRendering: boolean` - (default `true`) switch to control whether the [SSR](/docs/falcon-client/basics#server-side-rendering) is enabled
 - `googleTagManager: object` - Google Tag Manager configuration, [see the details](/docs/falcon-client/basics#google-tag-manager)
-- `googleAnalytics`:
+- `googleAnalytics: object`
   - `trackerID` - Google Analytics tracking code
 - `i18n: object` - internationalization configuration, [see the details](/docs/falcon-client/internationalization)
 - `menus: object` - menus configuration [TODO]
-- `apolloClient` - ApolloClient configuration object
-  - `apolloClient.httpLink` - configuration object that will be passed to the
-    `apollo-link-http` method which defines HTTP link the remote Falcon Server
-    ([available options](https://www.apollographql.com/docs/link/links/http.html#options))
-  - `apolloClient.config` - configuration object that will be passed to the
-    main `ApolloClient` constructor
-    ([available options](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client))
+- `apolloClient: object`
+  - `connectToDevTools: boolean` - (default: `process.env.NODE_ENV !== 'production'`) enable "Apollo" tab in your chrome inspector [see the details](https://www.apollographql.com/docs/react/features/developer-tooling.html#configuration)
+  - `defaultOptions: object` - (default: `{}`) application wide defaults for the options supplied to `watchQuery`, `query` or `mutate` [see the details](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client)
+  - `queryDeduplication: boolean` - (default: `true`) if false, will force a query to still be sent to the server even if a query with identical parameters (`query`, `variables`, `operationName`) is already in flight. [see the details](https://www.apollographql.com/docs/react/advanced/network-layer.html#query-deduplication)
+  - `httpLink: object`
+    - `uri: string` - (default: `http://localhost:4000/graphql`) graphQL server endpoint [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
+    - `useGETForQueries: boolean` - (default: `false`) switch to control whether to use the HTTP GET method for queries (but not for mutations) [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
+
+
+
+
+
 
 All configuration passed by `config` is accessible via `ApolloClient`, which mean you can access any of its property via graphQL query.
 
