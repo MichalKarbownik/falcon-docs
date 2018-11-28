@@ -24,7 +24,7 @@ import clientApolloSchema from './src/clientState';
 export { clientApolloSchema };
 ```
 
-For more information se [this](#state-management)
+For more information see [this](falcon-client/state-management.md)
 
 ### `bootstrap.js`
 
@@ -48,11 +48,11 @@ This is configuration object used to setup `@deity/falcon-client`
 `config: object`
 
 - `logLevel: string` - (default: `'error'`) [@deity/falcon-logger](https://github.com/deity-io/falcon/tree/master/packages/falcon-logger) logger level
-- `serverSideRendering: boolean` - (default `true`) switch to control whether the [SSR](#server-side-rendering) is enabled
-- `googleTagManager: object` - Google Tag Manager configuration, [see the details](#google-tag-manager)
+- `serverSideRendering: boolean` - (default `true`) switch to control whether the [SSR](/docs/falcon-client/basics#server-side-rendering) is enabled
+- `googleTagManager: object` - Google Tag Manager configuration, [see the details](/docs/falcon-client/basics#google-tag-manager)
 - `googleAnalytics`:
   - `trackerID` - Google Analytics tracking code
-- `i18n: object` - internationalization configuration, [see the details](#internationalization)
+- `i18n: object` - internationalization configuration, [see the details](/docs/falcon-client/internationalization)
 - `menus: object` - menus configuration [TODO]
 - `apolloClient` - ApolloClient configuration object
   - `apolloClient.httpLink` - configuration object that will be passed to the
@@ -102,8 +102,8 @@ module.exports = {
 ```
 
 - `clearConsole: boolean` - (default: `true`) determines whether console should be cleared when starting script
-- `useWebmanifest: boolean` - (default: `false`) determines whether [Web App Manifest](#webmanifest) should be processed via webpack and included in output bundle
-- `i18n: object` - (default: `{}`) internationalization configuration, [see the details](#internationalization)
+- `useWebmanifest: boolean` - (default: `false`) determines whether [Web App Manifest](/docs/falcon-client/basics#webmanifest) should be processed via webpack and included in output bundle
+- `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
 - `envToBuildIn` - (default: `[]`) an array of environment variable names which should be build in into bundle, [see the details](#environment-variables)
 - `plugins` - (default: `[]`) an array of plugins which can modify underlying [webpack configuration](#webpack).
 

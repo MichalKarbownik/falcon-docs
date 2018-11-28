@@ -191,7 +191,7 @@ The constructor expects to receive an instance of EventEmitter.
 ## `apiContainer.registerApis(apis: Object<string, ApiInstanceConfig>)`
 
 This method registers the provided APIs
-([`ApiInstanceConfig`](#ApiInstanceConfig-type)) into `apiContainer.dataSources` Map.
+([`ApiInstanceConfig`](#apiinstanceconfig-type)) into `apiContainer.dataSources` Map.
 Constructor will create a new Map, so any further manual calls of `registerApis` method will add new API DataSources to it.
 
 All endpoints that were collected from API DataSources will be stored in `apiContainer.endpoints` property.
@@ -217,7 +217,7 @@ The constructor expects to receive an instance of EventEmitter.
 by [`ApiContainer`](./ApiContainer.md).
 
 This method registers the provided extensions
-([`ExtensionInstanceConfig`](#ExtensionInstanceConfig-type)) into
+([`ExtensionInstanceConfig`](#extensioninstanceconfig-type)) into
 `extensionContainer.extensions` Map.
 Constructor will create a new Map, so any further manual calls of
 `registerExtensions` method will add new Extensions to it.

@@ -4,7 +4,7 @@ title: Falcon Server Env
 
 This package delivers base classes and helpers for ApiDataSources and Extensions.
 
-- [API reference](api/falcon-server-env-api.md)
+- [API reference](falcon-server/falcon-server-env-api.md)
 
 ## Installation
 

@@ -1,11 +1,13 @@
 ---
-title: Shop Extension
+title: Extensions
 ---
 
-## Overview and installation
+## Shop Extension
+
+### Overview and installation
 This extension provides basic features that allow for shop implementation. 
 
-The main part of the extension is [GraphQL Schema](./src/schema.grapqhql) that defines data types, queries and mutations required by the shop. The extension doesn't depend on the backend platform but tries to provide a layer of abstraction on top of shop functionality.
+The main part of the extension is [GraphQL Schema](https://github.com/deity-io/falcon/blob/master/packages/falcon-server/src/schema.graphql) that defines data types, queries and mutations required by the shop. The extension doesn't depend on the backend platform but tries to provide a layer of abstraction on top of shop functionality.
 
 To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that's responsible for communication with 3rd party backend. For the example see [Magento2Api](https://github.com/deity-io/falcon/tree/master/packages/falcon-magento2-api) that provides a communication layer with Magento2 backend.
 
@@ -51,3 +53,7 @@ and add extension and api to the configuration of the server:
   ]
 }
 ```
+
+## Blog Extension
+
+TODO

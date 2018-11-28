@@ -85,7 +85,7 @@ Runs an interactive zoomable treemap of output files to visualize their size. Re
 
 In-app routing is based on [react-router](https://github.com/ReactTraining/react-router) in version 4. If you are not familiar with it, see [this](https://reacttraining.com/react-router/web/example/basic)
 
-Falcon Client support async routes, more information can be found in [Code Splitting](#code-splitting) section.
+Falcon Client support async routes, more information can be found in [Code Splitting](falcon-client/code-splitting.md) section.
 
 ### Falcon Dynamic Routing
 

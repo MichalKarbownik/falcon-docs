@@ -17,12 +17,9 @@
     ],
     "Falcon Server": [
       "falcon-server/basics",
-      "falcon-server/dynamic-route-resolver",
       "falcon-server/schema-stitching",
-      "falcon-server/shop-extension",
-      "falcon-server/blog-extension",
-      "falcon-server/falcon-magento2-api",
-      "falcon-server/falcon-wordpress-api",
+      "falcon-server/extensions",
+      "falcon-server/api-providers",
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-env-api"
     ],
