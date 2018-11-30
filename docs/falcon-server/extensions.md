@@ -21,6 +21,7 @@ This extension provides basic features for shop implementation:
 - Products
 - Categories
 - Customer area
+- Checkout
 - Cart etc.
 
 To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that is responsible for communication with 3rd party backend. For the example see [Magento2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with Magento2 backend.

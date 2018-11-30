@@ -2,11 +2,22 @@
 title: API Providers
 ---
 
-> This is a list of officially supported API Providers by DEITY.
+Every Falcon Extension provides its own part of the GraphQL Schema, in addition - Extension requires
+to have an API Provider that is able to communicate with the actual backend service.
+Every API Provider must implement and to be compatible with Queries, Mutations and types that
+are required by Extension.
+
+Currently, DEITY provides the following list of officially supported API providers:
+
+- [`@deity/falcon-magento2-api`](#falcon-magento-2-api)
+- [`@deity/falcon-wordpress-api`](#falcon-wordpress-api)
 
 ## Falcon Magento 2 API
 
-If you used `create-falcon-app` to generate your project, `falcon-magento2-api` and `falcon-shop-extension` may already be installed in which case you can **skip the installation step.**
+If you used `create-falcon-app` to generate your project, `falcon-magento2-api` and `falcon-shop-extension`
+may already be installed in which case you can **skip the installation step.**
+
+> This API requires [DEITY Falcon PHP Module](/docs/backend/installing-magento2) for Magento2 to be installed on your Magento instance.
 
 ### Overview and installation
 
@@ -47,8 +58,8 @@ and add extension and api to the configuration of the server:
       "package": "@deity/falcon-magento2-api",
       "config": {
         // your magento2 api configuration
-        "host": "my-magento-domain.com",
         "protocol": "https",
+        "host": "my-magento-domain.com",
         "username": "api-user",
         "password": "api-user-password"
       }
@@ -57,20 +68,27 @@ and add extension and api to the configuration of the server:
 }
 ```
 
-### Implementation notes
+### Lifecycle of the GraphQL request
 
-This api uses Deity Falcon Module for Magento2 (#todo: add link to the module).
+This is a short overview of the way how authentication between Falcon Magento2 API and Magento2 backend works.
 
-### Lifecycle of the GrahpQL request
-This is a short overview of the way authentication between Falcon Magento2 API and Magento2 backend works.
+Falcon Magento2 API provides implementation for endpoints that require authorization (customer related data)
+as well as endpoints that don't require customer to be authenticated (product catalog etc).
 
-Falcon Magento2 API provides implementation for endpoints that require authorization (customer related data) as well as endpoints that don't require customer to be authenticated (product catalog etc).
+Every incoming GraphQL request sets the context to the [Falcon Server](/docs/falcon-server/basics) GraphQL resolver,
+so all connected API providers would have an access to it, including `headers` and `session` objects.
 
-Once user signs in with his Magento2 credentials his access token is stored in the session so it can be used for interaction with Magneto2.
+Once user signs in with his Magento2 credentials his access token is stored in the `session` so it can be used for interaction with Magneto2.
+That way API instance can fill in context with its own data that can be reused during query execution.
 
-When GraphQL request comes in [Falcon Server](https://github.com/deity-io/falcon/tree/master/packages/falcon-server) invokes context handlers for all the extensions. [Falcon Shop Extension](https://github.com/deity-io/falcon/tree/master/packages/falcon-shop-extension) calls `createContextData(context)` of the connected API instance (in this case it's Falcon Magento2 API) and passes GraphQL execution context as the param to that method. That way API instance can fill in context with its own data that can be reused during query execution.
+Falcon Magento2 API gets the data from the `session` (which is available as `context.session`).
+To separate this session data from other API Providers' session data - API Provider base class has a short-cut method
+to get session data from a specific session key (named as "api.name" value), so within API Provider class you can
+access your session data via `this.session`.
 
-Falcon Magento2 API gets then data from the session (which is available as `context.req.session`) and puts it under `magento2` property in context. That way all the required data (like auth token, currency, storeToken) are available in `this.context.magento2` during query processing.
+That way all the required data (like auth token, currency, storeToken) is available in `this.session` during query processing.
+
+You can still access the whole session data via `context.session`.
 
 ## Falcon Wordpress API
 
