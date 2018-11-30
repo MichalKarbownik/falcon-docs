@@ -23,7 +23,7 @@ This extension provides basic features for shop implementation:
 - Customer area
 - Cart etc.
 
-To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that is responsible for communication with 3rd party backend. For the example see [Magento2 API](docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with Magento2 backend.
+To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that is responsible for communication with 3rd party backend. For the example see [Magento2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with Magento2 backend.
 
 To add this extension to your Falcon-based app install it in the server directory:
 
@@ -76,7 +76,7 @@ This extension provides basic features for blog implementation:
 - _(coming soon)_
 
 As an example of API Provider that provides a communication layer for Blog Extension -
-see [Wordpress API](docs/falcon-server/api-providers#falcon-wordpress-api).
+see [Wordpress API](/docs/falcon-server/api-providers#falcon-wordpress-api).
 
 To add this extension to your Falcon-based app install it in the server directory:
 
