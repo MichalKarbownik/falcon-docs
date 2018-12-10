@@ -16,7 +16,7 @@ Currently, DEITY provides the following list of officially supported extensions:
 
 > Check the current **@deity/falcon-shop-extension** GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-shop-extension/src/schema.graphql)
 
-This extension provides basic features for shop implementation:
+This extension provides basic features for a webshop implementation:
 
 - Products
 - Categories
@@ -24,7 +24,7 @@ This extension provides basic features for shop implementation:
 - Checkout
 - Cart etc.
 
-To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that is responsible for communication with 3rd party backend. For the example see [Magento2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with Magento2 backend.
+To enable it in your Falcon-based application you have to provide an API that delivers resolvers for queries and mutations as this extension delegates execution of those to the API class that is responsible for communication with a 3rd party backend. For the example see [Magento 2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with the Magento 2 backend.
 
 To add this extension to your Falcon-based app install it in the server directory:
 

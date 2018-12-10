@@ -70,18 +70,18 @@ and add extension and api to the configuration of the server:
 
 ### Lifecycle of the GraphQL request
 
-This is a short overview of the way how authentication between Falcon Magento2 API and Magento2 backend works.
+This is a short overview of the way how authentication between Falcon Magento 2 API and Magento 2 backend works.
 
-Falcon Magento2 API provides implementation for endpoints that require authorization (customer related data)
-as well as endpoints that don't require customer to be authenticated (product catalog etc).
+Falcon Magento 2 API provides implementation for endpoints that require authorization (customer related data)
+as well as endpoints that don't require a customer to be authenticated (product catalog etc).
 
 Every incoming GraphQL request sets the context to the [Falcon Server](/docs/falcon-server/basics) GraphQL resolver,
-so all connected API providers would have an access to it, including `headers` and `session` objects.
+so all connected API providers would have access to it, including `headers` and `session` objects.
 
-Once user signs in with his Magento2 credentials his access token is stored in the `session` so it can be used for interaction with Magneto2.
-That way API instance can fill in context with its own data that can be reused during query execution.
+Once user signs in with his Magento 2 credentials his access token is stored in the `session` so it can be used for interaction with Magento 2.
+That way the API instance can fill in context with its own data that can be reused during query execution.
 
-Falcon Magento2 API gets the data from the `session` (which is available as `context.session`).
+Falcon Magento 2 API gets the data from the `session` (which is available as `context.session`).
 To separate this session data from other API Providers' session data - API Provider base class has a short-cut method
 to get session data from a specific session key (named as "api.name" value), so within API Provider class you can
 access your session data via `this.session`.

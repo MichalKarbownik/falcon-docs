@@ -2,7 +2,7 @@
 title: Basics
 ---
 
-Falcon Server is the entrypoint for backend features of Falcon stack. It acts as API server for Falcon Client -
+Falcon Server is the entrypoint for backend features of the Falcon stack. It acts as API server for Falcon Client -
 provides data and features required by Falcon Client. It can also act as standalone API server for other services.
 
 Falcon Server is implemented with [Koa](https://koajs.com/) and [Apollo Server](https://www.apollographql.com/docs/apollo-server/).
@@ -70,9 +70,9 @@ server.start()
 
 ### Extensions configuration
 
-`config` object can contain `extensions` object that provides a map of extensions that should be used along with options
-that should be passed to those extensions. Extensions should be added by specifying package name of the extension,
-and `options` object that is passed to extension constructor:
+`config` object can contain an `extensions` object that provides a map of extensions that should be used along with options
+that should be passed to those extensions. Extensions should be added by specifying the package name of the extension
+and the `options` object that is passed to the extension constructor:
 
 ```js
 const FalconServer = require('@deity/falcon-server');
@@ -88,11 +88,11 @@ const server = new FalconServer(config);
 server.start()
 ```
 
-If extension requires an API to work correctly then API can be either implemented inside the extension,
-but it can also be implemented as separate package. Then, such API can be added via [`apis`](#apis-configuration) and used by extension.
+If the extension requires an API to work correctly, then the API can be either implemented inside the extension,
+but it can also be implemented as a separate package. After which the API can be added via [`apis`](#apis-configuration) and be used by the extension.
 
-This is especially handy when extension realised some piece of functionality that can use data from various 3rd party services -
-e.g. blog extension can use Wordpress for content fetching, but also any other service that can deliver data in the format accepted by blog extension.
+This is especially handy when the extension adds functionalities that use data from 3rd party services -
+e.g. a blog extension can use Wordpress for content fetching, but also any other service that can deliver data in the format accepted by that same extension.
 
 ```js
 const FalconServer = require('@deity/falcon-server');
