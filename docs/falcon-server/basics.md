@@ -36,15 +36,19 @@ server.start();
 
 ## Configuration
 
-`config: object`
- * `port: number` - port number that server should be running on (default is set to 4000)
- * `apis: []` - array of APIs configuration. See [APIs configuration](#apis-configuration).
- * `extensions: []` - array of extensions configuration. See [Extensions configuration](#extensions-configuration)
- * `session: object` - session configuration, [see the details](#session-configuration)
- * `maxListeners: number` (`20` by default) - number of max listeners per event
- * `verboseEvents: boolean` (`false` by default) - toggling "Logger.trace" call for each event handler
- * `logLevel: string` - Logger level
- * `debug: boolean` (`false` by default) - whether Falcon Server should start in "debug" mode (enabling "tracing" flags)
+Config `object`:
+
+* `port: number` - port number that server should be running on (default is set to `4000`)
+* `apis: object` - a map of APIs configuration (see [APIs configuration](#apis-configuration))
+* `extensions: object` - a map of extensions configuration (see [extensions configuration](#extensions-configuration))
+* `endpoints: object` - a map of endpoints configurations (see [endpoints configuration](#endpoints-configuration))
+* `session: object` - session configuration (see [session configuration](#session-configuration))
+* `maxListeners: number` (`20` by default) - number of max listeners per event
+* `verboseEvents: boolean` (`false` by default) - toggling "Logger.debug" call for tracing all event handlers (`Logger.debug('Triggering "${event}" event...')`)
+* `logLevel: string` (`info` by default) - Logger level (one of: `info`, `error`, `debug`)
+* `debug: boolean` (`false` by default) - whether Falcon Server should start in "debug" mode (enabling "development" mode flags)
+  * toggles `/graphql` interactive [playground](https://github.com/prisma/graphql-playground)
+  * toggles `tracing` flag for Apollo Server ([apollo-tracing](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-tracing))
 
 ### APIs configuration
 
@@ -57,7 +61,7 @@ const config = {
   "apis": {
     "api-wordpress": {
       "package": "@deity/falcon-wordpress-api",
-      "options": {
+      "config": {
         "host": "mywordpress.com",
         "protocol": "https",
       }
@@ -68,11 +72,13 @@ const server = new FalconServer(config);
 server.start()
 ```
 
+> Read more on how to write your own API Provider [here](/docs/falcon-server/api-providers)
+
 ### Extensions configuration
 
-`config` object can contain an `extensions` object that provides a map of extensions that should be used along with options
+Config object can contain an `extensions` object that provides a map of extensions that should be used along with options
 that should be passed to those extensions. Extensions should be added by specifying the package name of the extension
-and the `options` object that is passed to the extension constructor:
+and the `config` object that is passed to the extension constructor:
 
 ```js
 const FalconServer = require('@deity/falcon-server');
@@ -100,7 +106,7 @@ const config = {
   "apis": {
     "api-wordpress": { // set name for that extension
       "package": "@deity/falcon-wordpress-api",
-      "options": {
+      "config": {
         // options for this api instance
       }
     }
@@ -108,7 +114,7 @@ const config = {
   "extensions": {
     "blog": {
       "package": "@deity/falcon-blog-extension",
-      "options": {
+      "config": {
         "api": "api-wordpress" // use API named "api-wordpress"
       }
     }
@@ -117,6 +123,12 @@ const config = {
 const server = new FalconServer(config);
 server.start()
 ```
+
+> Read more on how to write your own Extension [here](/docs/falcon-server/extensions)
+
+### Endpoints configurations
+
+> Read more on how to write your own Endpoint [here](/docs/falcon-server/endpoints)
 
 ### Session configuration
 

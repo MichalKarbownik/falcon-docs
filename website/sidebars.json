@@ -20,6 +20,7 @@
       "falcon-server/schema-stitching",
       "falcon-server/extensions",
       "falcon-server/api-providers",
+      "falcon-server/endpoints",
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-env-api"
     ],
