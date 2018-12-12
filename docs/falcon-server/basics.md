@@ -69,7 +69,7 @@ const config = {
   }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
 
 > Read more on how to write your own API Provider [here](/docs/falcon-server/api-providers)
@@ -91,7 +91,7 @@ const config = {
   }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
 
 If the extension requires an API to work correctly, then the API can be either implemented inside the extension,
@@ -121,12 +121,29 @@ const config = {
   }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
 
 > Read more on how to write your own Extension [here](/docs/falcon-server/extensions)
 
 ### Endpoints configurations
+
+`endpoints` object provides a map of Endpoint modules that should be used for any external communication
+(for example, callbacks from Payment gateways).
+
+```js
+const FalconServer = require('@deity/falcon-server');
+const config = {
+  "endpoints": {
+    "magento": {
+      "package": "@deity/falcon-magento2-api/src/endpoints",
+      "config": {}
+    }
+  }
+};
+const server = new FalconServer(config);
+server.start();
+```
 
 > Read more on how to write your own Endpoint [here](/docs/falcon-server/endpoints)
 
