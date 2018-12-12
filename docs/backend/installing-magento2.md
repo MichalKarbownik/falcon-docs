@@ -55,6 +55,8 @@ You can do so by changing the `default.json` file that resides in `<your-app-nam
 }
 ```
 
+Please be be aware that Magento performance can be heavily affected by the `development` flag
+
 ## Versioning
 
 [SemVer](http://semver.org/) is used for versioning. For the versions available, see the [tags on this repository](https://github.com/deity-io/falcon-magento2-module/tags).
