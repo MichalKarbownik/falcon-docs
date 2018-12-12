@@ -6,8 +6,28 @@ This Wordpress Module registers required endpoints and filters for DEITY Falcon
 
 ## Installation
 
-- Clone Deity Wordpress to your plugin folder
-- Enable the plugin
+- Clone DEITY Wordpress to your plugin folder
+- Enable the plugin in your WordPress Admin Panel
+
+### Connect Falcon to your WordPress instance
+
+Configure Falcon Server to connect to your Magento instance. You can do so by changing the `default.json` file that resides in `<your-app-name>/server/config`
+
+```json
+{
+  "apis": {
+    "api-wordpress": {
+      "package": "@deity/falcon-wordpress-api",
+      "config": {
+        "host": "your-wordpress-host-url",
+        "protocol": "https",
+        "apiPrefix": "/wp-json",
+        "apiSuffix": "/wp/v2"
+      }
+    }
+  }
+}
+```
 
 ## Currently handled features
 
