@@ -15,13 +15,15 @@ Configure Falcon Server to connect to your Magento instance. You can do so by ch
 
 ```json
 {
-  "api-wordpress": {
-    "package": "@deity/falcon-wordpress-api",
-    "config": {
-      "host": "your-wordpress-host-url",
-      "protocol": "https",
-      "apiPrefix": "/wp-json",
-      "apiSuffix": "/wp/v2"
+  "apis": {
+    "api-wordpress": {
+      "package": "@deity/falcon-wordpress-api",
+      "config": {
+        "host": "your-wordpress-host-url",
+        "protocol": "https",
+        "apiPrefix": "/wp-json",
+        "apiSuffix": "/wp/v2"
+      }
     }
   }
 }

@@ -43,19 +43,21 @@ You can do so by changing the `default.json` file that resides in `<your-app-nam
 
 ```json
 {
-  "api-magento2": {
-    "package": "@deity/falcon-magento2-api",
-    "config": {
-      "host": "your-magento-host-url-here",
-      "protocol": "https",
-      "username": "your-admin-username",
-      "password": "your-admin-password"
+  "apis": {
+    "api-magento2": {
+      "package": "@deity/falcon-magento2-api",
+      "config": {
+        "host": "your-magento-host-url-here",
+        "protocol": "https",
+        "username": "your-admin-username",
+        "password": "your-admin-password"
+      }
     }
   }
 }
 ```
 
-Please be be aware that Magento performance can be heavily affected by the `development` flag
+Please be aware that Magento performance depends heavily on which mode it is running in, `developer` mode will negatively impact performance. Also remember to follow Magento's best practices.
 
 ## Versioning
 
