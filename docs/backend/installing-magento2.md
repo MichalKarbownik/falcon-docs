@@ -22,7 +22,8 @@ composer require deity/falcon-magento 1.0.2
 bin/magento setup:upgrade
 ```
 
-When the module is setup, create one extra magento admin user for DEITY Falcon to connect
+When the module is setup, create one extra magento admin user for DEITY Falcon to connect.
+This user exists purely for the API.
 
 ```bash
 bin/magento admin:user:create \
@@ -31,6 +32,27 @@ bin/magento admin:user:create \
   --admin-email='admin@deity.test' \
   --admin-firstname='node' \
   --admin-lastname='Deity'
+```
+
+#### Connect Falcon to your Magento instance
+
+Configure Falcon Server to connect to your Magento instance.
+You can do so by changing the `default.json` file that resides in `<your-app-name>/server/config`
+
+> Note: Use your API admin user that you've just created here
+
+```json
+{
+  "api-magento2": {
+    "package": "@deity/falcon-magento2-api",
+    "config": {
+      "host": "your-magento-host-url-here",
+      "protocol": "https",
+      "username": "your-admin-username",
+      "password": "your-admin-password"
+    }
+  }
+}
 ```
 
 ## Versioning
