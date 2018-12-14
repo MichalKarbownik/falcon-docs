@@ -44,7 +44,7 @@ Using i18next directly in react is clumsy, so we provide Components to make it v
 - `t: i18next.TranslationFunction` - i18next translation function [see the details](https://www.i18next.com/overview/api#t)
 - `i18n: i18next.i18n` - fully initialized i18next instance [see the details](https://www.i18next.com/overview/api#api)
 
-It is usefully in cases when you would like to have access to `t` function to get translated text inline:
+It is useful in cases when you would like to have an access to `t` function to get a translated text inline:
 
 ```jsx
 <I18n>
