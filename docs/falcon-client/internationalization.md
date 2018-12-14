@@ -100,7 +100,7 @@ Some React Components implement handy conventions to makes translations easier. 
 - `FormField` label - `[Form.i18nId].[FormField.name]FieldLabel`
 - `FormField` placeholder - `[Form.i18nId].[FormField.name]FieldPlaceholder`
 
-In following example, email `FormField` will have automatically translated label if translation for key `signIn.emailFieldLabel` (and placeholder, when `signIn.emailFieldPlaceholder`) will be found.
+In the following example, email `FormField` will have an automatically translated label if a translation for the `signIn.emailFieldLabel` key (and placeholder, when `signIn.emailFieldPlaceholder`) will be found.
 
 ```jsx
 import { FormField, Form } from "@deity/falcon-ecommerce-uikit";
