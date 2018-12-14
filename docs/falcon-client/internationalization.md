@@ -67,7 +67,7 @@ or you need to have an access to `i18next` instance to change the language:
 
 ### T Component
 
-As in many places you will need to render translated text as children of other Component, we introduce `<T />` Component which behaves exactly like `i18next.TranslationFunction`. To get translated string for given key you need to use `id` prop instead of `key` as it is reserved keyword in `jsx`
+As in many places you will need to render a translated text as children of other Component, we introduce `<T />` Component which behaves exactly like `i18next.TranslationFunction`. To get translated string for the given key you need to use `id` prop instead of `key` as it is reserved keyword in `jsx`
 
 ```jsx
 <h1>
