@@ -77,7 +77,7 @@ As in many places you will need to render a translated text as children of other
 // <h1>Home Page<h1>
 ```
 
-Others [translationFunction options](https://www.i18next.com/translation-function/essentials#overview-options) are accepted in an unchanged form, for example, to pass
+Other [translationFunction options](https://www.i18next.com/translation-function/essentials#overview-options) are accepted in an unchanged form, for example, to pass
 
 ```jsx
 // product.productsLeftInStock_plural = "{{product}} has {{count}} products left in stock" */
