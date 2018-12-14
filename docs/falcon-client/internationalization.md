@@ -52,7 +52,7 @@ It is useful in cases when you would like to have an access to `t` function to g
 </I18n>
 ```
 
-or you need to have access to `i18next` instance to change the language:
+or you need to have an access to `i18next` instance to change the language:
 
 ```jsx
 <I18n>
