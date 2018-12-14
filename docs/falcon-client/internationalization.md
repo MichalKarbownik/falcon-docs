@@ -35,7 +35,7 @@ Configuration options base on [i18next](https://www.i18next.com/overview/configu
 
 ## React components
 
-Using i18next directly in react is clumsy, so we providing Components to make it simple easy
+Using i18next directly in react is clumsy, so we provide Components to make it very easy
 
 ### I18n Component
 
