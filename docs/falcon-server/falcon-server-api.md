@@ -11,17 +11,15 @@ title: Falcon Server API
 by Falcon Server Application. It adds a few helpful methods to provide
 a seamless integration with Falcon Server applications.
 
-#### `extension.initialize`
+#### `async extension.getGraphQLConfig(typeDefs = '')`
 
-`await extension.initialize()` will be called by
-[ExtensionContainer](#extensioncontainer) automatically. Optionally,
-it can optionally return a back-end configuration object, received from the assigned
-ApiDataSource instance (by calling `await api.preInitialize()` method).
+This method will be called by the ExtensionContainer to get Extension's GraphQL configuration, which
+will be merged with the rest of the extension configs (see example below).
 
-#### `extension.getGraphQLConfig`
-
-This method will be called by ExtensionContainer to get Extension's GraphQL configuration, which
-will be merged with the rest of the extensions' configs (see example below).
+When calling parent method in your derived class - you could optionally pass your `typeDefs` parameter
+(`super.getGraphQLConfig(typeDefs)`) - default implementation of this method will automatically
+bind your Query and Mutation types to your ApiDataSource methods (following the same names for field
+and methods).
 
 #### `extension.getFetchUrlPriority(url)`
 
@@ -31,7 +29,7 @@ priority (for sort order) when Falcon Client fetches URL info from available ext
 such method was not defined - it will return `null`, meaning that this ApiDataSource does not
 support "Dynamic Routing" and should be skipped.
 
-#### `extension.fetchUrl`
+#### `async extension.fetchUrl(obj, args, context, info)`
 
 This method is optional and should be defined if ApiDataSource supports Dynamic Routing.
 Its signature mimics GraphQL Resolver function signature `(root, params, context, info)`.
@@ -85,14 +83,14 @@ This method must be defined if a specific ApiDataSource supports Dynamic Routing
 It should provide a simple logic to determine a custom priority or return a default one
 (`this.fetchUrlPriority` equals `ApiUrlPriority.NORMAL` by default).
 
-#### `api.fetchUrl(obj, args, context, info)`
+#### `async api.fetchUrl(obj, args, context, info)`
 
 This method must be defined if a specific ApiDataSource supports Dynamic Routing.
 It will be called whenever Dynamic Route chooses this ApiDataSource instance to resolve URL type
 for the provided `path`. See Dynamic Route result response type
 [here](/docs/falcon-server/basics#dynamicrouteresolver-result-structure).
 
-#### `api.fetchBackendConfig(obj, args, context, info)`
+#### `async api.fetchBackendConfig(obj, args, context, info)`
 
 If defined, ExtensionContainer will call this method whenever somebody tries to
 fetch `backendConfig` GQL Query field. Falcon-Server expects `fetchBackendConfig`
@@ -254,17 +252,23 @@ Sample Extension class:
 ```javascript
 const { Extension } = require('@deity/falcon-server-env');
 
+const typeDefs = `
+  type Post {
+    name: String
+  }
+  extend Query {
+    getPost(id: String!): Post
+  }
+`;
+
 class BlogExtension extends Extension {
   async getGraphQLConfig() {
+    // or simply call super.getGraphQLConfig method
+    // to auto-bind GQL Query types to API methods
+    // return super.getGraphQLConfig(typeDefs);
+
     return {
-      schemas: [
-        `type Post {
-          name: String
-        }`,
-        `extend Query {
-          getPost(id: String!): Post
-        }`
-      ],
+      schemas: [typeDefs],
       resolvers: {
         Query: {
           getPost: (obj, args, context, info) =>
