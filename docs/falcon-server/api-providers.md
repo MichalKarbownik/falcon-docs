@@ -2,7 +2,7 @@
 title: API Providers
 ---
 
-Every Falcon Extension provides its own part of the GraphQL Schema, in addition - Extension requires
+Every Falcon Extension provides its own part of the GraphQL Schema and in addition, an Extension requires
 to have an API Provider that is able to communicate with the actual backend service.
 Every API Provider must implement and to be compatible with Queries, Mutations and types that
 are required by Extension.
@@ -21,7 +21,7 @@ may already be installed in which case you can **skip the installation step.**
 
 ### Overview and installation
 
-This API class realizes communication with Magento2 backend.
+This API class realizes communication with your Magento 2 backend.
 It provides resolvers for queries and mutations required by [Falcon Shop Extension](extensions#shop-extension).
 To add this API to your Falcon-based app install it in the server directory:
 
@@ -78,7 +78,7 @@ as well as endpoints that don't require a customer to be authenticated (product 
 Every incoming GraphQL request sets the context to the [Falcon Server](/docs/falcon-server/basics) GraphQL resolver,
 so all connected API providers would have access to it, including `headers` and `session` objects.
 
-Once user signs in with his Magento 2 credentials his access token is stored in the `session` so it can be used for interaction with Magento 2.
+Once a user signs in with his Magento 2 credentials his access token is stored in the `session` so it can be used for interaction with Magento 2.
 That way the API instance can fill in context with its own data that can be reused during query execution.
 
 Falcon Magento 2 API gets the data from the `session` (which is available as `context.session`).

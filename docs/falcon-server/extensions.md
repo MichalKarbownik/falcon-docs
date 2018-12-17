@@ -3,7 +3,7 @@ title: Extensions
 ---
 
 Falcon-Server provides its own base GraphQL Schema, that defines data types, queries
-and mutations, so every Extension could use its types and extend them (if needed).
+and mutations, so every Extension could use its types and extend them.
 
 > Check the current **Falcon-Server** base GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-server/src/schema.graphql)
 
@@ -24,7 +24,7 @@ This extension provides basic features for a webshop implementation:
 - Checkout
 - Cart etc.
 
-To enable it in your Falcon-based application you have to provide an API that delivers resolvers for queries and mutations as this extension delegates execution of those to the API class that is responsible for communication with a 3rd party backend. For the example see [Magento 2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with the Magento 2 backend.
+To enable it in your Falcon-based application you have to provide an API that delivers resolvers for queries and mutations as this extension delegates execution of those to the API class that is responsible for communication with a 3rd party backend. For example see [Magento 2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with the Magento 2 backend.
 
 To add this extension to your Falcon-based app install it in the server directory:
 
@@ -76,7 +76,7 @@ This extension provides basic features for blog implementation:
 - Posts
 - _(coming soon)_
 
-As an example of API Provider that provides a communication layer for Blog Extension -
+As an example of the API Provider that provides a communication layer for Blog Extension -
 see [Wordpress API](/docs/falcon-server/api-providers#falcon-wordpress-api).
 
 To add this extension to your Falcon-based app install it in the server directory:
