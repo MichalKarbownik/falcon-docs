@@ -3,9 +3,9 @@ title: API Providers
 ---
 
 Every Falcon Extension provides its own part of the GraphQL Schema and in addition, an Extension requires
-to have an API Provider that is able to communicate with the actual backend service.
-Every API Provider must implement and to be compatible with Queries, Mutations and types that
-are required by Extension.
+to have an assigned [API Provider](/docs/falcon-server/falcon-server-api#apidatasource) that is able
+to communicate with the actual backend service. Every API Provider must implement all required
+methods of a specific Extension and be compatible with Queries, Mutations and types that are required by this Extension.
 
 Currently, DEITY provides the following list of officially supported API providers:
 
