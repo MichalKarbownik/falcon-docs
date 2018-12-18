@@ -22,4 +22,4 @@ Make sure you don’t have create-falcon-app package installed globally on your 
 
 ### FalconServer: apis is not iterable
 
-Make sure your Falcon-Server config is set properly [read the documentation](https://falcon.deity.io/docs/falcon-server/basics#configuration)
+Make sure your Falcon-Server config is set properly [read the documentation](/docs/falcon-server/basics#configuration)
