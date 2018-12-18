@@ -20,6 +20,6 @@ Please make sure you have Node version 8.10+
 
 Make sure you don’t have create-falcon-app package installed globally on your machine (npm and yarn) - this is the recommended way since it makes sure you are always using the latest version when using the npx command
 
-### FalconServer: apis is not iterable
+### FalconServer: "apis" is not iterable
 
-Make sure your Falcon-Server config is set properly [read the documentation](https://falcon.deity.io/docs/falcon-server/basics#configuration)
+Make sure your Falcon-Server config is set properly [read the documentation](/docs/falcon-server/basics#configuration)
