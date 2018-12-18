@@ -2,58 +2,120 @@
 title: Extensions
 ---
 
+Falcon-Server provides its own base GraphQL Schema, that defines data types, queries
+and mutations, so every Extension could use its types and extend them.
+
+> Check the current **Falcon-Server** base GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-server/src/schema.graphql)
+
+Currently, DEITY provides the following list of officially supported extensions:
+
+- [`@deity/falcon-shop-extension`](#shop-extension)
+- [`@deity/falcon-blog-extension`](#blog-extension)
+
 ## Shop Extension
 
-### Overview and installation
-This extension provides basic features that allow for shop implementation. 
+> Check the current **@deity/falcon-shop-extension** GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-shop-extension/src/schema.graphql)
 
-The main part of the extension is [GraphQL Schema](https://github.com/deity-io/falcon/blob/master/packages/falcon-server/src/schema.graphql) that defines data types, queries and mutations required by the shop. The extension doesn't depend on the backend platform but tries to provide a layer of abstraction on top of shop functionality.
+This extension provides basic features for a webshop implementation:
 
-To enable it in your Falcon-based application you have to provide API that delivers resolvers for queries and mutations as this extension delegates execution of those to API class that's responsible for communication with 3rd party backend. For the example see [Magento2Api](https://github.com/deity-io/falcon/tree/master/packages/falcon-magento2-api) that provides a communication layer with Magento2 backend.
+- Products
+- Categories
+- Customer area
+- Checkout
+- Cart etc.
 
-To add this extension to your Falcon-based app install it in the server directory: 
+To enable it in your Falcon-based application you have to provide an API that delivers resolvers for queries and mutations as this extension delegates execution of those to the API class that is responsible for communication with a 3rd party backend. For example see [Magento 2 API](/docs/falcon-server/api-providers#falcon-magento-2-api) that provides a communication layer with the Magento 2 backend.
 
-with yarn:
+To add this extension to your Falcon-based app install it in the server directory:
+
+with **yarn**:
+
 ```bash
 # installs shop extension
-yarn add @deity/falcon-shop-extension
-# installs magento2 api required for communication with magento
 yarn add @deity/falcon-shop-extension
 ```
 
-or with npm:
+or with **npm**:
+
 ```bash
 # installs shop extension
-npm install --save @deity/falcon-shop-extension
-# installs magento2 api required for communication with magento
 npm install --save @deity/falcon-shop-extension
 ```
 
 and add extension and api to the configuration of the server:
+
 ```js
 {
-  "extensions": [
-    // enable extension by adding it to "extensions" array
-    {
+  "extensions": {
+    // enable shop extension by adding it to "extensions" object
+    "shop": {
       "package": "@deity/falcon-shop-extension",
       "config": {
-        "api": "api-magento2" // must match api name string set in api.name property below
+        "api": "api-foo" // must match an API Provider name set in "apis" object below
       }
     }
-  ],
-  "apis": [
-    // provide api that will be used by magneto
-    {
-      "name": "api-magento2", // must match name from shop-extension configuration 
-      "package": "@deity/falcon-magento2-api",
+  },
+  "apis": {
+    "api-foo": { // must match "config.api" from shop-extension configuration
+      "package": "my-custom-api-foo-package",
       "config": {
-        // your magento2 api configuration
+        "host": "example.com",
+        "customParam": "value"
       }
     }
-  ]
+  }
 }
 ```
 
 ## Blog Extension
 
-TODO
+> Check the current **@deity/falcon-blog-extension** GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-blog-extension/src/schema.graphql)
+
+This extension provides basic features for blog implementation:
+
+- Posts
+- _(coming soon)_
+
+As an example of the API Provider that provides a communication layer for Blog Extension -
+see [Wordpress API](/docs/falcon-server/api-providers#falcon-wordpress-api).
+
+To add this extension to your Falcon-based app install it in the server directory:
+
+with **yarn**:
+
+```bash
+# installs blog extension
+yarn add @deity/falcon-blog-extension
+```
+
+or with **npm**:
+
+```bash
+# installs blog extension
+npm install --save @deity/falcon-blog-extension
+```
+
+and add extension and api to the configuration of the server:
+
+```js
+{
+  "extensions": {
+    // enable blog extension by adding it to "extensions" object
+    "blog": {
+      "package": "@deity/falcon-blog-extension",
+      "config": {
+        "api": "api-foo" // must match an API Provider name set in "apis" object below
+      }
+    }
+  },
+  "apis": {
+    "api-foo": { // must match "config.api" from blog-extension configuration
+      "package": "my-custom-api-foo-package",
+      "config": {
+        "host": "example.com",
+        "customParam": "value"
+      }
+    }
+  }
+}
+```

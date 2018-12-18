@@ -2,21 +2,22 @@
 title: Basics
 ---
 
-Falcon Server is the entrypoint for backend features of Falcon stack. It acts as API server for Falcon Client - provides data and features required by Falcon Client. It can also act as standalone API server for other services.
+Falcon Server is the entrypoint for backend features of the Falcon stack. It acts as API server for Falcon Client -
+provides data and features required by Falcon Client. It can also act as standalone API server for other services.
 
 Falcon Server is implemented with [Koa](https://koajs.com/) and [Apollo Server](https://www.apollographql.com/docs/apollo-server/).
 
-Falcon Server is just a "glue" that realises all the functionalities via [extensions](#extensions-system)
+Falcon Server is just a "glue" that provides all the functionalities via [extensions](#extensions-system).
 
 ## Installation
 
-With npm:
+With **npm**:
 
 ```bash
 npm install @deity/falcon-server
 ```
 
-or with yarn:
+or with **yarn**:
 
 ```bash
 yarn add @deity/falcon-server
@@ -35,88 +36,120 @@ server.start();
 
 ## Configuration
 
-`config: object`
- * `port: number` - port number that server should be running on (default is set to 4000)
- * `apis: []` - array of APIs configuration. See [APIs configuration](#apis-configuration).
- * `extensions: []` - array of extensions configuration. See [Extensions configuration](#extensions-configuration)
- * `session: object` - session configuration, [see the details](#session-configuration)
- * `maxListeners: number` (`20` by default) - number of max listeners per event
- * `verboseEvents: boolean` (`false` by default) - toggling "Logger.trace" call for each event handler
- * `logLevel: string` - Logger level
- * `debug: boolean` (`false` by default) - whether Falcon Server should start in "debug" mode (enabling "tracing" flags)
+Config `object`:
+
+* `port: number` - port number that server should be running on (default is set to `4000`)
+* `apis: object` - a map of APIs configuration (see [APIs configuration](#apis-configuration))
+* `extensions: object` - a map of extensions configuration (see [extensions configuration](#extensions-configuration))
+* `endpoints: object` - a map of endpoints configurations (see [endpoints configuration](#endpoints-configuration))
+* `session: object` - session configuration (see [session configuration](#session-configuration))
+* `maxListeners: number` (`20` by default) - number of max listeners per event
+* `verboseEvents: boolean` (`false` by default) - toggling "Logger.debug" call for tracing all event handlers (`Logger.debug('Triggering "${event}" event...')`)
+* `logLevel: string` (`info` by default) - Logger level (one of: `info`, `error`, `debug`)
+* `debug: boolean` (`false` by default) - whether Falcon Server should start in "debug" mode (enabling "development" mode flags)
+  * toggles `/graphql` interactive [playground](https://github.com/prisma/graphql-playground)
+  * toggles `tracing` flag for Apollo Server ([apollo-tracing](https://github.com/apollographql/apollo-server/tree/master/packages/apollo-tracing))
 
 ### APIs configuration
 
-`apis` array provides list of APIs that should be used along with options that should be passed to those APIs. Additionally, if API should be available for other extensions its configuration should have `"name"` property that later can be used to get instance of particular extension.
+`apis` object provides a map of APIs that should be used along with options that should be passed to those APIs.
+You should be careful with the key value, which is being used as your API Provider ID.
 
 ```js
 const FalconServer = require('@deity/falcon-server');
 const config = {
-  "apis": [
-    {
+  "apis": {
+    "api-wordpress": {
       "package": "@deity/falcon-wordpress-api",
-      "name": "api-wordpress",
-      "options": {
+      "config": {
         "host": "mywordpress.com",
         "protocol": "https",
       }
     }
-  ]
+  }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
+
+> Read more on how to write your own API Provider [here](/docs/falcon-server/falcon-server-api#apidatasource)
 
 ### Extensions configuration
 
-`config` object can contain `extensions` array that provides list of extensions that should be used along with options that should be passed to those extensions.
-Extensions should be added by specifying package name of the extension, and `options` object that is passed to extension constructor:
+Config object can contain an `extensions` object that provides a map of extensions that should be used along with options
+that should be passed to those extensions. Extensions should be added by specifying the package name of the extension
+and the `config` object that is passed to the extension constructor:
 
 ```js
 const FalconServer = require('@deity/falcon-server');
 const config = {
-  "extensions": [
-    {
+  "extensions": {
+    "blog": {
       "package": "@deity/falcon-blog-extension",
       "config": {}
     }
-  ]
+  }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
 
-If extension requires an API to work correctly the API can be either implemented inside the extension, but it can also be implemented as separate package. Then, such API can be added via [`apis`](#apis-configuration) and used by extension.
+If the extension requires an API to work correctly, then the API can be either implemented inside the extension,
+but it can also be implemented as a separate package. After which the API can be added via [`apis`](#apis-configuration) and be used by the extension.
 
-This is especially handy when extension realised some piece of functionality that can use data from various 3rd party services - e.g. blog extension can use wodpress for content fetching, but also any other service that can deliver data in the format accepted by blog extension.
+This is especially handy when the extension adds functionalities that use data from 3rd party services -
+e.g. a blog extension can use Wordpress for content fetching, but also any other service that can deliver data in the format accepted by that same extension.
 
 ```js
 const FalconServer = require('@deity/falcon-server');
 const config = {
-  "apis": [
-    {
+  "apis": {
+    "api-wordpress": { // set name for that extension
       "package": "@deity/falcon-wordpress-api",
-      "name": "api-wordpress", // set name for that extension
-      "options": {
+      "config": {
         // options for this api instance
       }
     }
-  ],
-  "extensions": [
-    {
+  },
+  "extensions": {
+    "blog": {
       "package": "@deity/falcon-blog-extension",
-      "options": {
+      "config": {
         "api": "api-wordpress" // use API named "api-wordpress"
       }
     }
-  ]
+  }
 };
 const server = new FalconServer(config);
-server.start()
+server.start();
 ```
 
+> Read more on how to write your own Extension [here](/docs/falcon-server/falcon-server-api#extension)
+
+### Endpoints configurations
+
+`endpoints` object provides a map of Endpoint modules that should be used for any external communication
+(for example, callbacks from Payment gateways).
+
+```js
+const FalconServer = require('@deity/falcon-server');
+const config = {
+  "endpoints": {
+    "magento": {
+      "package": "@deity/falcon-magento2-api/src/endpoints",
+      "config": {}
+    }
+  }
+};
+const server = new FalconServer(config);
+server.start();
+```
+
+> Read more on how to write your own Endpoint [here](/docs/falcon-server/falcon-server-api#extension)
+
 ### Session configuration
-Falcon Server uses [koa-session](https://www.npmjs.com/package/koa-session) for session implementation, so all the options passed in `session.options` will be passed directly to `koa-session`. Additionally you can provide `session.keys` array with kesy used by `koa` instance:
+
+Falcon Server uses [koa-session](https://www.npmjs.com/package/koa-session) for session implementation, so all the options passed in `session.options` will be passed directly to `koa-session`. Additionally you can provide `session.keys` array with keys used by `koa` instance:
 
 ```js
 const FalconServer = require('@deity/falcon-server');

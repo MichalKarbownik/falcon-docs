@@ -3,7 +3,7 @@ title: GraphQL Schema Stitching
 ---
 
 The whole GraphQL stitching is being performed by
-[`ExtensionContainer.createGraphQLConfig`](/docs/falcon-server/falcon-server-env-api#extensioncontainer) method.
+[`ExtensionContainer.createGraphQLConfig`](/docs/falcon-server/falcon-server-api#extensioncontainer) method.
 
 ExtensionContainer collects all registered extensions and calls their
 `getGraphQLConfig` method which must return the following `extConfig` object:
