@@ -33,6 +33,9 @@
     ],
     "Deployment": [
       "deployment/intro"
+    ],
+    "Support": [
+      "support/troubleshooting"
     ]
   }
 }
