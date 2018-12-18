@@ -55,6 +55,8 @@ and if you prefer yarn use `yarn create` with the following syntax (notice space
 yarn create falcon-app my-app
 ```
 
+> Note: Please do not install the package globally
+
 That command will create `my-app` folder with 2 folders inside:
 
 ```
