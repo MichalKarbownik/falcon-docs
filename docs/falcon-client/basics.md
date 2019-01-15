@@ -105,7 +105,9 @@ Web App Manifest file should be located in `./src/manifest.webmanifest` and coul
 
 ```json
 {
-  "icons": [{ "src": "./assets/logo.svg", "sizes": "48x48", "type": "image/svg" }]
+  "icons": [
+    { "src": "./assets/logo.svg", "sizes": "48x48", "type": "image/svg" }
+  ]
 }
 ```
 
@@ -144,15 +146,17 @@ To change page title or add any kind of meta tag (e.g. [Open Graph Protocol](htt
 
 For more examples see [this](https://github.com/nfl/react-helmet#reference-guide)
 
-## Google Analytics
+## Analytics
+
+### Google Analytics
 
 [TODO]
 
-## Google Tag Manager
+### Google Tag Manager
 
 [See more](https://marketingplatform.google.com/about/tag-manager/)
 
-### Configuration
+#### Configuration
 
 you can configure Google Tag Manager via `config` property in `falcon-client.config.js`.
 
@@ -160,7 +164,15 @@ you can configure Google Tag Manager via `config` property in `falcon-client.con
 
 - `id: string`: (default `null`) Google Tag Manager ID
 
-## Internal Server Error page
+## Development
+
+### Styles
+
+`falcon-client` provide out of the box support for `css` and `scss`, and you should write them in `*css` and `*.scss` files accordingly.
+
+However, css modules convention is also supported [see the details](https://github.com/css-modules/css-modules). To make it use you need to add `module` prefix to file extension. For example, vanilla css with modules should be located in `*.module.css`, and scss with modules in `*.module.scss`.
+
+### Internal Server Error page
 
 `falcon-client` provide default error page for http 500 error. You can override it and provide your own by placing `500.http` file in `./views/errors/` directory.
 
@@ -179,17 +191,17 @@ you can configure Google Tag Manager via `config` property in `falcon-client.con
 example unit test with `FalconClientMock` :
 
 ```jsx
-import { FalconClientMock } from '@deity/falcon-client/test-utils';
+import { FalconClientMock } from "@deity/falcon-client/test-utils";
 
-describe('<Component />', () => {
-  test('renders without exploding', () => {
+describe("<Component />", () => {
+  test("renders without exploding", () => {
     ReactDOM.render(
       <FalconClientMock>
         {
           // your <Component />
         }
       </FalconClientMock>,
-      document.createElement('div')
+      document.createElement("div")
     );
   });
 });
