@@ -10,7 +10,7 @@ Async components is based on [react-async-component](https://github.com/ctrlplus
 
 It is highly recommended to have each page component asynchronous. Then page chunks does not impact them self, as they contain only necessary amount of code.
 
-To convert React Component into component which can be latter fetch on demand, you need to wrap it with `asyncComponent` function:
+To convert React Component into component which can be later fetch on demand, you need to wrap it with `asyncComponent` function:
 
 ```jsx
 import { asyncComponent } from 'react-async-component';
