@@ -168,9 +168,9 @@ you can configure Google Tag Manager via `config` property in `falcon-client.con
 
 ### Styles
 
-`falcon-client` provide out of the box support for `css` and `scss`, and you should write them in `*css` and `*.scss` files accordingly.
+`falcon-client` provides out of the box support for `css` and `scss`, and you should write them in `*.css` and `*.scss` files accordingly.
 
-However, css modules convention is also supported [see the details](https://github.com/css-modules/css-modules). To make it use you need to add `module` prefix to file extension. For example, vanilla css with modules should be located in `*.module.css`, and scss with modules in `*.module.scss`.
+However, css modules convention is also supported [see the details](https://github.com/css-modules/css-modules). To make it work you need to add `module` prefix to the file extension. For example, vanilla css with modules should be located in `*.module.css`, and scss with modules in `*.module.scss`.
 
 ### Internal Server Error page
 
