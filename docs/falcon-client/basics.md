@@ -191,17 +191,17 @@ However, css modules convention is also supported [see the details](https://gith
 example unit test with `FalconClientMock` :
 
 ```jsx
-import { FalconClientMock } from "@deity/falcon-client/test-utils";
+import { FalconClientMock } from '@deity/falcon-client/test-utils';
 
-describe("<Component />", () => {
-  test("renders without exploding", () => {
+describe('<Component />', () => {
+  test('renders without exploding', () => {
     ReactDOM.render(
       <FalconClientMock>
         {
           // your <Component />
         }
       </FalconClientMock>,
-      document.createElement("div")
+      document.createElement('div')
     );
   });
 });
