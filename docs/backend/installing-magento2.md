@@ -8,7 +8,7 @@ Install and configure your Magento 2 shop to proceed with Deity Module installat
 
 ### Prerequisites
 
-DEITY Magento module is compatible with Magento version 2.2. CE and EE versions.
+DEITY Magento module is compatible with Magento version 2.2+ CE and EE versions.
 Full scale support of versions 2.0.* and 2.1.* is not our priority.
 However if you encounter an issue running with Magento version lower than 2.2 feel free
 to open an issue or reach out to our support channel.
@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento 1.0.2
+composer require deity/falcon-magento ^2.0.0
 bin/magento setup:upgrade
 ```
 
