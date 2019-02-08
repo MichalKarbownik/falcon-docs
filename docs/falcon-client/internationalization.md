@@ -33,6 +33,10 @@ Configuration options base on [i18next](https://www.i18next.com/overview/configu
 - `debug: boolean` - (default: `false`) i18next debug mode switch
 - `resources: object` - (default: `undefined`) allows to inject translations inline, useful during testing
 
+### node.js
+Node.js has rich [internationalization support](https://nodejs.org/api/intl.html#intl_internationalization_support), however, more of them are disabled because it requires very large ICU data file which is not provided by Node.js by default. In order to enable it, you need to provide a path to ICU data file at runtime. `falcon-client` will try to resolve that path to ICU data file automatically, but only in development (`falcon-client start`). In production, you need to configure it according to your needs, [here](https://nodejs.org/api/intl.html#intl_providing_icu_data_at_runtime) you can find available techniques.
+
+By default node.js does not 
 ## React components
 
 Using i18next directly in react is clumsy, so we provide Components to make it very easy
