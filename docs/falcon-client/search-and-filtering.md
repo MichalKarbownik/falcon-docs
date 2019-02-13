@@ -11,7 +11,7 @@ title: Search and filtering
 
 Falcon provides 2 main components that allow you to integrate filters:
 
-- `SearchProvider` which takes care of the management of the search state. It provides search-related API as `SearchConfig`, keeps track of search configuration, used filters, sort order and pagination. It also updates url and history state when search parameters change, and restores search configuration when user navigates back/forward. All those things gives us the possibility to perform search requests without page reloading while keeping url synchronized with the current state of the search.
+- `SearchProvider` which takes care of the management of the search state. It provides search-related API as `SearchConfig`, keeps track of search configuration, used filters, sort order and pagination. It also updates url and history state when search parameters change, and restores search configuration when user navigates back/forward. All those things give us the possibility to perform search requests without page reloading while keeping url synchronized with the current state of the search.
 - `SearchConsumer` which exposes the API provided by `SearchProvider`
 
 ## SearchConfig data
