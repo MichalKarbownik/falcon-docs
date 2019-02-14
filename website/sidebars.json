@@ -13,7 +13,8 @@
       "falcon-client/code-splitting",
       "falcon-client/state-management",
       "falcon-client/internationalization",
-      "falcon-client/falcon-ui"
+      "falcon-client/falcon-ui",
+      "falcon-client/search-and-filtering"
     ],
     "Falcon Server": [
       "falcon-server/basics",
@@ -24,18 +25,9 @@
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-api"
     ],
-    "Backend": [
-      "backend/installing-magento2",
-      "backend/installing-wordpress"
-    ],
-    "Miscellaneous": [
-      "miscellaneous/falcon-logger"
-    ],
-    "Deployment": [
-      "deployment/intro"
-    ],
-    "Support": [
-      "support/troubleshooting"
-    ]
+    "Backend": ["backend/installing-magento2", "backend/installing-wordpress"],
+    "Miscellaneous": ["miscellaneous/falcon-logger"],
+    "Deployment": ["deployment/intro"],
+    "Support": ["support/troubleshooting"]
   }
 }
