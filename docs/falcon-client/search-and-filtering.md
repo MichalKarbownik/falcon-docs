@@ -1,5 +1,4 @@
 ---
-id: search
 title: Search and filtering
 ---
 
