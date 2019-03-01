@@ -97,7 +97,8 @@ module.exports = {
   useWebmanifest: false,
   i18n: {},
   envToBuildIn: [],
-  plugins: []
+  plugins: [],
+  moduleOverride: {}
 };
 ```
 
@@ -106,6 +107,7 @@ module.exports = {
 - `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
 - `envToBuildIn` - (default: `[]`) an array of environment variable names which should be build in into bundle, [see the details](#environment-variables)
 - `plugins` - (default: `[]`) an array of plugins which can modify underlying [webpack configuration](#webpack).
+- `moduleOverride` - (default: `{}`) dictionary of module names to override [see the details](#normal-module-override)
 
 Falcon Client provides you much more build configuration options. You can find all of them described in [Build process configuration](#build-process-configuration) section.
 
@@ -199,6 +201,32 @@ module.exports = {
   }
 };
 ```
+
+#### Normal Module override
+
+`falcon-client` uses `@deity/normal-module-override-webpack-plugin` to override any kind of module during compilation time. It works in similar way like native webpack [normal-module-replacement-plugin](https://webpack.js.org/plugins/normal-module-replacement-plugin/) but accepts only proper import like path expressions, does not accept `RexExp` and allows to pass multiple override configuration record into single plugin instance.
+
+It gives you powerful tool to override package internals without need to forking or copying entire package sources into your project root directory. And via providing new version of specific module you can adjust entire package behavior to your needs.
+
+For example, following configuration:
+
+```
+  {
+    '@deity/falcon-ui/dist/components/Button': './src/components/CustomButton'
+  }
+```
+
+tells to webpack that `CustomButton` component should be used instead of `falcon-ui`'s `Button`. Including `shop-with-blog/client` project and any other third-party package which is using `@deity/falcon-ui/dist/components/Button`.
+
+Path to new module can be not only resolved relatively to project root directory but it can point to other npm package e.g.:
+
+```
+  {
+    '@deity/falcon-ui/dist/components/Button': '@material-ui/core/Button'
+  }
+```
+
+Please note that webpack `alias`'es are not supported.
 
 ### Babel
 
