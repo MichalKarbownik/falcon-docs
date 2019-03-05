@@ -206,7 +206,7 @@ module.exports = {
 
 `falcon-client` uses `@deity/normal-module-override-webpack-plugin` to override any kind of module during compilation time. It works in similar way like native webpack [normal-module-replacement-plugin](https://webpack.js.org/plugins/normal-module-replacement-plugin/) but accepts only proper paths used in `import` expressions, does not accept `RexExp` and allows to pass multiple override configuration record into single plugin instance.
 
-It gives you powerful tool to override package internals without need to forking or copying entire package sources into your project root directory, and via providing new version of specific module you can adjust package behavior to your needs.
+It gives you a powerful tool to override package internals without a need of forking or copying the entire package sources into your project root directory, and via providing a new version of the specific module you can adjust package behavior to your needs.
 
 For example, following configuration:
 
@@ -218,7 +218,7 @@ For example, following configuration:
 
 tells to webpack that `CustomButton` module should be used instead of `falcon-ui`'s `Button` module. Including `shop-with-blog/client` project and any other third-party package which is using `@deity/falcon-ui/dist/components/Button` module.
 
-Path to new module can be not only resolved relatively to project root directory but it can point to other npm package e.g.:
+The path to a new module can be not only resolved relatively to project root directory but it can point to any other npm package e.g.:
 
 ```
   {
