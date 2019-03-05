@@ -107,7 +107,7 @@ module.exports = {
 - `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
 - `envToBuildIn` - (default: `[]`) an array of environment variable names which should be build in into bundle, [see the details](#environment-variables)
 - `plugins` - (default: `[]`) an array of plugins which can modify underlying [webpack configuration](#webpack).
-- `moduleOverride` - (default: `{}`) dictionary of module names to override [see the details](#normal-module-override)
+- `moduleOverride` - (default: `{}`) dictionary of module names to override, [see the details](#normal-module-override)
 
 Falcon Client provides you much more build configuration options. You can find all of them described in [Build process configuration](#build-process-configuration) section.
 
