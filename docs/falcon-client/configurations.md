@@ -216,7 +216,7 @@ For example, following configuration:
   }
 ```
 
-tells to webpack that `CustomButton` component should be used instead of `falcon-ui`'s `Button`. Including `shop-with-blog/client` project and any other third-party package which is using `@deity/falcon-ui/dist/components/Button` .
+tells to webpack that `CustomButton` module should be used instead of `falcon-ui`'s `Button` module. Including `shop-with-blog/client` project and any other third-party package which is using `@deity/falcon-ui/dist/components/Button` module.
 
 Path to new module can be not only resolved relatively to project root directory but it can point to other npm package e.g.:
 
