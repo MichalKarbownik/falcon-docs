@@ -323,7 +323,7 @@ The constructor expects to receive an instance of EventEmitter.
 #### `extensionContainer.registerExtensions(extensions: Object<string, ExtensionInstanceConfig>, dataSources: Map<string,ApiDataSource>)`
 
  list of  objects and an initialized list of `dataSources` provided
-by [`ApiContainer`](./ApiContainer.md).
+by [`ApiContainer`](#apicontainer).
 
 This method registers the provided extensions
 ([`ExtensionInstanceConfig`](#extensioninstanceconfig-type)) into
