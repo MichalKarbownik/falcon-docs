@@ -70,7 +70,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'atom-one-dark',
+    theme: 'default',
   },
 
   editUrl : 'https://github.com/deity-io/falcon-docs/edit/master/docs/',
@@ -80,6 +80,9 @@ const siteConfig = {
 
   // Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
+
+  //syntax
+  usePrism: ['jsx', 'js', 'javascript', 'json', 'bash', 'graphql'],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',

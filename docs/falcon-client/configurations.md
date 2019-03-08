@@ -204,7 +204,7 @@ module.exports = {
 
 Falcon Client gives you Ecma Script 6 compiled via Babel 7. However, if you want to add your own babel transformations, you can override defaults by adding the `.babelrc` file into the root of your project. Please note that it is necessary to at the very minimum the default `@deity/babel-preset-falcon-client` preset:
 
-```js
+```json
 {
   "presets": [
     "@deity/babel-preset-falcon-client", // needed
@@ -220,7 +220,7 @@ Falcon Client gives you Ecma Script 6 compiled via Babel 7. However, if you want
 Falcon Client comes with ESLint with [Prettier](https://github.com/prettier/prettier) rules - to keep your code base clean and consistent, [see presets](https://github.com/deity-io/falcon/tree/master/packages/falcon-dev-tools/eslint-config-falcon).
 You can override (or extend) defaults by adding the `.eslintrc` file into the root of your project:
 
-```JSON
+```json
 {
   "extends": ["@deity/eslint-config-falcon"],
   "rules": {
@@ -233,7 +233,7 @@ You can override (or extend) defaults by adding the `.eslintrc` file into the ro
 
 Falcon Client comes with configured [Jest](https://jestjs.io/) test runner. However it is possible to override it by adding `jest` node into `package.json`. Below example configures `setupTestFrameworkScriptFile` file:
 
-```JSON
+```json
 // package.json
 {
  "jest": {

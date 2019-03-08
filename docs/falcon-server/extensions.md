@@ -28,19 +28,22 @@ To enable it in your Falcon-based application you have to provide an API that de
 
 To add this extension to your Falcon-based app install it in the server directory:
 
-with **yarn**:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
+
+```bash
+# installs shop extension
+npm install --save @deity/falcon-shop-extension
+```
+
+<!--Yarn-->
 
 ```bash
 # installs shop extension
 yarn add @deity/falcon-shop-extension
 ```
 
-or with **npm**:
-
-```bash
-# installs shop extension
-npm install --save @deity/falcon-shop-extension
-```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 and add extension and api to the configuration of the server:
 
