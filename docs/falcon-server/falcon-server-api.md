@@ -65,7 +65,7 @@ needs for a proper data-flow and communication.
   - `fetchUrlPriority` (default `3`, which equals to `ApiUrlPriority.NORMAL`) - statically
     set Fetch URL priority for [Dynamic Route](/docs/falcon-server/basics#dynamic-route-resolver)
 - `eventEmitter` - an instance of `EventEmitter2` (_passed automatically by [ApiContainer](#apicontainer)_)
-- `apiContainer` - an instance of [ApiContainer](/docs/falcon-server/falcon-server-env-api#apicontainer)
+- `apiContainer` - an instance of [ApiContainer](#apicontainer)
   class (_passed automatically by [ApiContainer](#apicontainer)_)
 - `gqlServerConfig` an Apollo Server configuration object
   (_passed automatically by DataSource callback on every request_)
@@ -323,7 +323,7 @@ The constructor expects to receive an instance of EventEmitter.
 #### `extensionContainer.registerExtensions(extensions: Object<string, ExtensionInstanceConfig>, dataSources: Map<string,ApiDataSource>)`
 
  list of  objects and an initialized list of `dataSources` provided
-by [`ApiContainer`](./ApiContainer.md).
+by [`ApiContainer`](#apicontainer).
 
 This method registers the provided extensions
 ([`ExtensionInstanceConfig`](#extensioninstanceconfig-type)) into

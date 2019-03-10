@@ -8,17 +8,20 @@ This package delivers base classes and helpers for ApiDataSources and Extensions
 
 ## Installation
 
-With npm:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
 
 ```bash
 npm install @deity/falcon-server-env
 ```
 
-or with yarn:
+<!--Yarn-->
 
 ```bash
 yarn add @deity/falcon-server-env
 ```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Usage
 

@@ -43,17 +43,22 @@ then open http://localhost:3000 in your browser
 
 You can use either npx (installed with npm) or yarn to generate the application.
 
-If you prefer npx use the following command:
+If you prefer yarn use `yarn create` with the syntax below (notice space between `create` and `falcon-app`):
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npx-->
 
 ```bash
 npx create-falcon-app my-app
 ```
 
-and if you prefer yarn use `yarn create` with the following syntax (notice space between `create` and `falcon-app`):
+<!--Yarn-->
 
 ```bash
 yarn create falcon-app my-app
 ```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 > Note: Please do not install the package globally
 

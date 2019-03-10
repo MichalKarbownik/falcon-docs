@@ -25,19 +25,22 @@ This API class realizes communication with your Magento 2 backend.
 It provides resolvers for queries and mutations required by [Falcon Shop Extension](extensions#shop-extension).
 To add this API to your Falcon-based app install it in the server directory:
 
-with **yarn**:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
+
+```bash
+# Install Shop Extension and Magento2 API Provider
+npm install --save @deity/falcon-shop-extension @deity/falcon-magento2-api
+```
+
+<!--Yarn-->
 
 ```bash
 # Install Shop Extension and Magento2 API Provider
 yarn add @deity/falcon-shop-extension @deity/falcon-magento2-api
 ```
 
-or with **npm**:
-
-```bash
-# Install Shop Extension and Magento2 API Provider
-npm install --save @deity/falcon-shop-extension @deity/falcon-magento2-api
-```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 and add extension and api to the configuration of the server:
 
