@@ -204,7 +204,7 @@ module.exports = {
 
 #### Normal Module override
 
-`falcon-client` uses `@deity/normal-module-override-webpack-plugin` to override any kind of module during compilation time. It works in similar way like native webpack [normal-module-replacement-plugin](https://webpack.js.org/plugins/normal-module-replacement-plugin/) but accepts only proper paths used in `import` expressions, does not accept `RexExp` and allows to pass multiple override configuration record into single plugin instance.
+`falcon-client` uses `@deity/normal-module-override-webpack-plugin` to override any kind of module during compilation time. It works in a similar way like native webpack [normal-module-replacement-plugin](https://webpack.js.org/plugins/normal-module-replacement-plugin/) but accepts only proper paths used in `import` expressions. It does not accept `RegEx` and allows to pass multiple override configuration records into a single plugin instance.
 
 It gives you a powerful tool to override package internals without a need of forking or copying the entire package sources into your project root directory, and via providing a new version of the specific module you can adjust package behavior to your needs.
 
