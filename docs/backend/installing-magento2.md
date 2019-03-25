@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^2.0.0
+composer require deity/falcon-magento ^3.0.0
 bin/magento setup:upgrade
 ```
 
@@ -192,16 +192,21 @@ If you develop the module within `vendor` of a Magento installation, follow thes
 
 - Run `composer install` inside the repository directory
 - If you encounter an error like
-    ```
+
+    ```bash
     PHP Fatal error:  Uncaught Error: Call to undefined method Symfony\Component\Yaml\Parser::parseFile() in /home/fs/Projekte/deity/deity-sandbox/magento/vendor/symfony/dependency-injection/Loader/YamlFileLoader.php:667
     ```
+
     it is because of version conflicts of Symfony components between tools and the Magento installation. To prevent loading dependencies from the Magento installation, edit `vendor/bin/grumphp` and remove these lines:
-    ```
+
+    ```bash
         __DIR__ . '/../vendor/autoload.php',
         __DIR__ . '/../../../autoload.php',
     ```
+
     Then run `vendor/bin/grumphp git:init`
 - You should see a message like:
-    ```
+
+    ```bash
     Watch out! GrumPHP is sniffing your commits!
     ```

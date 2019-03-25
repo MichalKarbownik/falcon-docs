@@ -97,7 +97,8 @@ module.exports = {
   useWebmanifest: false,
   i18n: {},
   envToBuildIn: [],
-  plugins: []
+  plugins: [],
+  moduleOverride: {}
 };
 ```
 
@@ -106,6 +107,7 @@ module.exports = {
 - `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
 - `envToBuildIn` - (default: `[]`) an array of environment variable names which should be build in into bundle, [see the details](#environment-variables)
 - `plugins` - (default: `[]`) an array of plugins which can modify underlying [webpack configuration](#webpack).
+- `moduleOverride` - (default: `{}`) dictionary of module names to override, [see the details](#normal-module-override)
 
 Falcon Client provides you much more build configuration options. You can find all of them described in [Build process configuration](#build-process-configuration) section.
 
@@ -200,11 +202,37 @@ module.exports = {
 };
 ```
 
+#### Normal Module override
+
+`falcon-client` uses `@deity/normal-module-override-webpack-plugin` to override any kind of module during compilation time. It works in a similar way like native webpack [normal-module-replacement-plugin](https://webpack.js.org/plugins/normal-module-replacement-plugin/) but accepts only proper paths used in `import` expressions. It does not accept `RegEx` and allows to pass multiple override configuration records into a single plugin instance.
+
+It gives you a powerful tool to override package internals without a need of forking or copying the entire package sources into your project root directory, and via providing a new version of the specific module you can adjust package behavior to your needs.
+
+For example, following configuration:
+
+```
+  {
+    '@deity/falcon-ui/dist/components/Button': './src/components/CustomButton'
+  }
+```
+
+tells to webpack that `CustomButton` module should be used instead of `falcon-ui`'s `Button` module. Including `shop-with-blog/client` project and any other third-party package which is using `@deity/falcon-ui/dist/components/Button` module.
+
+The path to a new module can be not only resolved relatively to project root directory but it can point to any other npm package e.g.:
+
+```
+  {
+    '@deity/falcon-ui/dist/components/Button': '@material-ui/core/Button'
+  }
+```
+
+Please note that webpack `alias`'es are not supported.
+
 ### Babel
 
 Falcon Client gives you Ecma Script 6 compiled via Babel 7. However, if you want to add your own babel transformations, you can override defaults by adding the `.babelrc` file into the root of your project. Please note that it is necessary to at the very minimum the default `@deity/babel-preset-falcon-client` preset:
 
-```js
+```json
 {
   "presets": [
     "@deity/babel-preset-falcon-client", // needed
@@ -220,7 +248,7 @@ Falcon Client gives you Ecma Script 6 compiled via Babel 7. However, if you want
 Falcon Client comes with ESLint with [Prettier](https://github.com/prettier/prettier) rules - to keep your code base clean and consistent, [see presets](https://github.com/deity-io/falcon/tree/master/packages/falcon-dev-tools/eslint-config-falcon).
 You can override (or extend) defaults by adding the `.eslintrc` file into the root of your project:
 
-```JSON
+```json
 {
   "extends": ["@deity/eslint-config-falcon"],
   "rules": {
@@ -233,7 +261,7 @@ You can override (or extend) defaults by adding the `.eslintrc` file into the ro
 
 Falcon Client comes with configured [Jest](https://jestjs.io/) test runner. However it is possible to override it by adding `jest` node into `package.json`. Below example configures `setupTestFrameworkScriptFile` file:
 
-```JSON
+```json
 // package.json
 {
  "jest": {

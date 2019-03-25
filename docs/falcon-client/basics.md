@@ -8,17 +8,21 @@ Falcon Client is the entrypoint for frontend features of Falcon stack. It acts a
 
 ## Installation
 
-With npm:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
 
 ```bash
 npm install @deity/falcon-client
 ```
 
-or with yarn:
+<!--Yarn-->
 
 ```bash
 yarn add @deity/falcon-client
 ```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 
 ## Quick Start
 

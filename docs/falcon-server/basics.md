@@ -11,17 +11,20 @@ Falcon Server is just a "glue" that provides all the functionalities via [extens
 
 ## Installation
 
-With **npm**:
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
 
 ```bash
 npm install @deity/falcon-server
 ```
 
-or with **yarn**:
+<!--Yarn-->
 
 ```bash
 yarn add @deity/falcon-server
 ```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Usage
 
