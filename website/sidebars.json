@@ -14,8 +14,7 @@
       "falcon-client/state-management",
       "falcon-client/internationalization",
       "falcon-client/falcon-ui",
-      "falcon-client/search-and-filtering",
-      "falcon-client/payments"
+      "falcon-client/search-and-filtering"
     ],
     "Falcon Server": [
       "falcon-server/basics",
@@ -26,9 +25,20 @@
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-api"
     ],
-    "Backend": ["backend/installing-magento2", "backend/installing-wordpress"],
+    "Payments": [
+      "payments/intro",
+      "payments/api",
+      "payments/plugins"
+    ],
+    "Backend": [
+      "backend/installing-magento2",
+      "backend/installing-wordpress"
+    ],
     "Miscellaneous": ["miscellaneous/falcon-logger"],
     "Deployment": ["deployment/intro"],
-    "Support": ["support/troubleshooting", "support/flowcharts"]
+    "Support": [
+      "support/troubleshooting",
+      "support/flowcharts"
+    ]
   }
 }
