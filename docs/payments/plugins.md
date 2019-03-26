@@ -56,6 +56,8 @@ const adyen = (
 );
 ```
 
+> This plugin requires a `{ key: "public-key" }` public key for the client-side encryption to be passed via `config` prop
+
 `AdyenCCPlugin` passes down `setCreditCardData` callback to the child component (`CreditCard` in our case), so whenever user
 correctly fills out the form - this callback has to be called like `setCreditCardData({ number, expiry, cvc, name })` to pass
 a credit card information for further encryption and passing it as a part of the `placeOrder` Mutation.
