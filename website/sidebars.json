@@ -34,7 +34,10 @@
       "backend/installing-magento2",
       "backend/installing-wordpress"
     ],
-    "Miscellaneous": ["miscellaneous/falcon-logger"],
+    "Miscellaneous": [
+      "miscellaneous/falcon-logger",
+      "miscellaneous/config"
+    ],
     "Deployment": ["deployment/intro"],
     "Support": [
       "support/troubleshooting",
