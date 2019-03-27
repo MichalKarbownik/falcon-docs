@@ -35,7 +35,8 @@ and just passes this encrypted information to the Adyen Payment Gateway.
 
 ### Adyen PHP module
 
-To use this plugin with the DEITY Magento module (PHP) - you need to install the following library inside of your
+To use this plugin with the DEITY Magento module (PHP) - you need to install the
+[Deity Adyen Extension](https://github.com/deity-io/magento-adyen-api) in your
 Magento project (it will provide required endpoints to process Adyen payments):
 
 ```bash
