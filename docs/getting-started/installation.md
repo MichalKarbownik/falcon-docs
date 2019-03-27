@@ -105,17 +105,17 @@ By default `shop-with-blog` example uses demo Magento 2 and WordPress servers pr
 
 #### Magento 2
 
-If you want to connect the generated app to your own Magento 2 backend you will need to install
+If you want to connect the generated app to your own Magento 2 backend you will need to install the
 [Falcon Magento2 module](https://github.com/deity-io/falcon-magento2-module) which delivers REST endpoints required
-by DEITY Falcon and change  [configuration file of your Falcon-Server](miscellaneous/config.md)
+by DEITY Falcon and change the [configuration file of your Falcon-Server](miscellaneous/config.md)
 to point the application to the correct url.
 
 See [Installing Magento 2 Module](backend/installing-magento2.md) for more.
 
 #### Wordpress
 
-Also if you want to connect DEITY Falcon app to your WordPress server you'll have to to install
-[Falcon WordPress module](https://github.com/deity-io/falcon-wordpress-module) and also change
+Also if you want to connect a DEITY Falcon application to your WordPress server, you'll have to install
+[Falcon WordPress module](https://github.com/deity-io/falcon-wordpress-module) and also change the
 [configuration file of your Falcon-Server](miscellaneous/config.md) to point the application to the correct server.
 
 See [Installing Wordpress 2 Module](backend/installing-wordpress.md) for more.

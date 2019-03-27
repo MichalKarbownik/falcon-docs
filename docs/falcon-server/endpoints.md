@@ -62,7 +62,7 @@ of route patterns to be proxied from Falcon-Client to Falcon-Server applications
 
 ## EndpointContainer
 
-`EndpointContainer` is a container module, which is being used by Falcon-Server to transform provided configuration
+`EndpointContainer` is a container module, which is being used by Falcon-Server to transform the provided configuration
 into web-server routes and attach proper handlers. Every entry in `endpoints` section must represent a configuration
 with a `package` value that points to a class extended from [`EndpointManager`](#endpointmanager).
 

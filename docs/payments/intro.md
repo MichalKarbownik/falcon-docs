@@ -2,7 +2,7 @@
 title: Introduction
 ---
 
-DEITY Falcon provides a basic support for Shop Payments,
+DEITY Falcon provides support for different Shop Payment methods,
 the overall schema is shown on the image below:
 
 [![Payment Flow](assets/payment-workflow.png)](assets/payment-workflow.png)
@@ -24,7 +24,7 @@ data as a part of the Mutation input) to the real shop backend (like Magento).
 
 ## Initial order placement on the backend
 
-Please be aware that in some cases there might be needed several API requests to perform a complete order placement,
+Please be aware that in some cases there might be several API requests needed to perform a complete order placement,
 but from the GraphQL (Falcon-Server) perspective - it's still a single mutation, thus your `placeOrder` Mutation
 has to return one of the following result types:
 
@@ -56,12 +56,12 @@ request from Falcon-Client to Falcon-Server and further to the actual shop backe
 > for `@deity/falcon-magento2-api` package out-of-the-box to support PayPal and Adyen callback).
 
 Whenever _Falcon-Server_ starts - it initializes all configured [`endpoints`](falcon-server/endpoints.md) and exposes
-them via web-server router to the public access. Later, whenever _Falcon-Client_ starts with a properly configured `onRouterCreated`
+them via web-server router to be publicly accessible. Later, whenever _Falcon-Client_ starts with a properly configured `onRouterCreated`
 [hook](https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/bootstrap.js#L18) - it fetches all the exposed
 endpoints that are needed to be proxied from the "frontend" to the "backend" and exposes them in the same way.
 
 So, whenever our visitor "comes back" from the Payment Gateway back to our Falcon-Client with a payload response - our Falcon-Client
-application is able to process such request and return a result status back to the visitor.
+application is able to process the request and return a result status back to the visitor.
 
 ## Callback result check
 
@@ -70,5 +70,5 @@ Based on that result - the visitor can be redirected to 3 options:
 
 - `/checkout/confirmation` in case of a successful payment
 - `/checkout/failure` if for some reason the payment transaction cannot be completed
-- `/cart`  in case of "canceled" transaction
+- `/cart`  in case of "cancelled" transaction
 

@@ -47,9 +47,9 @@ export class CustomnPayment extends PaymentPluginModel {
 The name of this component speaks for itself - it can be used whenever your payment does not require
 any frontend helpers for the submission.
 
-One of the examples of such plugin could be [PayPal Express](payments/plugins.md#paypal-express)
-payment method, when visitor does not have to enter any data on the Checkout page, but he will be
-redirected to the PayPal log-in page to complete his payment after clicking on "Place an order" button.
+One of the examples of such a plugin could be [PayPal Express](payments/plugins.md#paypal-express)
+payment method, when visitors do not have to enter any data on the Checkout page, they will be
+redirected to the PayPal log-in page to complete their payment after clicking on the "Place an order" button.
 
 > See [here](payments/plugins.md#simple-payment) how to use this payment method
 
@@ -78,5 +78,5 @@ import { Test3dSecure } from '@deity/falcon-payment-plugin';
 <Test3dSecure url="http://payment.net" method="POST" fields={[{ name: 'foo', value: 'bar' }]} />
 ```
 
-Getting this component - visitor will be redirected to `http://payment.net` page with `POST` method
+Getting this component - the visitor will be redirected to `http://payment.net` page with `POST` method
 and passing `foo=bar` data.

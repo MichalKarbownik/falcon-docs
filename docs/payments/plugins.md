@@ -30,12 +30,12 @@ yarn add @deity/falcon-adyen-plugin
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Adyen CreditCard plugin delivers "adyen-cse-web" package for the client-side encryption of the provided
-credit card information (this way - shop does not store any of your credit card information in its database)
+credit card information (this way - the shop does not store any of your credit card information in its database)
 and just passes this encrypted information to the Adyen Payment Gateway.
 
 ### Adyen PHP module
 
-To use this plugin with DEITY Magento module (PHP) - you need to install the following library inside of your
+To use this plugin with the DEITY Magento module (PHP) - you need to install the following library inside of your
 Magento project (it will provide required endpoints to process Adyen payments):
 
 ```bash
@@ -59,9 +59,9 @@ const adyen = (
 
 > This plugin requires a `{ key: "public-key" }` public key for the client-side encryption to be passed via `config` prop
 
-`AdyenCCPlugin` passes down `setCreditCardData` callback to the child component (`CreditCard` in our case), so whenever user
+`AdyenCCPlugin` passes down `setCreditCardData` callback to the child component (`CreditCard` in our case), so whenever a user
 correctly fills out the form - this callback has to be called like `setCreditCardData({ number, expiry, cvc, name })` to pass
-a credit card information for further encryption and passing it as a part of the `placeOrder` Mutation.
+the credit card information for further encryption and passing it as a part of the `placeOrder` Mutation.
 
 > Check the code of [`PaymentMethodItem` component](https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/src/pages/shop/Checkout/components/PaymentMethodItem.js)
 > for more details.
