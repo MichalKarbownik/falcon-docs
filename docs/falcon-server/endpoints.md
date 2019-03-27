@@ -5,7 +5,7 @@ title: Endpoints
 DEITY Falcon provides developers with a set of base classes and modules to work with endpoints on both Falcon-Client
 and Falcon-Server applications.
 
-First what you need to do is to configure such endpoint entries. If you were configuring ApiDataSources and
+First, you need to configure such endpoint entries. If you were configuring ApiDataSources and
 Extensions in Falcon-Server previously - it won't be any different from that. Add the following configuration to
 your [Falcon-Server config](miscellaneous/config.md):
 

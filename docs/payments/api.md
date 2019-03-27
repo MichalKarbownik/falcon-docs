@@ -19,8 +19,8 @@ requires a public client-side encryption key to be passed via this prop)
 Mutation that may be required by the shop backend for a proper order placement (for example, Adyen Credit Card plugin requires
 an encrypted credit card information to be passed to the Payment Gateway)
 
-PaymentPluginModel defines an optional static `icon` property with an icon URL to be displayed on a list of available
-payment methods on the Checkout page, for example:
+`PaymentPluginModel` defines an optional static `icon` property with an icon URL to be displayed on a list of available
+payment methods on the checkout page, for example:
 
 ```js
 import React from 'react';

@@ -47,7 +47,7 @@ required checks and validations to verify your payment (like 3d-secure bank card
 ## Payment Gateway callback
 
 After getting a `PlaceOrder3dSecureResult` result, visitor is going to be redirected to the Payment Gateway URL to proceed
-with the checks. It's important to keep a visitor within the same app - Falcon-Client, so any further "return callbacks" must
+with the checks. It's important to keep the visitor within the same app - Falcon-Client, so any further "return callbacks" must
 be done to this app domain. This means that our Falcon-Client application must be able of processing such callback requests and for this
 reason - we use [endpoints](falcon-server/endpoints.md) feature (`Proxy Manager` on the scheme above) to proxy the whole callback
 request from Falcon-Client to Falcon-Server and further to the actual shop backend.
