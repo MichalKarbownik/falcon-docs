@@ -46,6 +46,7 @@ php composer.phar require deity/falcon-magento-adyen
 
 ```js
 import AdyenCCPlugin from '@deity/falcon-adyen-plugin';
+import { CreditCard } from '@deity/falcon-ecommerce-uikit';
 
 const adyen = (
   <AdyenCCPlugin config={config} onPaymentDetailsReady={onPaymentDetailsReady}>

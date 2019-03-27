@@ -37,7 +37,7 @@ In order to proxy your endpoints to Falcon-Server from Falcon-Client app - you n
 
 ```js
 const config = require('config');
-const { bootstrap } = require('@deity/falcon-client/src/bootstrap');
+const { configureServer } = require('@deity/falcon-client/src/configureServer');
 
 const redirects = {
   payment: { // redirection map for Payment endpoints
@@ -53,7 +53,7 @@ export default {
   // onServerCreated: server => { console.log('created'); },
   // onServerInitialized: server => { console.log('initialized'); },
   // onServerStarted: server => { console.log('started'); }
-  onRouterCreated: async router => bootstrap(router, serverUrl, redirects)
+  onRouterCreated: async router => configureServer(router, serverUrl, redirects)
 };
 ```
 
