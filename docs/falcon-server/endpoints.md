@@ -37,23 +37,26 @@ In order to proxy your endpoints to Falcon-Server from Falcon-Client app - you n
 
 ```js
 const config = require('config');
-const { configureServer } = require('@deity/falcon-client/src/configureServer');
+const { fetchRemoteConfig, configureProxy } = require('@deity/falcon-client/src/bootstrap/configureServer');
 
-const redirects = {
-  payment: { // redirection map for Payment endpoints
-    success: '/checkout/confirmation', // redirection on successful payment
-    failure: '/checkout/failure', // redirection on failed payment
-    cancel: '/cart' // redirection to shopping cart on canceled payment
-  }
-};
-const serverUrl = config.graphqlUrl || config.apolloClient.httpLink.uri;
+export default async () => {
+  const redirects = {
+    payment: {
+      success: '/checkout/confirmation',
+      failure: '/checkout/failure',
+      cancel: '/cart'
+    }
+  };
+  const serverUrl = config.graphqlUrl || config.apolloClient.httpLink.uri;
+  const serverConfig = await fetchRemoteConfig(serverUrl);
 
-export default {
-  config: { ...config },
-  // onServerCreated: server => { console.log('created'); },
-  // onServerInitialized: server => { console.log('initialized'); },
-  // onServerStarted: server => { console.log('started'); }
-  onRouterCreated: async router => configureServer(router, serverUrl, redirects)
+  return {
+    config: { ...config },
+    // onServerCreated: server => { console.log('created'); },
+    // onServerInitialized: server => { console.log('initialized'); },
+    // onServerStarted: server => { console.log('started'); }
+    onRouterCreated: async router => configureProxy(router, serverUrl, serverConfig.endpoints, redirects)
+  };
 };
 ```
 
