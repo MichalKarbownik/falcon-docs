@@ -168,6 +168,14 @@ you can configure Google Tag Manager via `config` property in `config/default.js
 
 - `id: string`: (default `null`) Google Tag Manager ID
 
+```json
+{
+  "googleTagManager": {
+    "id": "id"
+  }
+}
+```
+
 ## Development
 
 ### Styles
