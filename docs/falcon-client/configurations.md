@@ -33,12 +33,12 @@ This is an optional runtime configuration file.
 ```js
 const config = require('config');
 
-export default {
+export default async() => ({
   config: { ...config },
   onServerCreated: server => {},
   onServerInitialized: server => {},
   onServerStarted: server => {}
-};
+});
 ```
 
 #### config

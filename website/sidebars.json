@@ -25,9 +25,23 @@
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-api"
     ],
-    "Backend": ["backend/installing-magento2", "backend/installing-wordpress"],
-    "Miscellaneous": ["miscellaneous/falcon-logger"],
+    "Payments": [
+      "payments/intro",
+      "payments/api",
+      "payments/plugins"
+    ],
+    "Backend": [
+      "backend/installing-magento2",
+      "backend/installing-wordpress"
+    ],
+    "Miscellaneous": [
+      "miscellaneous/falcon-logger",
+      "miscellaneous/config"
+    ],
     "Deployment": ["deployment/intro"],
-    "Support": ["support/troubleshooting"]
+    "Support": [
+      "support/troubleshooting",
+      "support/flowcharts"
+    ]
   }
 }

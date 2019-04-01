@@ -37,7 +37,7 @@ bin/magento admin:user:create \
 #### Connect Falcon to your Magento instance
 
 Configure Falcon Server to connect to your Magento instance.
-You can do so by changing the `default.json` file that resides in `<your-app-name>/server/config`
+You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 
 > Note: Use your API admin user credentials that you've just created here
 
@@ -67,13 +67,13 @@ Please be aware that Magento performance depends heavily on which mode it is run
 
 Custom API endpoints provided by this module:
 
-- `[GET] /rest/V1/attributes/filters` - get list of attributes used in catalog filters 
+- `[GET] /rest/V1/attributes/filters` - get list of attributes used in catalog filters
 - `[GET] /rest/V1/categories/:categoryId/breadcrumbs` - get category breadcrumbs to the root category
 - `[GET] /rest/V1/categories/homepage` - get categories marked as "Show on homepage" (max - 6)
 - `[GET] /rest/V1/categories` (**overridden**) - get category tree with `url_path` data
 - `[GET] /rest/V1/customer-payment/:customerId/:orderId/adyen-link` - get Adyen payment link for redirection (for registered customer)
 - `[GET] /rest/V1/customers/me/address` - get list of customer addresses (filterable with searchCriteria parameter)
-- `[GET] /rest/V1/customers/me/address/:addressId` - get info about specific customer address 
+- `[GET] /rest/V1/customers/me/address/:addressId` - get info about specific customer address
 - `[PUT] /rest/V1/customers/password/reset` - reset password with reset token (missing in magento API)
 - `[GET] /rest/V1/guest-carts/:cartId/paypal-fetch-token` - get PayPal token
 - `[GET] /rest/V1/guest-orders/:orderId/order-info` - get data for the order specified by masked id for guest orders
