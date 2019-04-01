@@ -162,7 +162,7 @@ For more examples see [this](https://github.com/nfl/react-helmet#reference-guide
 
 #### Configuration
 
-you can configure Google Tag Manager via `config` property in `falcon-client.config.js`.
+you can configure Google Tag Manager via `config` property in `config/default.json`.
 
 `googleTagManager: object`
 
