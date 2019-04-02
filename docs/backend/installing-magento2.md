@@ -68,7 +68,7 @@ Please be aware that Magento performance depends heavily on which mode it is run
 Custom REST API endpoints provided by this module:
 
 ### General
-- `[GET] /V1/falcon/urls` - Url dispatch. Provides info about entity behind the url or error if URL does not exist in magento.
+- `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
 - `[GET] /V1/falcon/menus` - Get items for top navigation menu.
 
 ### Catalog
