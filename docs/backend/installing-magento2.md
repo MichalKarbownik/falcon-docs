@@ -80,7 +80,7 @@ Custom REST API endpoints provided by this module:
 - `[POST] /V1/falcon/carts/mine/save-payment-information-and-order` - Save payment information and place order for customer.
 - `[POST] /V1/falcon/guest-carts/:cartId/save-payment-information-and-order` - Save payment information and place order for guest.
 - `[PUT] /V1/falcon/carts/mine/place-order` - Place order for customer.
-- `[PUT] /V1/falcon/guest-carts/:cartId/place-order` - place order for guest.
+- `[PUT] /V1/falcon/guest-carts/:cartId/place-order` - Place order for guest.
 - `[POST] /V1/falcon/carts/mine` - Get existing or create customer cart id.
 
 ### Customer
