@@ -92,7 +92,7 @@ Custom REST API endpoints provided by this module:
 - `[PUT] /V1/falcon/customers/me/address` - Updated customer address.
 - `[DELETE] /V1/falcon/customers/me/address/:addressId` - Delete customer address.
 - `[PUT] /V1/falcon/customers/me/newsletter/subscribe` - Subscribe customer.
-- `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer.
+- `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer from newsletter.
 
 
 ### Paypal
