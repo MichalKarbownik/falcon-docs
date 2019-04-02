@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^3.0.0
+composer require deity/falcon-magento ^4.0.0
 bin/magento setup:upgrade
 ```
 
@@ -30,8 +30,8 @@ bin/magento admin:user:create \
   --admin-user='your-admin-username' \
   --admin-password='your-admin-password' \
   --admin-email='admin@deity.test' \
-  --admin-firstname='node' \
-  --admin-lastname='Deity'
+  --admin-firstname='your-admin-username' \
+  --admin-lastname='your-admin-password'
 ```
 
 #### Connect Falcon to your Magento instance
@@ -65,38 +65,48 @@ Please be aware that Magento performance depends heavily on which mode it is run
 
 ## Elements introduced to Magento by this module
 
-Custom API endpoints provided by this module:
+Custom REST API endpoints provided by this module:
 
-- `[GET] /rest/V1/attributes/filters` - get list of attributes used in catalog filters
-- `[GET] /rest/V1/categories/:categoryId/breadcrumbs` - get category breadcrumbs to the root category
-- `[GET] /rest/V1/categories/homepage` - get categories marked as "Show on homepage" (max - 6)
-- `[GET] /rest/V1/categories` (**overridden**) - get category tree with `url_path` data
-- `[GET] /rest/V1/customer-payment/:customerId/:orderId/adyen-link` - get Adyen payment link for redirection (for registered customer)
-- `[GET] /rest/V1/customers/me/address` - get list of customer addresses (filterable with searchCriteria parameter)
-- `[GET] /rest/V1/customers/me/address/:addressId` - get info about specific customer address
-- `[PUT] /rest/V1/customers/password/reset` - reset password with reset token (missing in magento API)
-- `[GET] /rest/V1/guest-carts/:cartId/paypal-fetch-token` - get PayPal token
-- `[GET] /rest/V1/guest-orders/:orderId/order-info` - get data for the order specified by masked id for guest orders
-- `[GET] /rest/V1/guest-payment/:cartId/:orderId/adyen-link` - get Adyen payment link for redirection
-- `[GET] /rest/V1/info` - get basic settings for current shop
-- `[GET] /rest/V1/menu` - get menu tree from magento
-- `[GET] /rest/V1/order-info/:quoteId` - get order information from quote ID (orderId, revenue, shipping, tax etc)
-- `[GET] /rest/V1/orders/:orderId/order-info` - get data for the order specified by order id for logged in customer
-- `[GET] /rest/V1/orders/mine` - get list of logged customer orders
-- `[GET] /rest/V1/products` (**overridden**) - get product list with a custom `filters` data in response
-- `[GET] /rest/V1/url/?requestPath=:url` - get info about product, category or cms page by the given URL
-- `[POST] /rest/V1/carts/mine/payment-information` (**overridden**) - modifies the docblock of function return type (may be int or OrderResponse object)
-- `[POST] /rest/V1/customers/me/address` - create new address for customer
-- `[POST] /rest/V1/contact` - send a contact email
-- `[POST] /rest/V1/guest-carts/:cartId/payment-information` (**overridden**) - modifies the docblock of function return type (may be int or OrderResponse object)
-- `[POST] /rest/V1/integration/admin/token` (**overridden**) - return object with token and valid time in hours
-- `[POST] /rest/V1/integration/customer/token` (**overridden**) - adding guestQuoteId param to merge current guest quote with logged in customer
-- `[PUT] /rest/V1/carts/mine/deity-order` - place order with Adyen credit card as a logged in customer - getting an object as a response
-- `[PUT] /rest/V1/guest-carts/:cartId/deity-order` - place order with Adyen credit card - getting an object as a response
-- `[PUT] /rest/V1/customers/me/address` - update customer address
-- `[PUT] /rest/V1/customers/me/newsletter/subscribe` - subscribe customer to newsletter
-- `[PUT] /rest/V1/customers/me/newsletter/unsubscribe` - unsubscribe customer to newsletter
-- `[DELETE] /rest/V1/customers/me/address/:addressId` - remove customer address
+### General
+- `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
+- `[GET] /V1/falcon/menus` - Get items for top navigation menu.
+
+### Catalog
+
+- `[GET] /V1/falcon/breadcrumbs` - Get list of breadcrumbs for given url.
+- `[GET] /V1/falcon/categories/:categoryId/products` - Get product and filters data for given category id. Can be used to provide filtered or sorted content.
+
+### Checkout
+- `[POST] /V1/falcon/carts/mine/save-payment-information-and-order` - Save payment information and place order for customer.
+- `[POST] /V1/falcon/guest-carts/:cartId/save-payment-information-and-order` - Save payment information and place order for guest.
+- `[PUT] /V1/falcon/carts/mine/place-order` - Place order for customer.
+- `[PUT] /V1/falcon/guest-carts/:cartId/place-order` - Place order for guest.
+- `[POST] /V1/falcon/carts/mine` - Get existing or create customer cart id.
+
+### Customer
+
+- `[PUT] /V1/falcon/customers/password/reset` - Reset password API.
+- `[GET] /V1/falcon/customers/me/address/` - Get list of customer addresses.
+- `[GET] /V1/falcon/customers/me/address/:addressId` - Get customer address info.
+- `[POST] /V1/falcon/customers/me/address` - Create customer address.
+- `[PUT] /V1/falcon/customers/me/address` - Updated customer address.
+- `[DELETE] /V1/falcon/customers/me/address/:addressId` - Delete customer address.
+- `[PUT] /V1/falcon/customers/me/newsletter/subscribe` - Subscribe customer to newsletter.
+- `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer from newsletter.
+
+
+### Paypal
+- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-fetch-token` - Get paypal token for guest.
+- `[GET] /V1/falcon/carts/mine/paypal-express-fetch-token` - Get paypal token for customer.
+- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-return` - 3d secure `success` return API for guest.
+- `[GET] /V1/falcon/carts/mine/paypal-express-return` - 3d secure `success` return API for customer.
+- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-cancel` - 3d secure `cancel` return API for guest.
+- `[GET] /V1/falcon/carts/mine/paypal-express-cancel` - 3d secure `cancel` return API for customer.
+
+### Orders
+- `[GET] /V1/falcon/orders/mine` - Get customer orders.
+- `[GET] /V1/falcon/orders/:orderId/order-info` - Get customer order info.
+- `[GET] /V1/falcon/guest-orders/:orderId/order-info` - Get guest order info.
 
 Extension attributes:
 
@@ -115,20 +125,12 @@ Extension attributes:
       "media_gallery_sizes": "Deity\MagentoApi\Api\Data\GalleryMediaEntrySizeInterface[]",
       "catalog_display_price": "float",
       "min_price": "float",
-      "max_price": "float",
-      "breadcrumbs": "Deity\MagentoApi\Api\Data\BreadcrumbInterface[]"
-    }
-    ```
-- `Magento\Catalog\Api\Data\CategoryInterface`:
-    ```json
-    {
-      "breadcrumbs": "Deity\MagentoApi\Api\Data\BreadcrumbInterface[]"
+      "max_price": "float"
     }
     ```
 - `Magento\Customer\Api\Data\CustomerInterface`:
     ```json
     {
-      "guest_quote_id": "string",
       "newsletter_subscriber": "bool"
     }
     ```
@@ -157,7 +159,10 @@ Extension attributes:
     {
       "optional_post_codes": "mixed",
       "min_password_length": "int",
-      "min_password_char_class": "int"
+      "min_password_char_class": "int",
+      "api_version": "string",
+      "customer_token_lifetime": "int",
+      "admin_token_lifetime": "int"
     }
     ```
 - `Magento\Store\Api\Data\StoreInterface`:
@@ -174,39 +179,9 @@ Extension attributes:
       "available_qty": "string"
     }
     ```
+    
+## Contribution
 
-Custom changes:
-
-- Price for Configurable products (`$product->setPriceCalculation(false)`)
-
-Custom commands:
-
-- `rapidflow:attribute:options [-s|--shop="..."] [--attribute_codes="..."]` - Generate import file for option label translation
+For issues, feature or improvements or pull requests please go to [falcon-development](https://github.com/deity-io/falcon-magento2-development).
 
 
-## Development
-
-### GrumPHP
-
-If you develop the module within `vendor` of a Magento installation, follow these steps to use the code analysis tools:
-
-- Run `composer install` inside the repository directory
-- If you encounter an error like
-
-    ```bash
-    PHP Fatal error:  Uncaught Error: Call to undefined method Symfony\Component\Yaml\Parser::parseFile() in /home/fs/Projekte/deity/deity-sandbox/magento/vendor/symfony/dependency-injection/Loader/YamlFileLoader.php:667
-    ```
-
-    it is because of version conflicts of Symfony components between tools and the Magento installation. To prevent loading dependencies from the Magento installation, edit `vendor/bin/grumphp` and remove these lines:
-
-    ```bash
-        __DIR__ . '/../vendor/autoload.php',
-        __DIR__ . '/../../../autoload.php',
-    ```
-
-    Then run `vendor/bin/grumphp git:init`
-- You should see a message like:
-
-    ```bash
-    Watch out! GrumPHP is sniffing your commits!
-    ```
