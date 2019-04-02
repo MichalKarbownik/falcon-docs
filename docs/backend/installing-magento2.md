@@ -85,7 +85,7 @@ Custom REST API endpoints provided by this module:
 
 ### Customer
 
-- `[PUT] /V1/falcon/customers/password/reset` - Rest password API.
+- `[PUT] /V1/falcon/customers/password/reset` - Reset password API.
 - `[GET] /V1/falcon/customers/me/address/` - Get list of customer addresses.
 - `[GET] /V1/falcon/customers/me/address/:addressId` - Get customer address info.
 - `[POST] /V1/falcon/customers/me/address` - Create customer address.
