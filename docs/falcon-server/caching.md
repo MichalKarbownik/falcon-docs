@@ -107,3 +107,38 @@ Cache options are being checked with this order (from higher priority to the low
 - `@cache` directive arguments in GQL Schema
 - global cache options in app config
 - default cache options defined by Base GraphQL Schema
+
+### Cache adapters
+
+By default, Falcon-Server uses
+[`InMemoryLRUCache`](https://www.apollographql.com/docs/apollo-server/features/data-sources#using-memcachedredis-as-a-cache-storage-backend)
+as a cache backend.
+
+There's an option to configure Redis or Memcached as a cache backend via Falcon-Server config:
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--redis-->
+
+```json
+{
+  "cache": {
+    "type": "redis",
+    "options": {
+      "host": "redis-server"
+    }
+  }
+}
+```
+
+<!--memcached-->
+
+```json
+{
+  "cache": {
+    "type": "memcached",
+    "options": ["memcached-server-1", "memcached-server-2"]
+  }
+}
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
