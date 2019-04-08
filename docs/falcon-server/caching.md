@@ -101,7 +101,7 @@ Falcon-Server will cache the response of `query.menu` resolver for 30 minutes (f
 
 ### Overriding cache options
 
-Cache options are being checked with this order (from higher priority to the lowest):
+Cache options are being checked with this order (from highest to lowest priority):
 
 - "named" GQL path in app config
 - `@cache` directive arguments in GQL Schema
