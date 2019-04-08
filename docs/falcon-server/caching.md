@@ -2,13 +2,13 @@
 title: Caching
 ---
 
-Falcon-Server exposes `@cache` directive through Base GraphQL Schema for the rest of the extensions to define
-cache options. Such cache will be applied by the implementation of `@cache` directive itself, so the Extension
-does not have to do anything by itself.
+Falcon-Server exposes `@cache` directive through the Base GraphQL Schema to the rest of the extensions to define
+their own caching options. Such cache will be handled by `@cache` directive itself, so the Extension does not have
+to do anything by itself in terms of cache checks, cache-key generations etc.
 
-## Schema Cache options
+## Schema Caching options
 
-To use cache within your Extension - you need to specify `@cache` directive next to your field you want to cache
+To use cache within your Extension - you need to put `@cache` directive next to your field you want to cache
 in Extension's GraphQL Schema:
 
 ```graphql
@@ -23,23 +23,10 @@ will be cached with a cache TTL of `20` (20 minutes).
 
 > Default cache TTL equals `10` (10 minutes)
 
-## Query Cache options
-
-If a user of your Extension wants to adjust a predefined cache TTL - `@cache` directive injects input arguments
-into Query inputs so you could easily set it like this:
-
-```graphql
-query {
-  myData(cacheOptions: { ttl: 60 })
-}
-```
-
-In this case - cache TTL of `60` will be applied to `myData` Query resolver.
-
 ## Sub-caching
 
-It is also possible to cache a nested data of your Extension (which for example may require some heavy
-requests or calculations):
+It is also possible to cache a nested data of your Extension (which for example may require some heavy requests
+or calculations):
 
 ```graphql
 type Query {
@@ -55,4 +42,68 @@ In order to ensure the uniqueness of the cache key - `@cache` directive takes in
 of the cached field, all input arguments for the current resolver and also checks its the "parent" value:
 
 - in case of `data` - it will check `id` input value
-- in case of `nestedData` - it will parent `data` value
+- in case of `nestedData` - it will check parent `data` value
+
+## Cache settings
+
+As it was previously mentioned, caching mechanism may be configured to use different TTL values depending on your needs.
+
+There's a default cache TTL value, defined by `@cache` directive itself, which is being used when `@cache` directive is
+being used without any extra arguments. If you want to change this value - you could easily do it via your
+[Falcon-Server config](falcon-server/basics.md#configuration):
+
+```json
+{
+  "cache": {
+    "default": {
+      "ttl": 60
+    }
+  }
+}
+```
+
+> You could use special values for your `production` environment via `config/production.json` config file
+
+Every author of the Extension can "mark" his Queries as "cacheable" by putting the `@cache` directive next to the corresponding
+queries in his Extension's GQL Schema. In some cases - you may disagree with his decisions and you may want to use
+higher values for TTL. It is possible to alter those values without touching the Extension's code by changing your Falcon-Server config:
+
+```json
+{
+  "cache": {
+    "default": {
+      "ttl": 10
+    },
+    "query.menu": {
+      "ttl": 30
+    }
+  }
+}
+```
+
+In this case, `query.menu` represents a "path" of your GraphQL Query like this:
+
+```graphql
+query Menu {
+  menu {
+    id
+    name
+    urlPath
+  }
+}
+```
+
+`query` - is a name of the GQL operation and `menu` is a name of the Query field. So in this case, instead of using a predefined TTL,
+Falcon-Server will cache the response of `query.menu` resolver for 30 minutes (from the config above).
+
+> `@cache` directive works on a Schema level only, meaning that you cannot mark existing Queries as cacheable by yourself
+> via config to avoid introducing unintended behavior of the Extension.
+
+### Overriding cache options
+
+Cache options are being checked with this order (from higher priority to the lowest):
+
+- "named" GQL path in app config
+- `@cache` directive arguments in GQL Schema
+- global cache options in app config
+- default cache options defined by Base GraphQL Schema
