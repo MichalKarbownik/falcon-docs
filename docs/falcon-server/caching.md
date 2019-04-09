@@ -65,7 +65,8 @@ being used without any extra arguments. If you want to change this value - you c
 }
 ```
 
-> You could use special values for your `production` environment via `config/production.json` config file
+> You could use special values for your `production` environment via `config/production.json` config file. You could even disable
+> the cache while working with the app locally by setting `cache.resolvers.enabled` config flag to `false`.
 
 Every author of the Extension can "mark" the provided Queries as "cacheable" by putting the `@cache` directive next to the corresponding
 queries in his Extension's GQL Schema. In some cases - you may disagree with these decisions and you may want to use
