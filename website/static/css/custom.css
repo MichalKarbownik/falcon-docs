@@ -1,4 +1,8 @@
 /* your custom css */
+body {
+    font-family: $myFont;
+}
+
 .fixedHeaderContainer {
     background: #2d2d2d;
 }

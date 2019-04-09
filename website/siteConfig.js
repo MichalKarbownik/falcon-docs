@@ -52,18 +52,22 @@ const siteConfig = {
   },
 
   /* Custom fonts for website */
-  /*
+  stylesheets: [
+    "https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+  ],
+  
+
   fonts: {
     myFont: [
-      "Times New Roman",
-      "Serif"
+      "Roboto",
+      "Sans"
     ],
     myOtherFont: [
       "-apple-system",
       "system-ui"
     ]
   },
-  */
+
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
   copyright: `Copyright © ${new Date().getFullYear()} Deity B.V.`,
