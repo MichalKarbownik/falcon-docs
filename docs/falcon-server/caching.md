@@ -55,8 +55,11 @@ being used without any extra arguments. If you want to change this value - you c
 ```json
 {
   "cache": {
-    "default": {
-      "ttl": 60
+    "resolvers": {
+      "enabled": true,
+      "default": {
+        "ttl": 60
+      }
     }
   }
 }
@@ -71,11 +74,13 @@ higher values for TTL. It is possible to alter those values without touching the
 ```json
 {
   "cache": {
-    "default": {
-      "ttl": 10
-    },
-    "query.menu": {
-      "ttl": 30
+    "resolvers": {
+      "default": {
+        "ttl": 10
+      },
+      "query.menu": {
+        "ttl": 30
+      }
     }
   }
 }
