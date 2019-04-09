@@ -53,13 +53,13 @@ const siteConfig = {
 
   /* Custom fonts for website */
   stylesheets: [
-    "https://fonts.googleapis.com/css?family=Open+Sans:400,500,700"
+    "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,700"
   ],
   
 
   fonts: {
     myFont: [
-      "Open Sans",
+      "Source Sans Pro",
       "sans-serif"
     ],
     myOtherFont: [
