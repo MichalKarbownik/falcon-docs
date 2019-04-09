@@ -64,7 +64,7 @@ being used without any extra arguments. If you want to change this value - you c
 
 > You could use special values for your `production` environment via `config/production.json` config file
 
-Every author of the Extension can "mark" his Queries as "cacheable" by putting the `@cache` directive next to the corresponding
+Every author of the Extension can "mark" the provided Queries as "cacheable" by putting the `@cache` directive next to the corresponding
 queries in his Extension's GQL Schema. In some cases - you may disagree with his decisions and you may want to use
 higher values for TTL. It is possible to alter those values without touching the Extension's code by changing your Falcon-Server config:
 
