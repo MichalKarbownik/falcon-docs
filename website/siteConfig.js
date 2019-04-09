@@ -53,14 +53,14 @@ const siteConfig = {
 
   /* Custom fonts for website */
   stylesheets: [
-    "https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+    "https://fonts.googleapis.com/css?family=Open+Sans:400,500,700"
   ],
   
 
   fonts: {
     myFont: [
-      "Roboto",
-      "Sans"
+      "Open Sans",
+      "sans-serif"
     ],
     myOtherFont: [
       "-apple-system",
