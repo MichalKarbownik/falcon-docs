@@ -47,6 +47,7 @@ This is configuration object used to setup `@deity/falcon-client`
 
 `config: object`
 
+- `port: number` - (default: `3000`) port number that client should be running on
 - `logLevel: string` - (default: `'error'`) [@deity/falcon-logger](https://github.com/deity-io/falcon/tree/master/packages/falcon-logger) logger level
 - `serverSideRendering: boolean` - (default `true`) switch to control whether the [SSR](/docs/falcon-client/basics#server-side-rendering) is enabled
 - `googleTagManager: object` - Google Tag Manager configuration, [see the details](/docs/falcon-client/basics#google-tag-manager)
@@ -93,6 +94,7 @@ This is an optional build-time configuration file which is used to set up the en
 
 ```js
 module.exports = {
+  devServerPort: 3001,
   clearConsole: true,
   useWebmanifest: false,
   i18n: {},
@@ -102,6 +104,7 @@ module.exports = {
 };
 ```
 
+- `devServerPort: number` - (default: `3001`) webpack dev server (HMR) port
 - `clearConsole: boolean` - (default: `true`) determines whether console should be cleared when starting script
 - `useWebmanifest: boolean` - (default: `false`) determines whether [Web App Manifest](/docs/falcon-client/basics#webmanifest) should be processed via webpack and included in output bundle
 - `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
@@ -130,8 +133,6 @@ Falcon client uses set of environment variables. All of them can be accessed via
 
 - `process.env.NODE_ENV` - `development` or `production`
 - `process.env.BABEL_ENV`- `development` or `production`
-- `process.env.PORT`- (default: `3000`), builded in only when `development`
-- `process.env.HOST`- default is `0.0.0.0`
 - `process.env.BUILD_TARGET` - `client` or `server`
 - `process.env.ASSETS_MANIFEST` - path to webpack assets manifest,
 - `process.env.PUBLIC_DIR`: directory with your static assets
