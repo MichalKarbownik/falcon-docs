@@ -93,7 +93,7 @@ for the provided `path`. See Dynamic Route result response type
 #### `api.getCacheContext()`
 
 This is an optional method to define Cache Context object for your ApiDataSource instance.
-If your API does not require any distinguish data to be checked while calculating a cache key -
+If your API does not require any distinctive data to be checked while calculating a cache key -
 you can omit this method. Otherwise, if your API does require such data (like selected store
 or language which is being stored in the API DataSource session and not being exposed as an
 input variable) - you could add this method to your ApiDataSource class and return an object
