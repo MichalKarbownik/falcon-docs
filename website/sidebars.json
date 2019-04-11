@@ -22,6 +22,7 @@
       "falcon-server/extensions",
       "falcon-server/api-providers",
       "falcon-server/endpoints",
+      "falcon-server/caching",
       "falcon-server/falcon-server-env",
       "falcon-server/falcon-server-api"
     ],
