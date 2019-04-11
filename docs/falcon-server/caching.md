@@ -39,7 +39,8 @@ type Data {
 ```
 
 In order to ensure the uniqueness of the cache key - `@cache` directive takes into account the name
-of the cached field, all input arguments for the current resolver and also checks its "parent" value:
+of the cached field, cache context of your dataSources, all input arguments for the current resolver
+and also checks its "parent" value:
 
 - in case of `data` - it will check `id` input value
 - in case of `nestedData` - it will check parent `data` value

@@ -63,7 +63,7 @@ needs for a proper data-flow and communication.
     for your REST API backend
   - `perPage` (default `10`) - is used to limit your listings to a certain amount
   - `fetchUrlPriority` (default `3`, which equals to `ApiUrlPriority.NORMAL`) - statically
-    set Fetch URL priority for [Dynamic Route](/docs/falcon-server/basics#dynamic-route-resolver)
+    set Fetch URL priority for [Dynamic Route](falcon-server/basics.md#dynamic-route-resolver)
 - `eventEmitter` - an instance of `EventEmitter2` (_passed automatically by [ApiContainer](#apicontainer)_)
 - `apiContainer` - an instance of [ApiContainer](#apicontainer)
   class (_passed automatically by [ApiContainer](#apicontainer)_)
@@ -88,7 +88,26 @@ It should provide a simple logic to determine a custom priority or return a defa
 This method must be defined if a specific ApiDataSource supports Dynamic Routing.
 It will be called whenever Dynamic Route chooses this ApiDataSource instance to resolve URL type
 for the provided `path`. See Dynamic Route result response type
-[here](/docs/falcon-server/basics#dynamicrouteresolver-result-structure).
+[here](falcon-server/basics.md#dynamicrouteresolver-result-structure).
+
+#### `api.getCacheContext()`
+
+This is an optional method to define Cache Context object for your ApiDataSource instance.
+If your API does not require any distinguish data to be checked while calculating a cache key -
+you can omit this method. Otherwise, if your API does require such data (like selected store
+or language which is being stored in the API DataSource session and not being exposed as an
+input variable) - you could add this method to your ApiDataSource class and return an object
+like below:
+
+```javascript
+class MyCustomApi extends ApiDataSource {
+  getCacheContext() {
+    return {
+      storeCode: this.session.storeCode
+    };
+  }
+}
+```
 
 #### `async api.fetchBackendConfig(obj, args, context, info)`
 
