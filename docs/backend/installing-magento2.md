@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^4.0.0
+composer require deity/falcon-magento ^4.0.1
 bin/magento setup:upgrade
 ```
 
