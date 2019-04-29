@@ -33,12 +33,12 @@ This is an optional runtime configuration file.
 ```js
 const config = require('config');
 
-export default {
+export default async() => ({
   config: { ...config },
   onServerCreated: server => {},
   onServerInitialized: server => {},
   onServerStarted: server => {}
-};
+});
 ```
 
 #### config
@@ -47,6 +47,7 @@ This is configuration object used to setup `@deity/falcon-client`
 
 `config: object`
 
+- `port: number` - (default: `3000`) port number that client should be running on
 - `logLevel: string` - (default: `'error'`) [@deity/falcon-logger](https://github.com/deity-io/falcon/tree/master/packages/falcon-logger) logger level
 - `serverSideRendering: boolean` - (default `true`) switch to control whether the [SSR](/docs/falcon-client/basics#server-side-rendering) is enabled
 - `googleTagManager: object` - Google Tag Manager configuration, [see the details](/docs/falcon-client/basics#google-tag-manager)
@@ -54,12 +55,13 @@ This is configuration object used to setup `@deity/falcon-client`
   - `trackerID` - Google Analytics tracking code
 - `i18n: object` - internationalization configuration, [see the details](/docs/falcon-client/internationalization)
 - `menus: object` - menus configuration [TODO]
+- `graphqlUrl: string` - (default: `http://localhost:4000/graphql`) the real GraphQL URL to be proxied by Falcon-Client under `apolloClient.httpLink.uri` path. If you set this key with a falsy value - no proxying will be performed
 - `apolloClient: object`
   - `connectToDevTools: boolean` - (default: `process.env.NODE_ENV !== 'production'`) enable "Apollo" tab in your chrome inspector [see the details](https://www.apollographql.com/docs/react/features/developer-tooling.html#configuration)
   - `defaultOptions: object` - (default: `{}`) application wide defaults for the options supplied to `watchQuery`, `query` or `mutate` [see the details](https://www.apollographql.com/docs/react/api/apollo-client.html#apollo-client)
-  - `queryDeduplication: boolean` - (default: `true`) if false, will force a query to still be sent to the server even if a query with identical parameters (`query`, `variables`, `operationName`) is already in flight. [see the details](https://www.apollographql.com/docs/react/advanced/network-layer.html#query-deduplication)
+  - `queryDeduplication: boolean` - (default: `true`) if false, will force a query to still be sent to the server even if a query with identical parameters (`query`, `variables`, `operationName`) is already in flight. [See the details](https://www.apollographql.com/docs/react/advanced/network-layer.html#query-deduplication)
   - `httpLink: object`
-    - `uri: string` - (default: `http://localhost:4000/graphql`) graphQL server endpoint [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
+    - `uri: string` - (default: `/graphql`) GraphQL Server endpoint to be used by ApolloClient instance [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
     - `useGETForQueries: boolean` - (default: `false`) switch to control whether to use the HTTP GET method for queries (but not for mutations) [see the details](https://www.apollographql.com/docs/link/links/http.html#options)
 
 All configuration passed by `config` is accessible via `ApolloClient`, which mean you can access any of its property via graphQL query.
@@ -93,6 +95,7 @@ This is an optional build-time configuration file which is used to set up the en
 
 ```js
 module.exports = {
+  devServerPort: 3001,
   clearConsole: true,
   useWebmanifest: false,
   i18n: {},
@@ -102,6 +105,7 @@ module.exports = {
 };
 ```
 
+- `devServerPort: number` - (default: `3001`) webpack dev server (HMR) port
 - `clearConsole: boolean` - (default: `true`) determines whether console should be cleared when starting script
 - `useWebmanifest: boolean` - (default: `false`) determines whether [Web App Manifest](/docs/falcon-client/basics#webmanifest) should be processed via webpack and included in output bundle
 - `i18n: object` - (default: `{}`) internationalization configuration, [see the details](/docs/falcon-client/internationalization#configuration)
@@ -130,8 +134,6 @@ Falcon client uses set of environment variables. All of them can be accessed via
 
 - `process.env.NODE_ENV` - `development` or `production`
 - `process.env.BABEL_ENV`- `development` or `production`
-- `process.env.PORT`- (default: `3000`), builded in only when `development`
-- `process.env.HOST`- default is `0.0.0.0`
 - `process.env.BUILD_TARGET` - `client` or `server`
 - `process.env.ASSETS_MANIFEST` - path to webpack assets manifest,
 - `process.env.PUBLIC_DIR`: directory with your static assets

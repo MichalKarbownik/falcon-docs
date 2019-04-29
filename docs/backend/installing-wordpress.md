@@ -11,7 +11,8 @@ This Wordpress Module registers required endpoints and filters for DEITY Falcon
 
 ### Connect Falcon to your WordPress instance
 
-Configure Falcon Server to connect to your Magento instance. You can do so by changing the `default.json` file that resides in `<your-app-name>/server/config`
+Configure Falcon Server to connect to your Wordpress instance.
+You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 
 ```json
 {
@@ -86,7 +87,7 @@ Configure Falcon Server to connect to your Magento instance. You can do so by ch
     [apiPrefix]/v2/categories
     ```
 
-- get menus with acf fields support in menu item 
+- get menus with acf fields support in menu item
     ```text
     [apiPrefix]/v2/menus/
     ```
@@ -104,4 +105,4 @@ To support CDN make sure that W3 Total Cache plugin is installed : https://wordp
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/deity-io/falcon-wordpress-module/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/deity-io/falcon-wordpress-module/tags).
