@@ -60,6 +60,26 @@ You can do so by changing the `default.json` file that resides in `<your-app-nam
 }
 ```
 
+##### Connect Falcon to Magento through oAuth
+
+To connect through oAuth you need to create an new Magento integration:
+* sign in to Magento Admin panel
+* go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
+* create new *Integration* via providing its *Name* and specifying *Resource Access: All*
+* *Activate* an integration, grab all *Integration Tokens* and update Falcon `api-magento2.config.auth` section:
+
+```json
+{
+  "auth": {
+    "type": "integration-token",
+    "consumerKey": "your-customer-key",
+    "consumerSecret": "your-customer-secret",
+    "accessToken": "your-access-token",
+    "accessTokenSecret": "your-access-token-secret"
+  }
+}
+```
+
 Please be aware that Magento performance depends heavily on which mode it is running in, `developer` mode will negatively impact performance. Also remember to follow Magento's best practices.
 
 ## Versioning
