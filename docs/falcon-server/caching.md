@@ -249,4 +249,82 @@ Cache options are being checked with this order (from highest to lowest priority
 
 ### Caching by tags
 
-By default `@cache` directive will try to find `ID` type field within your caching type
+When you mark your GraphQL Type with a `@cache` directive, this directive will try to find `ID` field type inside of your
+specified type, for example:
+
+```graphql
+type Query {
+  item(id: ID!): Item @cache
+  items: [Item] @cache
+}
+
+# Type name is going to be used as a tag prefix
+type Item {
+  # @cache will check this field to generate a proper tag `Item:id`
+  id: ID!
+  name: String
+}
+```
+
+Thus if you run `query { item(id: 1) { id name } }` GQL query, `@cache` will generate `Item` and `Item:1`
+tags automatically for you, and will put the resolver value to the cache with the generated tags for further validation.
+The same works with a simple list, when you run `query { items { id name } }` - the directive will detect
+`[Item]` list and will extract `ID` values from each entry and will generate the following tags -
+`Item`, `Item:1`, `Item:2` and so on.
+
+This works great with "plain" values. But when you're dealing with nested listings - you need to help `@cache`
+directive by pointing out where to look for `ID` values at. Let's assume you have the following GQL schema:
+
+```graphql
+type Query {
+  items(page: Int): ItemList @cache(idPath: ["children"])
+}
+
+type ItemList {
+  children: [Item]
+  total: Int
+}
+
+type Item {
+  id: ID!
+  name: String
+}
+```
+
+Such `@cache(idPath: ["children"])` statement will tell to the `@cache` directive to look in `children` key
+for the required values to generate a tag list from. This way, the whole `Query.items` resolver value
+will be cached with the generated tags from `ItemList.children` values.
+
+> If you need to use a deep nesting key - you could simply pass
+> `@cache(idPath: ["children.entries"])` statement in the schema
+
+There are cases when you need to switch the direction of how tags are being generated, for example when you
+would like to cache a nested value with its own resolver (as it would normally be with GraphQL)
+within your main type like the following example schema:
+
+```graphql
+type Query {
+  post(id: Int): Post @cache
+}
+
+type Post {
+  id: ID!
+  comments: [Comment] @cache(idPath: ["$parent"])
+}
+
+type Comment {
+  id: ID!
+  text: String
+}
+```
+
+In the example above we have 2 caching points:
+
+- Caching the main `Post` type (the directive will check its `ID` value to generate a tag)
+- Caching a nested `Post.comments` value with a `(idPath: ["$parent"])` cache option.
+
+`$parent` keyword is a special keyword which refers to a `parent` object (it's the first argument
+passed to the GraphQL resolver method), so in order to generate a list of tags - `@cache` directive
+will check a `parent` value for `comments` (which is a `Post` value and this directive
+is able to extract the `ID` from `Post`). Thus, if you run `query { post(id: 1) { id comments { id text } } }` -
+`comments` value will be cached with the following tags: `Post:1`, `Comment`, `Comment:1`, `Comment:2` etc.
