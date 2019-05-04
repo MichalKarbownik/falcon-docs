@@ -2,11 +2,143 @@
 title: Caching
 ---
 
-Falcon-Server exposes `@cache` directive through the Base GraphQL Schema to the rest of the extensions to define
-their own caching options. Such cache will be handled by `@cache` directive itself, so the Extension does not have
-to do anything by itself in terms of cache checks, cache-key generations, etc.
+Falcon-Server provides several ways of working with cache.
 
-## Schema Caching options
+It provides `cache` component through GQL context available for all GraphQL Query and Mutation resolver methods.
+
+It also exposes `@cache` directive through the Base GraphQL Schema to the rest of the extensions to define their own caching options.
+Such cache will be handled by `@cache` directive itself, so the Extension does not have to do anything by itself in terms of cache checks,
+cache-key generations, etc.
+
+## Cache adapters
+
+By default, Falcon-Server uses
+[`InMemoryLRUCache`](https://www.apollographql.com/docs/apollo-server/features/data-sources#using-memcachedredis-as-a-cache-storage-backend)
+as a cache backend.
+
+There's an option to configure Redis or Memcached as a cache backend via Falcon-Server config:
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--redis-->
+
+```json
+{
+  "cache": {
+    "type": "redis",
+    "options": {
+      "host": "redis-server"
+    }
+  }
+}
+```
+
+<!--memcached-->
+
+```json
+{
+  "cache": {
+    "type": "memcached",
+    "options": ["memcached-server-1", "memcached-server-2"]
+  }
+}
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+## Cache Component
+
+Falcon-Server provides Cache wrapper-component with additional features required for a proper work.
+
+As it was mentioned above, this component is accessible via `context` argument in all GraphQL resolvers:
+
+```javascript
+async mySampleResolver(parent, args, context, info) {
+  // example of getting value for `cache-key` key
+  const value = await context.cache.get('cache-key');
+}
+```
+
+### `get` cache
+
+`async get(keyOrOptions: string | GetCacheOptions): Promise<CacheResult>` method accepts the following arguments:
+
+- `keyOrOptions` as a string - cache will check this cache key only
+
+If `keyOrOptions` is an object, Cache component will check the following sub-keys:
+
+- `key: string` - cache key
+- `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing
+- `options: SetCacheOptions` - options object to be passed to [`set`](#set-cache) method
+
+Example of using `keyOrOptions` as an object with `fetchData` callback. Here's a piece of code how you would normally work with the cache:
+
+```javascript
+async mySampleResolver(parent, args, context, info) {
+  let value = await context.cache.get('cache-key');
+  if (typeof value === 'undefined') {
+    value = await fetchRemoteData('my-data');
+    await context.cache.set('cache-key', value, { ttl: 60 });
+  }
+  return value;
+}
+```
+
+By passing `fetchData` callback as a part of `keyOrOptions` argument - you can combine this check within a single call:
+
+```javascript
+async mySampleResolver(parent, args, context, info) {
+  return context.cache.get({
+    key: 'cache-key',
+    fetchData: async () => fetchRemoteData('my-data'),
+    options: {
+      ttl: 60
+    }
+  });
+}
+```
+
+In this case `fetchRemoteData('my-data')` will be called only when the cache data was not found, and its result will be stored
+with `cache-key` key and `{ ttl: 60 }` cache options.
+
+Optionally, if `fetchData` callback returns data with `value` and `options` keys - Cache Component will merge the received `options`
+value with the `options` object passed to the method arguments. This way you can define cache options dynamically, for example:
+
+```javascript
+async getToken(parent, args, context, info) {
+  return context.cache.get({
+    key: 'token',
+    fetchData: async () => {
+      const tokenData = await fetchToken();
+      return {
+        value: tokenData.token,
+        options: {
+          ttl: convertToSeconds(tokenData.lifetime)
+        }
+      };
+    }
+  });
+}
+```
+
+### `set` cache
+
+`async set(key, value, options): Promise<void>` method accepts the following arguments:
+
+- `key: string` - cache key
+- `value: any` - cache value that needs to be stored under `key` cache key
+- `options: SetCacheOptions` - represents an optional config object with the following keys:
+  - `ttl: number` (seconds) - for how long you want to store the data in cache
+  - `tags: string[]` - a list of tags that should be associated with this cache key (if one of the tags is invalid - the value considered as expired)
+
+> Tags validation is being handled by the Cache component itself
+
+### `delete` cache
+
+`async delete(key): Promise<boolean | void>` method accepts the following argument:
+
+- `key: string|string[]` - a key or a list of keys to be removed from the cache
+
+## Schema Caching
 
 To use cache within your Extension - you need to put `@cache` directive next to the field you want to cache
 in the Extension's GraphQL Schema:
@@ -23,7 +155,7 @@ will be cached with a cache TTL of `20` (20 minutes).
 
 > Default cache TTL equals `10` (10 minutes)
 
-## Sub-caching
+### Sub-caching
 
 It is also possible to cache nested data of your Extension (which for example may require some heavy requests
 or calculations):
@@ -45,7 +177,7 @@ and also checks its "parent" value:
 - in case of `data` - it will check `id` input value
 - in case of `nestedData` - it will check parent `data` value
 
-## Cache settings
+### Cache settings
 
 As it was previously mentioned, caching mechanism may be configured to use different TTL values depending on your needs.
 
@@ -115,37 +247,6 @@ Cache options are being checked with this order (from highest to lowest priority
 - global cache options in app config
 - default cache options defined by Base GraphQL Schema
 
-### Cache adapters
+### Caching by tags
 
-By default, Falcon-Server uses
-[`InMemoryLRUCache`](https://www.apollographql.com/docs/apollo-server/features/data-sources#using-memcachedredis-as-a-cache-storage-backend)
-as a cache backend.
-
-There's an option to configure Redis or Memcached as a cache backend via Falcon-Server config:
-
-<!--DOCUSAURUS_CODE_TABS-->
-<!--redis-->
-
-```json
-{
-  "cache": {
-    "type": "redis",
-    "options": {
-      "host": "redis-server"
-    }
-  }
-}
-```
-
-<!--memcached-->
-
-```json
-{
-  "cache": {
-    "type": "memcached",
-    "options": ["memcached-server-1", "memcached-server-2"]
-  }
-}
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
+By default `@cache` directive will try to find `ID` type field within your caching type
