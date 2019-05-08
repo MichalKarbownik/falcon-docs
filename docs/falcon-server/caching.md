@@ -60,15 +60,12 @@ async mySampleResolver(parent, args, context, info) {
 
 ### `get` cache
 
-`async get(keyOrOptions: string | GetCacheOptions): Promise<CacheResult>` method accepts the following arguments:
-
-- `keyOrOptions` as a string - cache will check this cache key only
-
-If `keyOrOptions` is an object, Cache component will check the following sub-keys:
+`async get(key: string, setOptions?: GetCacheOptions): Promise<CacheResult>` method accepts the following arguments:
 
 - `key: string` - cache key
-- `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing
-- `options: SetCacheOptions` - options object to be passed to [`set`](#set-cache) method
+- `setOptions?: GetCacheOptions` - optional object with the following sub-keys:
+  - `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing
+  - `options: SetCacheOptions` - options object to be passed to [`set`](#set-cache) method
 
 Example of using `keyOrOptions` as an object with `fetchData` callback. Here's a piece of code how you would normally work with the cache:
 
@@ -87,8 +84,7 @@ By passing `fetchData` callback as a part of `keyOrOptions` argument - you can c
 
 ```javascript
 async mySampleResolver(parent, args, context, info) {
-  return context.cache.get({
-    key: 'cache-key',
+  return context.cache.get('cache-key', {
     fetchData: async () => fetchRemoteData('my-data'),
     options: {
       ttl: 60
@@ -105,8 +101,7 @@ value with the `options` object passed to the method arguments. This way you can
 
 ```javascript
 async getToken(parent, args, context, info) {
-  return context.cache.get({
-    key: 'token',
+  return context.cache.get('token', {
     fetchData: async () => {
       const tokenData = await fetchToken();
       return {
