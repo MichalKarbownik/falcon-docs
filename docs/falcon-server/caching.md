@@ -64,10 +64,10 @@ async mySampleResolver(parent, args, context, info) {
 
 - `key: string` - cache key
 - `setOptions?: GetCacheOptions` - optional object with the following sub-keys:
-  - `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing
+  - `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing. The fetched data will be then cached for a later use.
   - `options: SetCacheOptions` - options object to be passed to [`set`](#set-cache) method
 
-Example of using `keyOrOptions` as an object with `fetchData` callback. Here's a piece of code how you would normally work with the cache:
+Example of using `keyOrOptions` as an object with `fetchData` callback. Here's a piece of code that shows how you would normally work with the cache:
 
 ```javascript
 async mySampleResolver(parent, args, context, info) {
@@ -262,7 +262,7 @@ type Item {
 ```
 
 Thus if you run `query { item(id: 1) { id name } }` GQL query, `@cache` will generate `Item` and `Item:1`
-tags automatically for you, and will put the resolver value to the cache with the generated tags for further validation.
+tags automatically for you, and will put the resolved value into the cache with the generated tags for further validation.
 The same works with a simple list, when you run `query { items { id name } }` - the directive will detect
 `[Item]` list and will extract `ID` values from each entry and will generate the following tags -
 `Item`, `Item:1`, `Item:2` and so on.
@@ -286,7 +286,7 @@ type Item {
 }
 ```
 
-Such `@cache(idPath: ["children"])` statement will tell to the `@cache` directive to look in `children` key
+Such `@cache(idPath: ["children"])` statement will tell to the `@cache` directive to look in `children` property
 for the required values to generate a tag list from. This way, the whole `Query.items` resolver value
 will be cached with the generated tags from `ItemList.children` values.
 
