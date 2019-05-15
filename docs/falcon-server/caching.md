@@ -47,7 +47,7 @@ There's an option to configure Redis or Memcached as a cache backend via Falcon-
 
 ## Cache Component
 
-Falcon-Server provides Cache wrapper-component with additional features required for a proper work.
+Falcon-Server provides Cache wrapper-component with additional features described below.
 
 As it was mentioned above, this component is accessible via `context` argument in all GraphQL resolvers:
 
