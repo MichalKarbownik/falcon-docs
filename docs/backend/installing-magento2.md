@@ -62,7 +62,7 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 
 ##### Connect Falcon to Magento through oAuth
 
-To connect through oAuth you need to create an new Magento integration:
+To connect through oAuth you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
 * create new *Integration* via providing its *Name* and specifying *Resource Access: All*
