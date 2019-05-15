@@ -268,7 +268,7 @@ The same works with a simple list, when you run `query { items { id name } }` - 
 `Item`, `Item:1`, `Item:2` and so on.
 
 This works great with "plain" values. But when you're dealing with nested listings - you need to help `@cache`
-directive by pointing out where to look for `ID` values at. Let's assume you have the following GQL schema:
+directive by pointing out where to look for `ID` values. Let's assume you have the following GQL schema:
 
 ```graphql
 type Query {
