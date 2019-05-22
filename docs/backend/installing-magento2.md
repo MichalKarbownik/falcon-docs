@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^4.0.1
+composer require deity/falcon-magento ^4.0.2
 bin/magento setup:upgrade
 ```
 
@@ -33,6 +33,13 @@ bin/magento admin:user:create \
   --admin-firstname='your-admin-username' \
   --admin-lastname='your-admin-password'
 ```
+
+Configure magento to use web server rewrites.
+You can do it from magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
+```bash
+bin/magento config:set web/seo/use_rewrites 1
+```
+Clean magento cache for changes to take affect.
 
 #### Connect Falcon to your Magento instance
 
