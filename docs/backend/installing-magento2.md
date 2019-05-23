@@ -39,7 +39,7 @@ You can do it from magento admin in `Configuration->General->Web->Search Engine 
 ```bash
 bin/magento config:set web/seo/use_rewrites 1
 ```
-Clean magento cache for changes to take affect.
+Clean Magento cache for changes to take effect.
 
 #### Connect Falcon to your Magento instance
 
