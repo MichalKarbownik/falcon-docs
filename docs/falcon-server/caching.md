@@ -349,7 +349,7 @@ This endpoint expects you to send a list of entries with the following keys:
 
 ```bash
 curl -X POST http://localhost:4000/cache -H 'Content-Type: application/json' -d \
-     '[{"id": 1, "type": "Product"}, ["type": "Category"]]'
+     '[{"id": 1, "type": "Product"}, {"type": "Category"}]'
 ```
 
 The example above will flush the cache for the following keys:
