@@ -244,6 +244,12 @@ Cache options are being checked with this order (from highest to lowest priority
 
 ### Caching by tags
 
+Full `@cache` GraphQL directive definition looks like this:
+
+```graphql
+directive @cache(ttl: Int, idPath: [String]) on FIELD_DEFINITION
+```
+
 When you mark your GraphQL Type with a `@cache` directive, this directive will try to find `ID` field type inside of your
 specified type, for example:
 
@@ -323,3 +329,81 @@ passed to the GraphQL resolver method), so in order to generate a list of tags -
 will check a `parent` value for `comments` (which is a `Post` value and this directive
 is able to extract the `ID` from `Post`). Thus, if you run `query { post(id: 1) { id comments { id text } } }` -
 `comments` value will be cached with the following tags: `Post:1`, `Comment`, `Comment:1`, `Comment:2` etc.
+
+## Cache invalidation
+
+Falcon-Server provides two options to invalidate the cache:
+
+- via `@cacheInvalidator` GraphQL directive
+- via a custom REST endpoint (defined by a user)
+
+### `@cacheInvalidator` directive
+
+Falcon-Server allows you to mark your Queries and Mutations with a `@cacheInvalidator` GraphQL directive
+to invalidate the cache when requested/submitted.
+
+This directive accepts a list of entries for `idPath` argument with the following keys:
+
+- `path` - a required value to get value(s) from (just like `idPath` argument for `@cache` directive)
+- `type` - an optional value to force entity type (when it's needed)
+
+Full GraphQL definition looks like this:
+
+```graphql
+directive @cacheInvalidator(idPath: [IdPathEntryInput]) on FIELD_DEFINITION
+
+input IdPathEntryInput {
+  type: String
+  path: String!
+}
+```
+
+> By careful when using this directive, since it allows you to control your cache on a GraphQL-level per user.
+> You have to use it responsibly and do not allow to invalidate the cache using simple queries.
+
+To invalidate the cache, you have to specify the path to your data like:
+
+```graphql
+type Query {
+  lastOrder: OrderDetails @cacheInvalidator(idPath: [{ path: "items" }])
+}
+```
+
+In this case, `@cacheInvalidator` will check `items` key for the `lastOrder` Query result and it will try to extract value(s)
+with `ID` field type (it acts in the similar way like it does for `@cache` GQL directive).
+
+There might be a case, when you would need to force a specific entity type to be returned by this directive. For example,
+for `OrderDetails` type, which will return a list of `OrderItem` for `items` key - you need to force `Product` type.
+To do that - you simply specify `type` key:
+
+```graphql
+type Query {
+  lastOrder: Order @cacheInvalidator(idPath: [{ path: "items", type: "Product" }])
+}
+```
+
+`@cacheInvalidator` directive will generate a list of cache tags by using `items` value and use `Product` type
+instead of `OrderItem`.
+
+### REST endpoint
+
+Falcon-Server uses `cache.url` config value (by default: `/cache`) to define a route path which will be responsible
+for processing web-hooks to invalidate the cache by tags.
+
+> For security reasons - please **make sure** you're using a unique and complex value for this route on production
+> to avoid exposing a vulnerable route.
+
+This endpoint expects you to send a list of entries with the following keys:
+
+- `type` - entity type to be used for cache invalidation (required key)
+- `id` - entity ID (optional key). If not passed, Falcon-Server will use `type` as a cache key
+
+```bash
+curl -X POST http://localhost:4000/cache -H 'Content-Type: application/json' -d \
+     '[{"id": 1, "type": "Product"}, {"type": "Category"}]'
+```
+
+The example above will flush the cache for the following keys:
+
+- `Product:1` - cache key for the specific product
+- `Category` - general `Category` cache key
