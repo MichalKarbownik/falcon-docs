@@ -66,7 +66,7 @@ To connect through oAuth you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
 * create new *Integration* via providing its *Name* and specifying *Resource Access: All*
-* *Activate* an integration, grab all *Integration Tokens* and update Falcon `api-magento2.config.auth` section:
+* *Activate* an integration, grab all *Integration Tokens* and update Falcon-Server `apis.magento2.config.auth` config section:
 
 ```json
 {
