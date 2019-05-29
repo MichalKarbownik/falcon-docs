@@ -51,7 +51,7 @@ One of the examples of such a plugin could be [PayPal Express](payments/plugins.
 payment method, when visitors do not have to enter any data on the Checkout page, they will be
 redirected to the PayPal log-in page to complete their payment after clicking on the "Place an order" button.
 
-> See [here](payments/plugins.md#simple-payment) how to use this payment method
+> See [here](plugins.md#simple-payment) how to use this payment method
 
 ## Test3dSecure
 
