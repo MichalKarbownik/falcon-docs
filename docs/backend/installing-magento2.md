@@ -65,7 +65,11 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 To connect through oAuth you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
-* create new *Integration* via providing its *Name* and specifying *Resource Access: All*
+* Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
+** Sales
+** Catalog
+** Stores -> Settings -> All stores
+** Global Search
 * *Activate* an integration, grab all *Integration Tokens* and update Falcon-Server `apis.magento2.config.auth` config section:
 
 ```json
