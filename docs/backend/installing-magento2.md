@@ -9,7 +9,7 @@ Install and configure your Magento 2 shop to proceed with Deity Module installat
 ### Prerequisites
 
 DEITY Magento module is compatible with Magento version 2.2+ CE and EE versions.
-Full scale support of versions 2.0.* and 2.1.* is not our priority.
+Full scale support of versions 2.0._ and 2.1._ is not our priority.
 However if you encounter an issue running with Magento version lower than 2.2 feel free
 to open an issue or reach out to our support channel.
 
@@ -56,10 +56,37 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
       "config": {
         "host": "your-magento-host-url-here",
         "protocol": "https",
-        "username": "your-admin-username",
-        "password": "your-admin-password"
+        "auth": {
+          "type": "admin-token",
+          "username": "your-admin-username",
+          "password": "your-admin-password"
+        }
       }
     }
+  }
+}
+```
+
+##### Connect Falcon to Magento through oAuth
+
+To connect through oAuth you need to create a new Magento integration:
+* sign in to Magento Admin panel
+* go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
+* Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
+  * Sales
+  * Catalog
+  * Stores -> Settings -> All stores
+  * Global Search
+* *Activate* an integration, grab all *Integration Tokens* and update Falcon-Server `apis.magento2.config.auth` config section:
+
+```json
+{
+  "auth": {
+    "type": "integration-token",
+    "consumerKey": "your-customer-key",
+    "consumerSecret": "your-customer-secret",
+    "accessToken": "your-access-token",
+    "accessTokenSecret": "your-access-token-secret"
   }
 }
 ```
@@ -118,12 +145,12 @@ Custom REST API endpoints provided by this module:
 Extension attributes:
 
 - `Magento\Bundle\Api\Data\LinkInterface`:
-    ```json
-    {
-      "name": "string",
-      "catalog_display_price": "string"
-    }
-    ```
+  ```json
+  {
+    "name": "string",
+    "catalog_display_price": "string"
+  }
+  ```
 - `Magento\Catalog\Api\Data\ProductInterface`:
     ```json
     {
@@ -142,25 +169,25 @@ Extension attributes:
     }
     ```
 - `Magento\Sales\Api\Data\OrderInterface`:
-    ```json
-    {
-      "currency": "string",
-      "masked_id": "string",
-      "shipping_address": "Magento\Sales\Api\Data\OrderAddressInterface"
-    }
-    ```
+  ```json
+  {
+    "currency": "string",
+    "masked_id": "string",
+    "shipping_address": "MagentoSalesApiDataOrderAddressInterface"
+  }
+  ```
 - `Magento\Sales\Api\Data\OrderItemInterface`:
-    ```json
-    {
-      "currency": "string",
-      "display_price": "string",
-      "link": "string",
-      "row_total_incl_tax": "string",
-      "thumbnail_url": "string",
-      "url_key": "string",
-      "options": "string"
-    }
-    ```
+  ```json
+  {
+    "currency": "string",
+    "display_price": "string",
+    "link": "string",
+    "row_total_incl_tax": "string",
+    "thumbnail_url": "string",
+    "url_key": "string",
+    "options": "string"
+  }
+  ```
 - `Magento\Store\Api\Data\StoreConfigInterface`:
     ```json
     {
@@ -173,11 +200,11 @@ Extension attributes:
     }
     ```
 - `Magento\Store\Api\Data\StoreInterface`:
-    ```json
-    {
-      "is_active": "int"
-    }
-    ```
+  ```json
+  {
+    "is_active": "int"
+  }
+  ```
 - `Magento\Quote\Api\Data\TotalsItemInterface`:
     ```json
     {
@@ -186,7 +213,7 @@ Extension attributes:
       "available_qty": "string"
     }
     ```
-    
+
 ## Contribution
 
 For issues, feature or improvements or pull requests please go to [falcon-development](https://github.com/deity-io/falcon-magento2-development).
