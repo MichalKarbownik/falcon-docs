@@ -2,35 +2,109 @@
 title: Falcon Logger
 ---
 
-Utility tool used for logging in Falcon packages.
+Utility tool used for logging in Falcon packages, but can also be used for logging in your custom Node.js apps.
 
-By default it uses just `console.log()` for all types of logs. Setting `global.__SERVER__ = true` before loading `@deity/falcon-logger` will load full logger that uses [winston](https://github.com/winstonjs/winston) package.
+## Installation
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npm-->
+
+```bash
+npm install @deity/falcon-logger
+```
+
+<!--Yarn-->
+
+```bash
+yarn add @deity/falcon-logger
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+Falcon-Logger uses [`pino`](http://getpino.io/) library under the hood to work with log messages.
 
 ## Usage
-Package exports a singleton `Logger` object that exposes logging and configuration methods. By default log level is set to "info" so there's no need to set log level if you want to work with "info" level.
 
-```
+The package exports a singleton `Logger` object that exposes logging and configuration methods. By default log level is set to `info` so
+there's no need to set log level if you want to work with `info` level.
+But if you do want to change it - you need to set a [required log level](http://getpino.io/#/docs/api?id=level-string)
+for the logger instance and the sooner you do this after the initial import statement the better:
+
+```javascript
 const Logger = require('@deity/falcon-logger');
-Logger.info('message to log');
+Logger.setLogLevel('debug');
+Logger.info('My log message');
 ```
 
-## API
-The same api is available in both modes:
+> For Falcon-based apps - this is done automatically using the provided config values
 
-**Logger.setLogLevel(logLevel)** - sets log level that should be used by winston. When using `console.log()` that method does nothing (ignores passed argument)
+Since you might be working with multiple apps - obviously you would like to be able to distinguish them apart on your
+logging system. In order to do that - there's a dedicated method for that:
 
-The following methods are available for logging on various levels:
+```javascript
+const Logger = require('@deity/falcon-logger');
+Logger.setApp('my-app');
+Logger.info('My log message');
+```
 
-**Logger.log(...args)** - generic logging
+This will simply add `"app": "my-app"` data to every log message you send, so you'll be able to filter your log messages
+by this key.
 
-**Logger.logAndThrow(error)** - logs the error and throws it so it can be caught by higher level logic
+### Extra methods
 
-**Logger.verbose(...args)** - uses verbose logging in winston
+Falcon-Logger provides a handy `getFor` method to initialize an extra `module` key for log message. This way, you could easily
+define sub-loggers for your nested modules, for example:
 
-**Logger.debug(...args)** - for logging on "debug" level
+```javascript
+const Logger = require('@deity/falcon-logger');
+const subLogger = Logger.getFor('my-module');
+subLogger.info('My log message');
+```
 
-**Logger.info(...args)** - for logging on "info" level
+This call will add `"module": "my-module"` data to every log message you send via `subLogger`.
 
-**Logger.warn(...args)** - for logging on "warn" level
+Another handy method is called `traceTime`. This method can be used to calculate the time that your callback needs to complete the execution.
+This method accepts 2 argument - `label` and `fn`:
 
-**Logger.error(...args)** - for logging on "error" level
+```javascript
+const Logger = require('@deity/falcon-logger');
+const result = await Logger.traceTime('My time', async() => { ... });
+```
+
+`traceTime` method will return the result of the execution of your callback. If you log level is set to `trace` - Logger will produce the following log message:
+
+```text
+TRACE: My time (10ms)
+```
+
+Of course, `(10ms)` may vary depending on your code. If log level is set higher than `trace` - the calculations won't be performed, and the result will be returned right away.
+
+## Logger Pretty
+
+`@deity/falcon-logger-pretty` package provides a basic formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
+Best to use with Falcon-based apps in `development` mode.
+
+> This package reuses code of [`pino-pretty`](https://github.com/pinojs/pino-pretty/) module
+
+Due to a nature of Pino logger - you can use this package as a part of pipelining (`| falcon-logger-pretty`) in your `package.json` file:
+
+```json
+{
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon index.js | falcon-logger-pretty",
+  }
+}
+```
+
+This way, the formatting code offloads your application (which gives you an extra performance) and handles it in a dedicated sub-process.
+It also gives you an ability to apply your own formatting without changing any internal code, you simply change the last part of the pipeline.
+
+> For `production` mode - you simply remove the last part of the pipeline and you will start seeing a raw JSON output.
+
+## Logger Minimal
+
+This package provides a minimal formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
+Best to use with Falcon-based apps when running `falcon-scripts` commands as it does not show a log level nor date time information in the output.
+
+## Transports
+
+To get more information about Logger transports - please refer to [this page](http://getpino.io/#/docs/transports?id=known-transports).
