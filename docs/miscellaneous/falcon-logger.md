@@ -22,7 +22,7 @@ yarn add @deity/falcon-logger
 
 Falcon-Logger uses [`pino`](http://getpino.io/) library under the hood to work with log messages.
 
-## Usage
+## Basic Usage
 
 The package exports a singleton `Logger` object that exposes logging and configuration methods. By default log level is set to `info` so
 there's no need to set log level if you want to work with `info` level.
@@ -49,7 +49,7 @@ by this key.
 
 > Setting **LogLevel** and **App** for Falcon-based apps is done automatically using the provided config values
 
-### Extra methods
+### `getFor` method
 
 Falcon-Logger provides a handy `getFor` method to initialize an extra `module` key for log message. This way, you could easily
 define sub-loggers for your nested modules, for example:
@@ -60,7 +60,10 @@ const subLogger = Logger.getFor('my-module');
 subLogger.info('My log message');
 ```
 
-This call will add `"module": "my-module"` data to every log message you send via `subLogger`.
+This call will add `"module": "my-module"` data to every log message you send via `subLogger`. In conjunction with
+[Falcon-Logger-Pretty](#logger-pretty) - it will render an additional `[my-module]` section in the log message output.
+
+### `traceTime` method
 
 Another handy method is called `traceTime`. This method can be used to calculate the time that your callback needs to complete the execution.
 This method accepts 2 argument - `label` and `fn`:
@@ -108,6 +111,22 @@ It also gives you an ability to apply your own formatting without changing any i
 > For `production` mode - you simply remove the last part of the pipeline and you will start seeing a raw JSON output:
 >
 > [![DEITY Falcon Logger Raw](assets/logger-production.png)](assets/logger-production.png)
+
+### Logger-Pretty on production
+
+Even though your application is running in `production` mode - it is still possible to use Falcon-Logger-Pretty to format those log messages
+without a need to restart your application. All you need to do is to ensure `@deity/falcon-logger-pretty` is installed
+(either into your project folder or even globally via `npm i -g @deity/falcon-logger-pretty`) and then simply pass log entries to this script:
+
+```bash
+cat /logs/app.log | falcon-logger-pretty
+```
+
+When using [PM2](http://pm2.keymetrics.io/) and `@deity/falcon-logger-pretty` is installed as a local dependency:
+
+```bash
+pm2 logs 0 --raw | ./node_modules/.bin/falcon-logger-pretty
+```
 
 ## Logger Minimal
 
