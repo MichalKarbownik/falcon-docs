@@ -35,9 +35,7 @@ Logger.setLogLevel('debug');
 Logger.info('My log message');
 ```
 
-> For Falcon-based apps - this is done automatically using the provided config values
-
-Since you might be working with multiple apps - obviously you would like to be able to distinguish them apart on your
+Since you might be working with multiple apps - obviously you would like to be able to distinguish them apart in your
 logging system. In order to do that - there's a dedicated method for that:
 
 ```javascript
@@ -48,6 +46,8 @@ Logger.info('My log message');
 
 This will simply add `"app": "my-app"` data to every log message you send, so you'll be able to filter your log messages
 by this key.
+
+> Setting **LogLevel** and **App** for Falcon-based apps is done automatically using the provided config values
 
 ### Extra methods
 
@@ -70,7 +70,8 @@ const Logger = require('@deity/falcon-logger');
 const result = await Logger.traceTime('My time', async() => { ... });
 ```
 
-`traceTime` method will return the result of the execution of your callback. If you log level is set to `trace` - Logger will produce the following log message:
+`traceTime` method will return the result of the execution of your callback. If your log level is set to `trace` -
+Logger will produce the following log message:
 
 ```text
 TRACE: My time (10ms)
@@ -78,12 +79,14 @@ TRACE: My time (10ms)
 
 Of course, `(10ms)` may vary depending on your code. If log level is set higher than `trace` - the calculations won't be performed, and the result will be returned right away.
 
+> The rest of the methods are available from the original [Pino module](http://getpino.io/#/docs/api).
+
 ## Logger Pretty
 
 `@deity/falcon-logger-pretty` package provides a basic formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
 Best to use with Falcon-based apps in `development` mode.
 
-> This package reuses code of [`pino-pretty`](https://github.com/pinojs/pino-pretty/) module
+> `@deity/falcon-logger-pretty` package reuses code of [`pino-pretty`](https://github.com/pinojs/pino-pretty/) module
 
 Due to a nature of Pino logger - you can use this package as a part of pipelining (`| falcon-logger-pretty`) in your `package.json` file:
 
@@ -95,15 +98,24 @@ Due to a nature of Pino logger - you can use this package as a part of pipelinin
 }
 ```
 
+As the result - your console output should look similar to this:
+
+[![DEITY Falcon Logger Pretty](assets/logger-pretty.png)](assets/logger-pretty.png)
+
 This way, the formatting code offloads your application (which gives you an extra performance) and handles it in a dedicated sub-process.
 It also gives you an ability to apply your own formatting without changing any internal code, you simply change the last part of the pipeline.
 
-> For `production` mode - you simply remove the last part of the pipeline and you will start seeing a raw JSON output.
+> For `production` mode - you simply remove the last part of the pipeline and you will start seeing a raw JSON output:
+>
+> [![DEITY Falcon Logger Raw](assets/logger-production.png)](assets/logger-production.png)
 
 ## Logger Minimal
 
 This package provides a minimal formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
-Best to use with Falcon-based apps when running `falcon-scripts` commands as it does not show a log level nor date time information in the output.
+Best to use with Falcon-based apps when running `falcon-scripts` or `falcon-client` commands as it does not show a log level
+nor date time information in the output:
+
+[![DEITY Falcon Logger Minimal](assets/logger-minimal.png)](assets/logger-minimal.png)
 
 ## Transports
 
