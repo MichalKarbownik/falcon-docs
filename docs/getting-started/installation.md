@@ -16,7 +16,7 @@ This CLI tool helps you to create your application based on [DEITY Falcon](https
 Generate your app with:
 
 ```bash
-npx create-falcon-app my-app
+yarn create falcon-app my-app
 ```
 
 then run the server app in one terminal:
@@ -62,7 +62,7 @@ yarn create falcon-app my-app
 
 > Note: Please do not install the package globally
 
-That command will create `my-app` folder with 2 folders inside:
+That command will create a `my-app` folder with 2 folders inside:
 
 ```
 my-app/
@@ -70,8 +70,8 @@ my-app/
  |- client
 ```
 
-Folder `server` contains server application which is responsible for communication with external APIs and services.
-Folder `client` contains client application responsible for front-end rendering.
+Folder `server` contains the server application which is responsible for communication with external APIs and services.
+Folder `client` contains the client application responsible for front-end rendering.
 
 Once `npx create-falcon-app my-app` or `yarn create falcon-app my-app` is done you can start both services. In one terminal window run the following commands to start the server part:
 
@@ -91,7 +91,7 @@ npm start # or yarn start
 
 Currently we provide just one template for the generator which delivers basic features of shop and blog (the template itself is called [shop-with-blog](https://github.com/deity-io/falcon/tree/master/examples/shop-with-blog).
 
-In the future we'll provide more templates that can be selected with `--example` option. Full command that uses `shop-with-blog`  in that case will be as following:
+In the future we'll provide more templates that can be selected with an `--example` option. Full command that uses `shop-with-blog`  in that case will be as following:
 
 ```bash
 npx create-falcon-app --example shop-with-blog my-app
@@ -101,7 +101,7 @@ You can also use `npx create-falcon-app -h` (or `yarn create falcon-app -h`) to 
 
 ### Using your backend services
 
-By default `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works. If you cannot start the server part (from server folder) or you see any problems with server behavior please contact us via our [community slack channel](http://slack.deity.io).
+By default the `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works. If you cannot start the server part (from within the server folder) or you see any problems with server behavior please contact us via our [community slack channel](http://slack.deity.io).
 
 #### Magento 2
 
@@ -130,7 +130,7 @@ there are several simple steps required:
 - Navigate to your local clone folder and run `yarn` command (which is required for local development)
 - You are ready to go!
 
-> `yarn` is required to be installed to work with [Lerna](https://lernajs.io/) to ensure a proper Falcon's
+> `yarn` is required to be installed to work with [Lerna](https://lerna.js.org/) to ensure a proper Falcon's
 [mono-repository](https://developer.atlassian.com/blog/2015/10/monorepos-in-git/) installation.
 
 Yarn will:
