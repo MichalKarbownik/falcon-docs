@@ -15,9 +15,22 @@ This CLI tool helps you to create your application based on [DEITY Falcon](https
 
 Generate your app with:
 
+<!--DOCUSAURUS_CODE_TABS-->
+<!--npx-->
+
+```bash
+npx create-falcon-app my-app
+```
+
+or
+
+<!--Yarn-->
+
 ```bash
 yarn create falcon-app my-app
 ```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 then run the server app in one terminal:
 
