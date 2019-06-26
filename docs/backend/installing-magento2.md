@@ -22,18 +22,6 @@ composer require deity/falcon-magento ^5.1.0
 bin/magento setup:upgrade
 ```
 
-When the module is setup, create one extra magento admin user for DEITY Falcon to connect.
-This user exists purely for the API.
-
-```bash
-bin/magento admin:user:create \
-  --admin-user='your-admin-username' \
-  --admin-password='your-admin-password' \
-  --admin-email='admin@deity.test' \
-  --admin-firstname='your-admin-username' \
-  --admin-lastname='your-admin-password'
-```
-
 Configure magento to use web server rewrites.
 You can do it from magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
 ```bash
@@ -49,7 +37,21 @@ Here you should configure
 2. `Url to flush cache on Falcon Server` - magento will call this url to flush falcon cache.
 > Note: You can configure this url in [Falcon-Server config](falcon-server/caching.md#rest-endpoint)
 
-#### Connect Falcon to your Magento instance
+#### Connect Falcon to your Magento instance with admin token
+
+To connect magento using [admin token](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-token.html#admin-and-customer-access-tokens)
+create one extra magento admin user for DEITY Falcon to connect.
+This user exists purely for the API.
+
+```bash
+bin/magento admin:user:create \
+  --admin-user='your-admin-username' \
+  --admin-password='your-admin-password' \
+  --admin-email='admin@deity.test' \
+  --admin-firstname='your-admin-username' \
+  --admin-lastname='your-admin-password'
+```
+
 
 Configure Falcon Server to connect to your Magento instance.
 You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
@@ -77,7 +79,7 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 
 ##### Connect Falcon to Magento through oAuth
 
-To connect through oAuth you need to create a new Magento integration:
+To connect through [oAuth](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html) you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
 * Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
@@ -112,6 +114,10 @@ Custom REST API endpoints provided by this module:
 ### General
 - `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
 - `[GET] /V1/falcon/menus` - Get items for top navigation menu.
+
+### Cms
+- `[GET] /V1/falcon/cms/blocks/:identifier` - Provides the content of Cms block.
+- `[GET] /V1/falcon/cms/pages/:pageId` - Provides the content and meta data of Cms Page.
 
 ### Catalog
 
