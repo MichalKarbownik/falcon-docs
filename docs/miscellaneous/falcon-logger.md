@@ -43,8 +43,10 @@ Logger.setApp('my-app');
 Logger.info('My log message');
 ```
 
-This will simply add `"app": "my-app"` data to every log message you send, so you'll be able to filter your log messages
-by this key.
+This will simply add `"app": "my-app"` data to every log message you send (not visible when using `logger-pretty`),
+so you'll be able to filter your log messages by this key:
+
+[![DEITY Falcon Logger setApp](assets/logger-setapp.png)](assets/logger-setapp.png)
 
 > Setting **LogLevel** and **App** for Falcon-based apps is done automatically using the provided config values
 
@@ -59,8 +61,10 @@ const subLogger = Logger.getFor('my-module');
 subLogger.info('My log message');
 ```
 
-This call will add `"module": "my-module"` data to every log message you send via `subLogger`. In conjunction with
-[logger-pretty](#logger-pretty) - it will render an additional `[my-module]` section in the log message output.
+This call will add `"module": "my-module"` data to every log entry you send via `subLogger`. In conjunction with
+[logger-pretty](#logger-pretty) - it will render an additional `[my-module]` section in the log message output:
+
+[![DEITY Falcon Logger getFor](assets/logger-getfor.png)](assets/logger-getfor.png)
 
 ### `traceTime` method
 
