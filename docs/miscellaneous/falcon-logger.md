@@ -13,7 +13,7 @@ Utility tool used for logging in Falcon packages, but can also be used for loggi
 npm install @deity/falcon-logger
 ```
 
-<!--Yarn-->
+<!--yarn-->
 
 ```bash
 yarn add @deity/falcon-logger
@@ -61,7 +61,7 @@ subLogger.info('My log message');
 ```
 
 This call will add `"module": "my-module"` data to every log message you send via `subLogger`. In conjunction with
-[Falcon-Logger-Pretty](#logger-pretty) - it will render an additional `[my-module]` section in the log message output.
+[logger-pretty](#logger-pretty) - it will render an additional `[my-module]` section in the log message output.
 
 ### `traceTime` method
 
@@ -86,17 +86,17 @@ Of course, `(10ms)` may vary depending on your code. If log level is set higher 
 
 ## Logger Pretty
 
-`@deity/falcon-logger-pretty` package provides a basic formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
+`@deity/falcon-logger` package exposes a binary script called `logger-pretty` that provides a basic formatter for log entries.
 Best to use with Falcon-based apps in `development` mode.
 
-> `@deity/falcon-logger-pretty` package reuses code of [`pino-pretty`](https://github.com/pinojs/pino-pretty/) module
+> `logger-pretty` script reuses code of [`pino-pretty`](https://github.com/pinojs/pino-pretty/) module
 
-Due to a nature of Pino logger - you can use this package as a part of pipelining (`| falcon-logger-pretty`) in your `package.json` file:
+Due to a nature of Pino logger - you can use this package as a part of pipelining (`| logger-pretty`) in your `package.json` file:
 
 ```json
 {
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon index.js | falcon-logger-pretty",
+    "start": "cross-env NODE_ENV=development nodemon index.js | logger-pretty",
   }
 }
 ```
@@ -114,25 +114,25 @@ It also gives you an ability to apply your own formatting without changing any i
 
 ### Logger-Pretty on production
 
-Even though your application is running in `production` mode - it is still possible to use Falcon-Logger-Pretty to format those log messages
-without a need to restart your application. All you need to do is to ensure `@deity/falcon-logger-pretty` is installed
-(either into your project folder or even globally via `npm i -g @deity/falcon-logger-pretty`) and then simply pass log entries to this script:
+Even though your application is running in `production` mode - it is still possible to use `logger-pretty` to format those log messages
+without a need to restart your application. All you need to do is to ensure `@deity/falcon-logger` is installed
+and then simply pass log entries to this script:
 
 ```bash
-cat /logs/app.log | falcon-logger-pretty
+cat logs/app.log | ./node_modules/.bin/logger-pretty
 ```
 
-When using [PM2](http://pm2.keymetrics.io/) and `@deity/falcon-logger-pretty` is installed as a local dependency:
+When using [PM2](http://pm2.keymetrics.io/):
 
 ```bash
-pm2 logs 0 --raw | ./node_modules/.bin/falcon-logger-pretty
+pm2 logs 0 --raw | ./node_modules/.bin/logger-pretty
 ```
 
-## Logger Minimal
+## Logger-Pretty Minimal
 
-This package provides a minimal formatter for [Falcon-Logger](https://www.npmjs.com/package/@deity/falcon-logger) package.
-Best to use with Falcon-based apps when running `falcon-scripts` or `falcon-client` commands as it does not show a log level
-nor date time information in the output:
+There's an extra mode included into `logger-pretty` - it's called `minimal`. To enable it - you need to pass an extra flag
+like `logger-pretty -m`. Best to use with Falcon-based apps when running `falcon-scripts` or `falcon-client` commands
+as it does not show a log level nor date time information in the output:
 
 [![DEITY Falcon Logger Minimal](assets/logger-minimal.png)](assets/logger-minimal.png)
 
