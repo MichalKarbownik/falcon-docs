@@ -18,7 +18,7 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^4.0.2
+composer require deity/falcon-magento ^5.1.0
 bin/magento setup:upgrade
 ```
 
@@ -40,6 +40,14 @@ You can do it from magento admin in `Configuration->General->Web->Search Engine 
 bin/magento config:set web/seo/use_rewrites 1
 ```
 Clean Magento cache for changes to take effect.
+
+#### Configure Falcon server URL's in magento admin
+
+In Magento configuratio page (`Stores->Configuration`) go to `Services->Falcon` section.<br/>
+Here you should configure
+1. `Falcon frontend url` - base url of your falcon-driven website. It is used by API's that feed content with url's for proper url replacement.
+2. `Url to flush cache on Falcon Server` - magento will call this url to flush falcon cache.
+> Note: You can configure this url in [Falcon-Server config](falcon-server/caching.md#rest-endpoint)
 
 #### Connect Falcon to your Magento instance
 
