@@ -249,7 +249,7 @@ Falcon Client gives you Ecma Script 6 compiled via Babel 7. However, if you want
 
 Falcon Client is ESLint ready. To turn it on you need to provide your favorite preset, or you can [use ours](https://github.com/deity-io/falcon/tree/master/packages/falcon-dev-tools/eslint-config-falcon).
 
-In order to incorporate ESLint you need to create `.eslintrc` file in the Application root. Bellow you can find configuration which uses `@deity/eslint-config-falcon` preset:
+In order to incorporate ESLint you need to create `.eslintrc` file in the Application root. Bellow, you can find a configuration which uses `@deity/eslint-config-falcon` preset:
 
 ```json
 {
