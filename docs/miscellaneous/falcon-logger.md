@@ -100,12 +100,12 @@ Due to a nature of Pino logger - you can use this package as a part of pipelinin
 }
 ```
 
-As the result - your console output should look similar to this:
+As a result, your console output should look similar to this:
 
 [![DEITY Falcon Logger Pretty](assets/logger-pretty.png)](assets/logger-pretty.png)
 
-This way, the formatting code offloads your application (which gives you an extra performance) and handles it in a dedicated sub-process.
-It also gives you an ability to apply your own formatting without changing any internal code, you simply change the last part of the pipeline.
+This way, the formatting code offloads your application (which gives an extra performance boost) and handles it in a dedicated sub-process.
+It also gives you the ability to apply your own formatting without changing any internal code, you simply change the last part of the pipeline.
 
 > For `production` mode - you simply remove the last part of the pipeline and you will start seeing a raw JSON output:
 >
