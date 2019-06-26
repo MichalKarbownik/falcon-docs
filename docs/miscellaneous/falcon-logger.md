@@ -24,8 +24,7 @@ Falcon-Logger uses [`pino`](http://getpino.io/) library under the hood to work w
 
 ## Basic Usage
 
-The package exports a singleton `Logger` object that exposes logging and configuration methods. By default log level is set to `info` so
-there's no need to set log level if you want to work with `info` level.
+The package exports a singleton `Logger` object that exposes logging and configuration methods. By default log level is set to `info`.
 But if you do want to change it - you need to set a [required log level](http://getpino.io/#/docs/api?id=level-string)
 for the logger instance and the sooner you do this after the initial import statement the better:
 
