@@ -127,7 +127,7 @@ When using [PM2](http://pm2.keymetrics.io/):
 pm2 logs 0 --raw | ./node_modules/.bin/logger-pretty
 ```
 
-## Logger-Pretty Minimal
+### Minimal mode
 
 There's an extra mode included into `logger-pretty` - it's called `minimal`. To enable it - you need to pass an extra flag
 like `logger-pretty -m`. Best to use with Falcon-based apps when running `falcon-scripts` or `falcon-client` commands
