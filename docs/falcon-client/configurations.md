@@ -260,7 +260,7 @@ In order to incorporate ESLint you need to create `.eslintrc` file in the Applic
 }
 ```
 
-It is also worth to mention that the file `.eslintignore` needs to be added in order to omit linting `node_modules` or build assets. Bellow, you can find our recommendations:
+It is also worth mentioning that the file `.eslintignore` needs to be added in order to omit linting of `node_modules` and built assets. Bellow, you can find our recommendations:
 
 ```
 node_modules/*
