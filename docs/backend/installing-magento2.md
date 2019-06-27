@@ -23,7 +23,7 @@ bin/magento setup:upgrade
 ```
 
 Configure Magento to use web-server rewrites.
-You can do it from magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
+You can do it from Magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
 ```bash
 bin/magento config:set web/seo/use_rewrites 1
 ```
