@@ -22,7 +22,7 @@ composer require deity/falcon-magento ^5.1.0
 bin/magento setup:upgrade
 ```
 
-Configure magento to use web server rewrites.
+Configure Magento to use web-server rewrites.
 You can do it from magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
 ```bash
 bin/magento config:set web/seo/use_rewrites 1
