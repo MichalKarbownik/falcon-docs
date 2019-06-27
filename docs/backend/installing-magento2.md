@@ -29,7 +29,7 @@ bin/magento config:set web/seo/use_rewrites 1
 ```
 Clean Magento cache for changes to take effect.
 
-#### Configure Falcon server URL's in magento admin
+#### Configure Falcon server URL in Magento admin
 
 In Magento configuratio page (`Stores->Configuration`) go to `Services->Falcon` section.<br/>
 Here you should configure
