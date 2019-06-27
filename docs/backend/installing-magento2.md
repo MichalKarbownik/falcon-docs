@@ -41,7 +41,7 @@ Here you should configure
 
 #### Connect Falcon to your Magento instance with admin token
 
-To connect magento using [admin token](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-token.html#admin-and-customer-access-tokens)
+To connect Magento using [admin token](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-token.html#admin-and-customer-access-tokens)
 create one extra magento admin user for DEITY Falcon to connect.
 This user exists purely for the API.
 
