@@ -33,7 +33,7 @@ Clean Magento cache for changes to take effect.
 
 On Magento configuration page (`Stores->Configuration`) go to `Services->Falcon` section.
 
-Here you should configure
+Here you should configure:
 1. `Falcon frontend url` - base url of your falcon-driven website. It is used by API's that feed content with url's for proper url replacement.
 2. `Url to flush cache on Falcon Server` - Magento will call this URL to flush falcon cache.
 
