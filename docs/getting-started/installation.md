@@ -22,8 +22,6 @@ Generate your app with:
 npx create-falcon-app my-app
 ```
 
-or
-
 <!--Yarn-->
 
 ```bash
