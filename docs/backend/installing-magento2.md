@@ -18,11 +18,31 @@ to open an issue or reach out to our support channel.
 Installing DEITY Magento 2 Module is similar to installing any module for the Magento 2 platform
 
 ```bash
-composer require deity/falcon-magento ^4.0.2
+composer require deity/falcon-magento ^5.1.0
 bin/magento setup:upgrade
 ```
 
-When the module is setup, create one extra magento admin user for DEITY Falcon to connect.
+Configure Magento to use web-server rewrites.
+You can do it from Magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
+```bash
+bin/magento config:set web/seo/use_rewrites 1
+```
+Clean Magento cache for changes to take effect.
+
+#### Configure Falcon server URL in Magento admin
+
+On Magento configuration page (`Stores->Configuration`) go to `Services->Falcon` section.
+
+Here you should configure:
+1. `Falcon frontend url` - base url of your falcon-driven website. It is used by API's that feed content with url's for proper url replacement.
+2. `Url to flush cache on Falcon Server` - Magento will call this URL to flush falcon cache.
+
+> Note: You can configure this URL via [Falcon-Server config](falcon-server/caching.md#rest-endpoint)
+
+#### Connect Falcon to your Magento instance with admin token
+
+To connect Magento using [admin token](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-token.html#admin-and-customer-access-tokens)
+create one extra Magento admin user for DEITY Falcon to connect.
 This user exists purely for the API.
 
 ```bash
@@ -34,14 +54,6 @@ bin/magento admin:user:create \
   --admin-lastname='your-admin-password'
 ```
 
-Configure magento to use web server rewrites.
-You can do it from magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
-```bash
-bin/magento config:set web/seo/use_rewrites 1
-```
-Clean Magento cache for changes to take effect.
-
-#### Connect Falcon to your Magento instance
 
 Configure Falcon Server to connect to your Magento instance.
 You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
@@ -69,7 +81,7 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 
 ##### Connect Falcon to Magento through oAuth
 
-To connect through oAuth you need to create a new Magento integration:
+To connect through [oAuth](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html) you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
 * Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
@@ -104,6 +116,10 @@ Custom REST API endpoints provided by this module:
 ### General
 - `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
 - `[GET] /V1/falcon/menus` - Get items for top navigation menu.
+
+### Cms
+- `[GET] /V1/falcon/cms/blocks/:identifier` - Provides the content of Cms block.
+- `[GET] /V1/falcon/cms/pages/:pageId` - Provides the content and meta data of Cms Page.
 
 ### Catalog
 
