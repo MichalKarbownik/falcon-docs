@@ -358,7 +358,7 @@ input IdPathEntryInput {
 }
 ```
 
-> By careful when using this directive, since it allows you to control your cache on a GraphQL-level per user.
+> Be careful when using this directive, since it allows you to control your cache on a GraphQL-level per user.
 > You have to use it responsibly and do not allow to invalidate the cache using simple queries.
 
 To invalidate the cache, you have to specify the path to your data like:
