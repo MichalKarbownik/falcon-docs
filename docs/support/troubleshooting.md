@@ -26,4 +26,4 @@ Make sure your Falcon-Server config is set properly [read the documentation](/do
 
 ### Error: No category found with id = 25
 
-Category 25 does not exist in your back-end. This category number is hard-coded in the Falcon demo application. It can be easily modified here: https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/src/pages/Home.js#L32
+Category 25 does not exist in your back-end. This category number is hard-coded in the Falcon demo application. It can be easily modified [here](https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/src/pages/Home.js#L32)
