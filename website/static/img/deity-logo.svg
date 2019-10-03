@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="200px" height="272.993px" viewBox="0 0 200 272.993" xml:space="preserve">
-<path fill="#A9CF38" d="M87.342,271.467L0,221.04V120.185l87.342-50.427l38.433,21.811V27.591l48.91,28.315V221.04L87.342,271.467z
-	 M125.775,192.14v-43.625l-37.78-21.813l-37.781,21.813v43.625l37.781,21.812L125.775,192.14z"/>
-<polygon fill="#CCDE6E" points="50.214,148.514 87.994,126.701 125.774,148.514 125.774,91.568 87.343,69.757 0.128,120.111 
-	50.214,149.027 "/>
-<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="125.775" y1="0" x2="125.775" y2="219.593"/>
-<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="101.563" y1="13.65" x2="198.286" y2="69.494"/>
-<line fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="63.235" y1="112.474" x2="150.88" y2="163.075"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>branding / icon / primary</title>
+    <desc>Created with Sketch.</desc>
+    <g id="branding-/-icon-/-primary" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M32,0 L39.58,4.332 L39.5803807,16.5261841 L32.0612341,12.2982533 L14.9769148,22.0721748 L14.9769148,41.6200179 L32.0561191,51.3939394 L49.1455534,41.6200179 L49.145,9.798 L60,16 L60,48 L32,64 L4,48 L4,16 L32,0 Z M32.1811377,23.3939394 L39.5930308,27.6060606 L39.5930308,36.030303 L32.186267,40.2424242 L24.7743739,36.030303 L24.7743739,27.6060606 L32.1811377,23.3939394 Z" id="logo-mark" fill="#A0CC3F"></path>
+    </g>
 </svg>
