@@ -2,11 +2,11 @@
 title: Code Splitting
 ---
 
-This feature splits your code into various bundles which are loaded on demand. It is used to achieve smaller bundles and control resource load prioritization. This has a major impact on load time. To specify the splitting point you need to import modules in an asynchronous manner. To make it work with React, Falcon Client uses the [loadable](#loadable) package.
+This feature splits your code into various bundles which are loaded on demand. It is used to achieve smaller bundles and control resource load prioritization. This has a major impact on load time. To specify the splitting point you need to import modules in an asynchronous manner. To make it work with React, Falcon Client uses [loadable](#loadable).
 
 ### Loadable
 
-Asynchronous components are based on [loadable](https://github.com/smooth-code/loadable-components)
+Asynchronous components are based on the [loadable](https://github.com/smooth-code/loadable-components) package.
 
 It is highly recommended to make each page component asynchronous. Then page chunks do not increase in size when you add more pages, as they contain only the necessary amount of code to load that specific page.
 
