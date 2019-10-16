@@ -2,7 +2,7 @@
 title: Code Splitting
 ---
 
-This feature splits your code into various bundles which are loaded on demand. It is used to achieve smaller bundles and control resource load prioritization. This has a major impact on load time. To specify the splitting point you need to import modules in an asynchronous manner. To make it work with React, Falcon Client uses [loadable](#loadable).
+This feature splits your code into various bundles which are loaded on demand. It is used to achieve smaller bundles and control resource load prioritization. This has a major impact on load time. To specify the splitting point you need to import modules in an asynchronous manner. To make it work with React, Falcon Client uses the [loadable](#loadable) package.
 
 ### Loadable
 
@@ -28,7 +28,7 @@ export default () => (
 )
 ```
 
-When you create your project using [`create-falcon-app`](https://falcon.deity.io/docs/getting-started/installation#create-falcon-app-cli-tool) Falcon provides a wrapper function for `loadable`. This wrapper function shows a spinner while the page is loading to indicate to the user that the contents of the page are currently being fetched. Using this wrapper function is optional, but it is recommended to provide a fallback state to `loadable` if you choose to write your own.
+When you create your project using [`create-falcon-app`](getting-started/installation.md#create-falcon-app-cli-tool) Falcon provides a wrapper function for `loadable`. This wrapper function shows a spinner while the component is loading to indicate to the user that the contents of the page are currently being fetched. Using this wrapper function is optional, but it is recommended to provide a fallback state to `loadable` if you choose to write your own.
 
 ```jsx
 // components/loadable.js
