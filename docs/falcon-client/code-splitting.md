@@ -42,7 +42,7 @@ export default component =>
   });
 ```
 
-For more information see [`loadable` on GitHub](https://github.com/smooth-code/loadable-components)
+For more information see [`loadable` on GitHub](https://github.com/smooth-code/loadable-components).
 
 ### Vendors bundle
 
