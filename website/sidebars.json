@@ -31,6 +31,12 @@
     "Backend": ["backend/installing-magento2", "backend/installing-wordpress"],
     "Miscellaneous": ["miscellaneous/falcon-logger", "miscellaneous/config"],
     "Deployment": ["deployment/intro"],
-    "Support": ["support/troubleshooting", "support/flowcharts"]
+    "Support": ["support/troubleshooting", "support/flowcharts"],
+    "API Docs": [
+      "api/falcon-data",
+      "api/falcon-shop-extension",
+      "api/falcon-shop-data",
+      "api/falcon-ui-kit"
+    ]
   }
 }
