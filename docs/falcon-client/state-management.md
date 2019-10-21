@@ -159,7 +159,7 @@ export default {
 };
 ```
 
-Note: You need to return `null` here because TODO
+Note: You need to return `null` here since all GraphQL types are nullable by default.
 
 At this point you are ready to write your `Mutation` component which will expose a function to your React components you can use to toggle the Sidebar's `isOpen` state.
 
@@ -248,9 +248,7 @@ Here's [an example from the Apollo documentation](https://www.apollographql.com/
 
 ##### Intregrating `@client` into remote queries
 
-Adding new GraphQL object types to your resolver map is a way to combine local and remote queries. By adding a new GraphQL object type, we mean that you add a new key like this in your `client/src/clientState.js`:
-
-[TODO] add part about this adding `isLoggedIn` to Member types
+Adding new GraphQL object types to your resolver map is a way to combine local and remote queries. To do this you can add a new key like `Member` in your `client/src/clientState.js`:
 
 ```jsx
 export default {
@@ -273,6 +271,21 @@ export default {
 };
 ```
 
+The result of this is that the `isLoggedIn` property will be available when you query a `Member`. In this case the `@client` directive is required to let Apollo Client know this data should be returned from your client as opposed to getting fetched from a server.
+
+This allows you to mix data from a server as well as data from your client in a single query.
+
+```jsx
+export const GET_SIDEBAR_STATE = gql`
+  query Sidebar {
+    Member {
+      id
+      isLoggedIn @client
+    }
+  }
+`;
+```
+
 For more information, continue reading on the Apollo Documentation about [intregrating `@client` into remote queries](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#integrating-client-into-remote-queries).
 
 There are some things to consider when integrating `@client` into remote queries.
@@ -289,8 +302,8 @@ Here are some other resources by Apollo about local state management.
 
 - [Apollo cache API's most relevant methods and common use cases](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#managing-the-cache)
 
-- [Client-side Schema](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#client-side-schema)
+- [Client-side schema](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#client-side-schema)
 
-- [Code splitting](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#code-splitting)
+- [Code splitting resolvers with `addResolvers` and `setResolvers` using `loadable`](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#code-splitting)
 
 - [Apollo Client local state API](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#code-splitting)
