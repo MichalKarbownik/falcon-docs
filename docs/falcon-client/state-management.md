@@ -296,9 +296,9 @@ There are some things to consider when integrating `@client` into remote queries
 
 - [Using `@client` fields as variables (in both remote and other `@client` queries)](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#using-client-fields-as-variables).
 
-#### Other resources
+## Additional resources
 
-Here are some other resources by Apollo about local state management.
+### Apollo about local state management.
 
 - [Apollo cache API's most relevant methods and common use cases](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#managing-the-cache)
 
@@ -307,3 +307,11 @@ Here are some other resources by Apollo about local state management.
 - [Code splitting resolvers with `addResolvers` and `setResolvers` using `loadable`](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#code-splitting)
 
 - [Apollo Client local state API](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#code-splitting)
+
+### Learning GraphQL
+
+- [How to GraphQL](https://www.howtographql.com/)
+
+- [Official GraphQL Learn section](https://graphql.org/learn/)
+
+- [Official GraphQL specification](https://graphql.github.io/graphql-spec/)
