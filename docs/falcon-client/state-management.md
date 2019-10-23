@@ -40,7 +40,7 @@ If you're unfamiliar with GraphQL queries it is recommended to check out [this g
 
 The `Query` API is pretty simple if you're familiar with React and the [Render Prop](https://reactjs.org/docs/render-props.html) pattern.
 
-React will call the render prop function you provide with an object from Apollo Client containing loading, error, and data properties that you can use to render your UI.
+React will call the render prop function you provide with an object from Apollo Client containing `loading`, `error`, and `data` properties that you can use to render your UI.
 
 ```jsx
 import gql from "graphql-tag";
