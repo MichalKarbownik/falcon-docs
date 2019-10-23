@@ -34,7 +34,7 @@ export class CustomerQuery extends Query {
 
 This will go in-depth about how to use Apollo for managing the client state of your Falcon application with Apollo.
 
-If youre unfamiliar with GraphQL queries it is recommended to check out [this guide](https://graphql.org/learn/queries/).
+If you're unfamiliar with GraphQL queries it is recommended to check out [this guide](https://graphql.org/learn/queries/).
 
 ### Fetching data (Query component)
 
