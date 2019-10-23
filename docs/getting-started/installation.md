@@ -44,7 +44,7 @@ cd my-app/client
 npm start
 ```
 
-then open http://localhost:3000 in your browser
+then open <http://localhost:3000> in your browser
 
 ![DEITY create-falcon-app](assets/create-falcon-app.gif)
 

@@ -24,9 +24,11 @@ bin/magento setup:upgrade
 
 Configure Magento to use web-server rewrites.
 You can do it from Magento admin in `Configuration->General->Web->Search Engine Optimization`. Or by running this command:
+
 ```bash
 bin/magento config:set web/seo/use_rewrites 1
 ```
+
 Clean Magento cache for changes to take effect.
 
 #### Configure Falcon server URL in Magento admin
@@ -34,6 +36,7 @@ Clean Magento cache for changes to take effect.
 On Magento configuration page (`Stores->Configuration`) go to `Services->Falcon` section.
 
 Here you should configure:
+
 1. `Falcon frontend url` - base url of your falcon-driven website. It is used by API's that feed content with url's for proper url replacement.
 2. `Url to flush cache on Falcon Server` - Magento will call this URL to flush falcon cache.
 
@@ -53,7 +56,6 @@ bin/magento admin:user:create \
   --admin-firstname='your-admin-username' \
   --admin-lastname='your-admin-password'
 ```
-
 
 Configure Falcon Server to connect to your Magento instance.
 You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
@@ -82,6 +84,7 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 ##### Connect Falcon to Magento through oAuth
 
 To connect through [oAuth](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html) you need to create a new Magento integration:
+
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
 * Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
@@ -114,10 +117,12 @@ Please be aware that Magento performance depends heavily on which mode it is run
 Custom REST API endpoints provided by this module:
 
 ### General
+
 - `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
 - `[GET] /V1/falcon/menus` - Get items for top navigation menu.
 
 ### Cms
+
 - `[GET] /V1/falcon/cms/blocks/:identifier` - Provides the content of Cms block.
 - `[GET] /V1/falcon/cms/pages/:pageId` - Provides the content and meta data of Cms Page.
 
@@ -127,6 +132,7 @@ Custom REST API endpoints provided by this module:
 - `[GET] /V1/falcon/categories/:categoryId/products` - Get product and filters data for given category id. Can be used to provide filtered or sorted content.
 
 ### Checkout
+
 - `[POST] /V1/falcon/carts/mine/save-payment-information-and-order` - Save payment information and place order for customer.
 - `[POST] /V1/falcon/guest-carts/:cartId/save-payment-information-and-order` - Save payment information and place order for guest.
 - `[PUT] /V1/falcon/carts/mine/place-order` - Place order for customer.
@@ -144,8 +150,8 @@ Custom REST API endpoints provided by this module:
 - `[PUT] /V1/falcon/customers/me/newsletter/subscribe` - Subscribe customer to newsletter.
 - `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer from newsletter.
 
-
 ### Paypal
+
 - `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-fetch-token` - Get paypal token for guest.
 - `[GET] /V1/falcon/carts/mine/paypal-express-fetch-token` - Get paypal token for customer.
 - `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-return` - 3d secure `success` return API for guest.
@@ -154,6 +160,7 @@ Custom REST API endpoints provided by this module:
 - `[GET] /V1/falcon/carts/mine/paypal-express-cancel` - 3d secure `cancel` return API for customer.
 
 ### Orders
+
 - `[GET] /V1/falcon/orders/mine` - Get customer orders.
 - `[GET] /V1/falcon/orders/:orderId/order-info` - Get customer order info.
 - `[GET] /V1/falcon/guest-orders/:orderId/order-info` - Get guest order info.
@@ -161,13 +168,16 @@ Custom REST API endpoints provided by this module:
 Extension attributes:
 
 - `Magento\Bundle\Api\Data\LinkInterface`:
+
   ```json
   {
     "name": "string",
     "catalog_display_price": "string"
   }
   ```
+
 - `Magento\Catalog\Api\Data\ProductInterface`:
+
     ```json
     {
       "thumbnail_resized_url": "string",
@@ -178,13 +188,17 @@ Extension attributes:
       "max_price": "float"
     }
     ```
+
 - `Magento\Customer\Api\Data\CustomerInterface`:
+
     ```json
     {
       "newsletter_subscriber": "bool"
     }
     ```
+
 - `Magento\Sales\Api\Data\OrderInterface`:
+
   ```json
   {
     "currency": "string",
@@ -192,7 +206,9 @@ Extension attributes:
     "shipping_address": "MagentoSalesApiDataOrderAddressInterface"
   }
   ```
+
 - `Magento\Sales\Api\Data\OrderItemInterface`:
+
   ```json
   {
     "currency": "string",
@@ -204,7 +220,9 @@ Extension attributes:
     "options": "string"
   }
   ```
+
 - `Magento\Store\Api\Data\StoreConfigInterface`:
+
     ```json
     {
       "optional_post_codes": "mixed",
@@ -215,13 +233,17 @@ Extension attributes:
       "admin_token_lifetime": "int"
     }
     ```
+
 - `Magento\Store\Api\Data\StoreInterface`:
+
   ```json
   {
     "is_active": "int"
   }
   ```
+
 - `Magento\Quote\Api\Data\TotalsItemInterface`:
+
     ```json
     {
       "thumbnail_url": "string",
@@ -233,5 +255,3 @@ Extension attributes:
 ## Contribution
 
 For issues, feature or improvements or pull requests please go to [falcon-development](https://github.com/deity-io/falcon-magento2-development).
-
-

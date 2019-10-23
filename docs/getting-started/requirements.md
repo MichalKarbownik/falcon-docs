@@ -7,7 +7,7 @@ title: Requirements
 - [NodeJS](https://nodejs.org) (>=8.10)
 - [Yarn](https://yarnpkg.com) (Optional, but highly recommended)
 
-> To install Yarn, see https://yarnpkg.com/lang/en/docs/install
+> To install Yarn, see <https://yarnpkg.com/lang/en/docs/install>
 
 ## Requirements for Falcon local development
 

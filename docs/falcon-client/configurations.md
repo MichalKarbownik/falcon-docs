@@ -268,7 +268,6 @@ build/*
 coverage/*
 ```
 
-
 ### Jest
 
 Falcon Client comes with configured [Jest](https://jestjs.io/) test runner. However it is possible to override it by adding `jest` node into `package.json`. Below example configures `setupTestFrameworkScriptFile` file:

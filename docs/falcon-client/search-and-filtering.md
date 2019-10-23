@@ -3,7 +3,6 @@ title: Search and filtering
 ---
 
 > NOTE: at this point filters are implemented only in listings of category products, we're actively working on search api which will provide full search capabilities
-
 > NOTE: this section will be updated in the near feature because we're going to provide more options so you'll be able to configure search on a more granular level, including custom serializing of search state to url, enabling and disabling search based on custom rules (e.g. when user navigates between pages) and much more.
 
 ## Overview
@@ -109,6 +108,6 @@ import { Checkbox, Label } from '@deity/falcon-ui';
 </SearchConsumer>
 ```
 
-#### Explanation:
+#### Explanation
 
 When user clicks on checkbox then `search.setFilter('color', '10', 'eq')` or `search.removeFilter('color')` is called (based on the checkbox state). That sets or removes filter value inside `SearchProvider`. `SearchProvider` updates url, browser history and properties that will be passed to `SearchConsumer`. `SearchConsumer` exposes updated properties which are passed to `CategoryProductsQuery` (so filtered products are fetched) and to the rendering code (so filters can be rendered correctly).

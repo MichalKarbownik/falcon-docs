@@ -19,7 +19,7 @@ yarn install
 yarn start
 ```
 
-Then open http://localhost:3000/ to see your app.
+Then open <http://localhost:3000/> to see your app.
 
 **That's it**. Just start editing `./src/App.js` and go!
 
@@ -60,7 +60,7 @@ yarn build
 yarn start:prod
 ```
 
-You could view your application at http://localhost:3000
+You could view your application at <http://localhost:3000>
 
 ## Idea behind the example
 

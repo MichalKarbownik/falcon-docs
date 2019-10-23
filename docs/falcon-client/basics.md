@@ -23,7 +23,6 @@ yarn add @deity/falcon-client
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-
 ## Quick Start
 
 Use the project generator:
