@@ -230,7 +230,7 @@ For example, following configuration:
 
 ```json
   {
-    '@deity/falcon-ui/dist/components/Button': './src/components/CustomButton'
+    "@deity/falcon-ui/dist/components/Button": "./src/components/CustomButton"
   }
 ```
 
@@ -241,7 +241,7 @@ The path to a new module can be not only resolved relatively to project root dir
 
 ```json
   {
-    '@deity/falcon-ui/dist/components/Button': '@material-ui/core/Button'
+    "@deity/falcon-ui/dist/components/Button": "@material-ui/core/Button"
   }
 ```
 
