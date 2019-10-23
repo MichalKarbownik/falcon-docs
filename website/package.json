@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "lint:md": "markdownlint -c markdownlint.config.json ../docs/**/*.md",
+    "lint:md:fix": "npm run lint:md --fix",
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
