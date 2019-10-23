@@ -1,0 +1,51 @@
+{
+  "version-1.x-docs": {
+    "Getting Started": [
+      "version-1.x-getting-started/intro",
+      "version-1.x-getting-started/requirements",
+      "version-1.x-getting-started/installation",
+      "version-1.x-getting-started/project-overview",
+      "version-1.x-getting-started/example"
+    ],
+    "Falcon Client": [
+      "version-1.x-falcon-client/basics",
+      "version-1.x-falcon-client/configurations",
+      "version-1.x-falcon-client/code-splitting",
+      "version-1.x-falcon-client/state-management",
+      "version-1.x-falcon-client/internationalization",
+      "version-1.x-falcon-client/falcon-ui",
+      "version-1.x-falcon-client/search-and-filtering"
+    ],
+    "Falcon Server": [
+      "version-1.x-falcon-server/basics",
+      "version-1.x-falcon-server/schema-stitching",
+      "version-1.x-falcon-server/extensions",
+      "version-1.x-falcon-server/api-providers",
+      "version-1.x-falcon-server/endpoints",
+      "version-1.x-falcon-server/caching",
+      "version-1.x-falcon-server/falcon-server-env",
+      "version-1.x-falcon-server/falcon-server-api",
+      "version-1.x-falcon-server/customizing-extension-api"
+    ],
+    "Payments": [
+      "version-1.x-payments/intro",
+      "version-1.x-payments/api",
+      "version-1.x-payments/plugins"
+    ],
+    "Backend": [
+      "version-1.x-backend/installing-magento2",
+      "version-1.x-backend/installing-wordpress"
+    ],
+    "Miscellaneous": [
+      "version-1.x-miscellaneous/falcon-logger",
+      "version-1.x-miscellaneous/config"
+    ],
+    "Deployment": [
+      "version-1.x-deployment/intro"
+    ],
+    "Support": [
+      "version-1.x-support/troubleshooting",
+      "version-1.x-support/flowcharts"
+    ]
+  }
+}

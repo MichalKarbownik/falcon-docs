@@ -74,7 +74,7 @@ const siteConfig = {
   },
 
   editUrl : 'https://github.com/deity-io/falcon-docs/edit/master/docs/',
-  
+
   // Sidebar collapsable
   docsSideNavCollapsible: true,
 
@@ -102,7 +102,7 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/deity-io/falcon',
-  
+
   //Google Tracking
   gaTrackingId: 'UA-115774797-2',
 
@@ -110,7 +110,9 @@ const siteConfig = {
   algolia: {
     apiKey: '873c5f29d2334cb9c44ef4a407d8b269',
     indexName: 'deity_falcon',
-    algoliaOptions: {} // Optional, if provided by Algolia
+    algoliaOptions: {
+      facetFilters: ['language:LANGUAGE', 'version:VERSION']
+    } // Optional, if provided by Algolia
   },
 };
 
