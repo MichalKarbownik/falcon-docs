@@ -64,7 +64,8 @@ async mySampleResolver(parent, args, context, info) {
 
 - `key: string` - cache key
 - `setOptions?: GetCacheOptions` - optional object with the following sub-keys:
-  - `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback, which should return a value if the cached value is missing. The fetched data will be then cached for a later use.
+  - `fetchData: () => Promise<GetCacheFetchResult>` - this is an optional async fetch-callback,
+    which should return a value if the cached value is missing. The fetched data will be then cached for a later use.
   - `options: SetCacheOptions` - options object to be passed to [`set`](#set-cache) method
 
 Example of using `keyOrOptions` as an object with `fetchData` callback. Here's a piece of code that shows how you would normally work with the cache:

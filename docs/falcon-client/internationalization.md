@@ -6,7 +6,8 @@ Internationalization is based on [i18next](https://www.i18next.com/).
 
 ## Basics
 
-All i18n resources should be placed in `./i18n` directory, and folder structure should follow pattern `{{lng}}/{{ns}}.json`. Which means each language needs to have own directory with `json` file per namespace:
+All i18n resources should be placed in `./i18n` directory, and folder structure should follow pattern `{{lng}}/{{ns}}.json`.
+Which means each language needs to have own directory with `json` file per namespace:
 
 ```text
 i18n
@@ -24,7 +25,8 @@ HMR for translation files is supported.
 
 ## Configuration
 
-Configuration options base on [i18next](https://www.i18next.com/overview/configuration-options) and you can change them via configuration `config.i18n` exported from `bootstrap.js` file:
+Configuration options base on [i18next](https://www.i18next.com/overview/configuration-options) and you can change them via
+configuration `config.i18n` exported from `bootstrap.js` file:
 
 - `lng: string` - (default: `en`) default application language
 - `fallbackLng: string` - (default: `en`) language to use if translations in selected language are not available
@@ -35,7 +37,12 @@ Configuration options base on [i18next](https://www.i18next.com/overview/configu
 
 ### node.js
 
-Node.js has rich [internationalization support](https://nodejs.org/api/intl.html#intl_internationalization_support), however, more of them are disabled because it requires very large ICU data file which is not provided by Node.js by default. In order to enable it, you need to provide a path to ICU data file at runtime. `falcon-client` will try to resolve that path to ICU data file automatically, but only in development (`falcon-client start`). In production, you need to configure it according to your needs, [here](https://nodejs.org/api/intl.html#intl_providing_icu_data_at_runtime) you can find available techniques.
+Node.js has rich [internationalization support](https://nodejs.org/api/intl.html#intl_internationalization_support), however,
+more of them are disabled because it requires very large ICU data file which is not provided by Node.js by default.
+In order to enable it, you need to provide a path to ICU data file at runtime. `falcon-client` will try to resolve
+that path to ICU data file automatically, but only in development (`falcon-client start`).
+In production, you need to configure it according to your needs, [here](https://nodejs.org/api/intl.html#intl_providing_icu_data_at_runtime)
+you can find available techniques.
 
 By default node.js does not
 
@@ -73,7 +80,9 @@ or you need to have an access to `i18next` instance to change the language:
 
 ### T Component
 
-As in many places you will need to render a translated text as children of other Component, we introduce `<T />` Component which behaves exactly like `i18next.TranslationFunction`. To get translated string for the given key you need to use `id` prop instead of `key` as it is reserved keyword in `jsx`
+As in many places you will need to render a translated text as children of other Component, we introduce `<T />` Component
+which behaves exactly like `i18next.TranslationFunction`. To get translated string for the given key you need to use `id` prop
+instead of `key` as it is reserved keyword in `jsx`:
 
 ```jsx
 <h1>
@@ -83,7 +92,8 @@ As in many places you will need to render a translated text as children of other
 // <h1>Home Page<h1>
 ```
 
-Other [translationFunction options](https://www.i18next.com/translation-function/essentials#overview-options) are accepted in an unchanged form, for example, to pass
+Other [translationFunction options](https://www.i18next.com/translation-function/essentials#overview-options) are accepted in an unchanged form,
+for example, to pass
 
 ```jsx
 // product.productsLeftInStock_plural = "{{product}} has {{count}} products left in stock" */
@@ -97,16 +107,19 @@ Other [translationFunction options](https://www.i18next.com/translation-function
 
 ### Conventions
 
-Some React Components implement handy conventions to makes translations easier. They also improve the shape of translation resource files as it imposes a certain way of organization. But please bear in mind that none of them are required and there is no need to follow them.
+Some React Components implement handy conventions to makes translations easier. They also improve the shape of translation resource files
+as it imposes a certain way of organization. But please bear in mind that none of them are required and there is no need to follow them.
 
 #### Forms
 
-`FormFields` can use its `name` attribute to build translation key for its label or placeholder based on translation context set via `i18nId` property on `Form` component. The rules are:
+`FormFields` can use its `name` attribute to build translation key for its label or placeholder based on translation context
+set via `i18nId` property on `Form` component. The rules are:
 
 - `FormField` label - `[Form.i18nId].[FormField.name]FieldLabel`
 - `FormField` placeholder - `[Form.i18nId].[FormField.name]FieldPlaceholder`
 
-In the following example, email `FormField` will have an automatically translated label if a translation for the `signIn.emailFieldLabel` key (and placeholder, when `signIn.emailFieldPlaceholder`) will be found.
+In the following example, email `FormField` will have an automatically translated label if a translation
+for the `signIn.emailFieldLabel` key (and placeholder, when `signIn.emailFieldPlaceholder`) will be found.
 
 ```jsx
 import { FormField, Form } from "@deity/falcon-ecommerce-uikit";
@@ -133,7 +146,9 @@ npm install --save @deity/falcon-i18n
 
 Then in `falcon-client.build.config.js` file you need to update `i18n` configuration. Add `@deity/falcon-i18n` package name into `resourcePackages` array.
 
-Imported package (like `@deity/falcon-i18n`) can contain more languages and/or namespaces than you are interested in. So if you don't want to use all of them (to save bundle size, or just not to use some namespace as it's not relevant to your project) you can filter them out by using `filter` option - that will instruct webpack to skip items not listed in the `filter` property.
+Imported package (like `@deity/falcon-i18n`) can contain more languages and/or namespaces than you are interested in.
+So if you don't want to use all of them (to save bundle size, or just not to use some namespace as it's not relevant to your project)
+you can filter them out by using `filter` option - that will instruct webpack to skip items not listed in the `filter` property.
 
 ```javascript
 module.exports = {

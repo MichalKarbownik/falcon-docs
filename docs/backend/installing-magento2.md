@@ -106,7 +106,8 @@ To connect through [oAuth](https://devdocs.magento.com/guides/v2.3/get-started/a
 }
 ```
 
-Please be aware that Magento performance depends heavily on which mode it is running in, `developer` mode will negatively impact performance. Also remember to follow Magento's best practices.
+Please be aware that Magento performance depends heavily on which mode it is running in,
+`developer` mode will negatively impact performance. Also remember to follow Magento's best practices.
 
 ## Versioning
 
@@ -118,56 +119,56 @@ Custom REST API endpoints provided by this module:
 
 ### General
 
-- `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
-- `[GET] /V1/falcon/menus` - Get items for top navigation menu.
+* `[GET] /V1/falcon/urls` - Url resolver. Provides info about entity behind the url or error if URL does not exist in Magento.
+* `[GET] /V1/falcon/menus` - Get items for top navigation menu.
 
 ### Cms
 
-- `[GET] /V1/falcon/cms/blocks/:identifier` - Provides the content of Cms block.
-- `[GET] /V1/falcon/cms/pages/:pageId` - Provides the content and meta data of Cms Page.
+* `[GET] /V1/falcon/cms/blocks/:identifier` - Provides the content of Cms block.
+* `[GET] /V1/falcon/cms/pages/:pageId` - Provides the content and meta data of Cms Page.
 
 ### Catalog
 
-- `[GET] /V1/falcon/breadcrumbs` - Get list of breadcrumbs for given url.
-- `[GET] /V1/falcon/categories/:categoryId/products` - Get product and filters data for given category id. Can be used to provide filtered or sorted content.
+* `[GET] /V1/falcon/breadcrumbs` - Get list of breadcrumbs for given url.
+* `[GET] /V1/falcon/categories/:categoryId/products` - Get product and filters data for given category id. Can be used to provide filtered or sorted content.
 
 ### Checkout
 
-- `[POST] /V1/falcon/carts/mine/save-payment-information-and-order` - Save payment information and place order for customer.
-- `[POST] /V1/falcon/guest-carts/:cartId/save-payment-information-and-order` - Save payment information and place order for guest.
-- `[PUT] /V1/falcon/carts/mine/place-order` - Place order for customer.
-- `[PUT] /V1/falcon/guest-carts/:cartId/place-order` - Place order for guest.
-- `[POST] /V1/falcon/carts/mine` - Get existing or create customer cart id.
+* `[POST] /V1/falcon/carts/mine/save-payment-information-and-order` - Save payment information and place order for customer.
+* `[POST] /V1/falcon/guest-carts/:cartId/save-payment-information-and-order` - Save payment information and place order for guest.
+* `[PUT] /V1/falcon/carts/mine/place-order` - Place order for customer.
+* `[PUT] /V1/falcon/guest-carts/:cartId/place-order` - Place order for guest.
+* `[POST] /V1/falcon/carts/mine` - Get existing or create customer cart id.
 
 ### Customer
 
-- `[PUT] /V1/falcon/customers/password/reset` - Reset password API.
-- `[GET] /V1/falcon/customers/me/address/` - Get list of customer addresses.
-- `[GET] /V1/falcon/customers/me/address/:addressId` - Get customer address info.
-- `[POST] /V1/falcon/customers/me/address` - Create customer address.
-- `[PUT] /V1/falcon/customers/me/address` - Updated customer address.
-- `[DELETE] /V1/falcon/customers/me/address/:addressId` - Delete customer address.
-- `[PUT] /V1/falcon/customers/me/newsletter/subscribe` - Subscribe customer to newsletter.
-- `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer from newsletter.
+* `[PUT] /V1/falcon/customers/password/reset` - Reset password API.
+* `[GET] /V1/falcon/customers/me/address/` - Get list of customer addresses.
+* `[GET] /V1/falcon/customers/me/address/:addressId` - Get customer address info.
+* `[POST] /V1/falcon/customers/me/address` - Create customer address.
+* `[PUT] /V1/falcon/customers/me/address` - Updated customer address.
+* `[DELETE] /V1/falcon/customers/me/address/:addressId` - Delete customer address.
+* `[PUT] /V1/falcon/customers/me/newsletter/subscribe` - Subscribe customer to newsletter.
+* `[PUT] /V1/falcon/customers/me/newsletter/unsubscribe` - Unsubscribe customer from newsletter.
 
 ### Paypal
 
-- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-fetch-token` - Get paypal token for guest.
-- `[GET] /V1/falcon/carts/mine/paypal-express-fetch-token` - Get paypal token for customer.
-- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-return` - 3d secure `success` return API for guest.
-- `[GET] /V1/falcon/carts/mine/paypal-express-return` - 3d secure `success` return API for customer.
-- `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-cancel` - 3d secure `cancel` return API for guest.
-- `[GET] /V1/falcon/carts/mine/paypal-express-cancel` - 3d secure `cancel` return API for customer.
+* `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-fetch-token` - Get paypal token for guest.
+* `[GET] /V1/falcon/carts/mine/paypal-express-fetch-token` - Get paypal token for customer.
+* `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-return` - 3d secure `success` return API for guest.
+* `[GET] /V1/falcon/carts/mine/paypal-express-return` - 3d secure `success` return API for customer.
+* `[GET] /V1/falcon/guest-carts/:cartId/paypal-express-cancel` - 3d secure `cancel` return API for guest.
+* `[GET] /V1/falcon/carts/mine/paypal-express-cancel` - 3d secure `cancel` return API for customer.
 
 ### Orders
 
-- `[GET] /V1/falcon/orders/mine` - Get customer orders.
-- `[GET] /V1/falcon/orders/:orderId/order-info` - Get customer order info.
-- `[GET] /V1/falcon/guest-orders/:orderId/order-info` - Get guest order info.
+* `[GET] /V1/falcon/orders/mine` - Get customer orders.
+* `[GET] /V1/falcon/orders/:orderId/order-info` - Get customer order info.
+* `[GET] /V1/falcon/guest-orders/:orderId/order-info` - Get guest order info.
 
 Extension attributes:
 
-- `Magento\Bundle\Api\Data\LinkInterface`:
+* `Magento\Bundle\Api\Data\LinkInterface`:
 
   ```json
   {
@@ -176,7 +177,7 @@ Extension attributes:
   }
   ```
 
-- `Magento\Catalog\Api\Data\ProductInterface`:
+* `Magento\Catalog\Api\Data\ProductInterface`:
 
     ```json
     {
@@ -189,7 +190,7 @@ Extension attributes:
     }
     ```
 
-- `Magento\Customer\Api\Data\CustomerInterface`:
+* `Magento\Customer\Api\Data\CustomerInterface`:
 
     ```json
     {
@@ -197,7 +198,7 @@ Extension attributes:
     }
     ```
 
-- `Magento\Sales\Api\Data\OrderInterface`:
+* `Magento\Sales\Api\Data\OrderInterface`:
 
   ```json
   {
@@ -207,7 +208,7 @@ Extension attributes:
   }
   ```
 
-- `Magento\Sales\Api\Data\OrderItemInterface`:
+* `Magento\Sales\Api\Data\OrderItemInterface`:
 
   ```json
   {
@@ -221,7 +222,7 @@ Extension attributes:
   }
   ```
 
-- `Magento\Store\Api\Data\StoreConfigInterface`:
+* `Magento\Store\Api\Data\StoreConfigInterface`:
 
     ```json
     {
@@ -234,7 +235,7 @@ Extension attributes:
     }
     ```
 
-- `Magento\Store\Api\Data\StoreInterface`:
+* `Magento\Store\Api\Data\StoreInterface`:
 
   ```json
   {
@@ -242,7 +243,7 @@ Extension attributes:
   }
   ```
 
-- `Magento\Quote\Api\Data\TotalsItemInterface`:
+* `Magento\Quote\Api\Data\TotalsItemInterface`:
 
     ```json
     {

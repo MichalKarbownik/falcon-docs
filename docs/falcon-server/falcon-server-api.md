@@ -11,7 +11,7 @@ title: Falcon Server API
 by Falcon Server Application. It adds a few helpful methods to provide
 a seamless integration with Falcon Server applications.
 
-#### `async extension.getGraphQLConfig(typeDefs = '')`
+### `async extension.getGraphQLConfig(typeDefs = '')`
 
 This method will be called by the ExtensionContainer to get Extension's GraphQL configuration, which
 will be merged with the rest of the extension configs (see example below).
@@ -21,7 +21,7 @@ When calling parent method in your derived class - you could optionally pass you
 bind your Query and Mutation types to your ApiDataSource methods (following the same names for field
 and methods).
 
-#### `extension.getFetchUrlPriority(url)`
+### `extension.getFetchUrlPriority(url)`
 
 By default, this method will trigger `api.getFetchUrlPriority(url: string)` method (if it was
 defined in the assigned ApiDataSource instance) and pass the current URL to determine API's
@@ -29,7 +29,7 @@ priority (for sort order) when Falcon Client fetches URL info from available ext
 such method was not defined - it will return `null`, meaning that this ApiDataSource does not
 support "Dynamic Routing" and should be skipped.
 
-#### `async extension.fetchUrl(obj, args, context, info)`
+### `async extension.fetchUrl(obj, args, context, info)`
 
 This method is optional and should be defined if ApiDataSource supports Dynamic Routing.
 Its signature mimics GraphQL Resolver function signature `(root, params, context, info)`.
@@ -53,7 +53,7 @@ class MyApi extends ApiDataSource {
 `ApiDataSource` is the base class for REST API data sources that Falcon-Server
 needs for a proper data-flow and communication.
 
-#### `new ApiDataSource(params)`
+### `new ApiDataSource(params)`
 
 `params` is an object with the following structure:
 
@@ -77,20 +77,20 @@ new ApiDataSource({
 });
 ```
 
-#### `api.getFetchUrlPriority(url)`
+### `api.getFetchUrlPriority(url)`
 
 This method must be defined if a specific ApiDataSource supports Dynamic Routing.
 It should provide a simple logic to determine a custom priority or return a default one
 (`this.fetchUrlPriority` equals `ApiUrlPriority.NORMAL` by default).
 
-#### `async api.fetchUrl(obj, args, context, info)`
+### `async api.fetchUrl(obj, args, context, info)`
 
 This method must be defined if a specific ApiDataSource supports Dynamic Routing.
 It will be called whenever Dynamic Route chooses this ApiDataSource instance to resolve URL type
 for the provided `path`. See Dynamic Route result response type
 [here](falcon-server/basics.md#dynamicrouteresolver-result-structure).
 
-#### `api.getCacheContext()`
+### `api.getCacheContext()`
 
 This is an optional method to define Cache Context object for your ApiDataSource instance.
 If your API does not require any distinctive data to be checked while calculating a cache key -
@@ -109,7 +109,7 @@ class MyCustomApi extends ApiDataSource {
 }
 ```
 
-#### `async api.fetchBackendConfig(obj, args, context, info)`
+### `async api.fetchBackendConfig(obj, args, context, info)`
 
 If defined, ExtensionContainer will call this method whenever somebody tries to
 fetch `backendConfig` GQL Query field. Falcon-Server expects `fetchBackendConfig`
@@ -312,11 +312,11 @@ provided APIs from the configuration. It also collects REST endpoints,
 required by the API to handle requests in old-fashioned way (for example -
 processing payment callbacks).
 
-#### `new ApiContainer(eventEmitter)`
+### `new ApiContainer(eventEmitter)`
 
 The constructor expects to receive an instance of EventEmitter.
 
-#### `apiContainer.registerApis(apis: Object<string, ApiInstanceConfig>)`
+### `apiContainer.registerApis(apis: Object<string, ApiInstanceConfig>)`
 
 This method registers the provided APIs
 ([`ApiInstanceConfig`](#apiinstanceconfig-type)) into `apiContainer.dataSources` Map.
@@ -324,7 +324,7 @@ Constructor will create a new Map, so any further manual calls of `registerApis`
 
 All endpoints that were collected from API DataSources will be stored in `apiContainer.endpoints` property.
 
-#### `ApiInstanceConfig` type
+### `ApiInstanceConfig` type
 
 - `package: string` - Node package path (example: `@deity/falcon-wordpress-api`)
 - `config: object` - Config object to be passed to Api Instance constructor
@@ -335,11 +335,11 @@ The main purpose of `ExtensionContainer` is to store, initialize and manage all 
 [`extensions`](https://github.com/deity-io/falcon/blob/master/packages/falcon-server-env/src/models/Extension.ts)
 from the configuration. It also generates main configuration object for ApolloServer instance.
 
-#### `new ExtensionContainer(eventEmitter)`
+### `new ExtensionContainer(eventEmitter)`
 
 The constructor expects to receive an instance of EventEmitter.
 
-#### `extensionContainer.registerExtensions(extensions: Object<string, ExtensionInstanceConfig>, dataSources: Map<string,ApiDataSource>)`
+### `extensionContainer.registerExtensions(extensions: Object<string, ExtensionInstanceConfig>, dataSources: Map<string,ApiDataSource>)`
 
  list of  objects and an initialized list of `dataSources` provided
 by [`ApiContainer`](#apicontainer).
@@ -353,19 +353,19 @@ Constructor will create a new Map, so any further manual calls of
 `extension.api` will be assigned automatically by `registerExtensions` method based on the
 provided configuration and `dataSources` value.
 
-#### `async initialize()`
+### `async initialize()`
 
 This method will be called by [`FalconServer.start()`](https://github.com/deity-io/falcon/blob/master/packages/falcon-server/src/index.js) method.
 It will initialize each registered extension.
 
-#### `async createGraphQLConfig(defaultConfig = {})`
+### `async createGraphQLConfig(defaultConfig = {})`
 
 This method must return a valid [ApolloServer](https://www.apollographql.com/docs/apollo-server/getting-started.html#Step-3-Create-the-server)
 configuration. This method will be called right before starting the ApolloServer instance,
 after initializing all the [Extensions](https://github.com/deity-io/falcon/blob/master/packages/falcon-server-env/src/models/Extension.ts)
 and [API DataSources](https://github.com/deity-io/falcon/blob/master/packages/falcon-server-env/src/models/ApiDataSource.ts).
 
-#### `ExtensionInstanceConfig` type
+### `ExtensionInstanceConfig` type
 
 - `package: string` - Node package path (example: `@deity/falcon-blog-extension`)
 - `config: object` - Config object to be passed to Extension Instance constructor
