@@ -12,7 +12,8 @@ the overall schema is shown on the image below:
 > [Working with flowcharts](support/flowcharts.md) page first.
 
 The required GraphQL schema is being provided by
-[`shop-extension`](falcon-server/extensions.md#shop-extension) itself, meaning that your ApiDataSource that is assigned to ShopExtension has to take care of all payment-related operations.
+[`shop-extension`](falcon-server/extensions.md#shop-extension) itself, meaning that your ApiDataSource
+that is assigned to ShopExtension has to take care of all payment-related operations.
 
 ## Placing an order
 
@@ -20,7 +21,9 @@ Whenever a visitor clicks on "__Place order__" button - the GraphQL Mutation req
 ApiDataSource instance (usually it's a `placeOrder` method) to submit your order (including your "payment"
 data as a part of the Mutation input) to the real shop backend (like Magento).
 
-> Check the current `@deity/falcon-shop-extension` GraphQL Schema [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-shop-extension/src/schema.graphql) and specifically `input PlaceOrderInput` definition.
+> Check the current `@deity/falcon-shop-extension` GraphQL Schema
+> [here](https://github.com/deity-io/falcon/blob/master/packages/falcon-shop-extension/src/schema.graphql)
+> and specifically `input PlaceOrderInput` definition.
 
 ## Initial order placement on the backend
 
@@ -71,4 +74,3 @@ Based on that result - the visitor can be redirected to 3 options:
 - `/checkout/confirmation` in case of a successful payment
 - `/checkout/failure` if for some reason the payment transaction cannot be completed
 - `/cart`  in case of "cancelled" transaction
-

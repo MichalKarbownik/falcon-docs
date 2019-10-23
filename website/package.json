@@ -2,7 +2,7 @@
   "name": "@deity/falcon-docs",
   "private": true,
   "scripts": {
-    "lint:md": "markdownlint ../docs/**/*.md",
+    "lint:md": "markdownlint -c markdownlint.config.json ../docs/**/*.md",
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
     "build": "docusaurus-build",
