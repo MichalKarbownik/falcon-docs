@@ -18,7 +18,7 @@ Your initialized local state and the resolvers go in `client/src/clientState.js`
 
 ### Falcon's additional components
 
-Falcon comes with a few pre-defined queries and mutations when you create a project with [`create-falcon-app`](getting-started/installation.md#create-falcon-app). These are primarily from our [`@deity/falcon-ecommerce-uikit`](https://github.com/deity-io/falcon/tree/master/packages/falcon-ecommerce-uikit) package and can be of great use when starting out with an eCommerce application with an integrated blog.
+Falcon comes with a few pre-defined queries and mutations when you create a project with [`create-falcon-app`](getting-started/installation.md#create-falcon-app). These are primarily from our [`@deity/falcon-front-kit`](https://github.com/deity-io/falcon/tree/master/packages/falcon-front-kit) package and can be of great use when starting out with an eCommerce application with an integrated blog.
 
 A pattern you will see quite a bit in our included (but optional) components is to create a custom `Query` component with the query added as a default prop.
 
