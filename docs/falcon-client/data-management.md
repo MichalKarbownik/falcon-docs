@@ -12,7 +12,7 @@ If you already know how to use Apollo Client, you pretty much know how to use it
 
 ### Fetching and sending data from and to the server
 
-Falcon utilizes Apollo's standard `Query` and `Mutation` components.
+Falcon extends and is compatible with Apollo's standard `Query` and `Mutation` components.
 
 ## Falcon's additional components
 
