@@ -57,32 +57,47 @@ React will call the render prop function you provide with an object from Apollo 
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
-const GET_DOGS = gql`
-  {
-    dogs {
-      id
-      breed
+const GET_PRODUCT = gql`
+  query Product($id: ID!, $path: String!) {
+    product(id: $id) {
+      name
+      description
+      price {
+        regular
+        special
+      }
+      gallery {
+        full
+        thumbnail
+      }
     }
   }
 `;
 
-const Dogs = ({ onDogSelected }) => (
-  <Query query={GET_DOGS}>
-    {({ loading, error, data }) => {
+class ProductQuery extends Query<ProductResponse> {
+  static defaultProps = {
+    query: GET_PRODUCT,
+    fetchPolicy: "cache-and-network"
+  };
+}
+
+const Product = ({ id, path }) => (
+  <ProductQuery variables={{ id, path }}>
+    {({ loading, error, data: { product } }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
 
       return (
-        <select name="dog" onChange={onDogSelected}>
-          {data.dogs.map(dog => (
-            <option key={dog.id} value={dog.breed}>
-              {dog.breed}
-            </option>
-          ))}
-        </select>
+        <div>
+          <ProductGallery items={product.gallery} />
+          <H1>{product.name}</H1>
+          <p>{product.description}</p>
+          <ProductPrice {...product.price} fontSize="xl" />
+          <ProductTierPrices items={product.tierPrices} />
+        </div>
       );
     }}
-  </Query>
+  </ProductQuery>
 );
 ```
 
@@ -99,26 +114,28 @@ import React, { Component } from "react";
 import { ApolloConsumer } from "react-apollo";
 
 class DelayedQuery extends Component {
-  state = { dog: null };
+  state = { product: null };
 
-  onDogFetched = dog => this.setState(() => ({ dog }));
+  onProductFetched = product => this.setState(() => ({ product }));
 
   render() {
     return (
       <ApolloConsumer>
         {client => (
           <div>
-            {this.state.dog && <img src={this.state.dog.displayImage} />}
+            {this.state.product && (
+              <img src={this.state.product.gallery.thumbnail} />
+            )}
             <button
               onClick={async () => {
                 const { data } = await client.query({
-                  query: GET_DOG_PHOTO,
-                  variables: { breed: "bulldog" }
+                  query: GET_PRODUCT,
+                  variables: { id: this.props.id, path: this.props.path }
                 });
-                this.onDogFetched(data.dog);
+                this.onProductFetched(data.product);
               }}
             >
-              Click me!
+              Get product photo!
             </button>
           </div>
         )}
