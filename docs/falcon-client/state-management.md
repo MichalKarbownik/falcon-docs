@@ -243,7 +243,7 @@ In the render prop function, we can destructure `loading` and `error` properties
 
 Apollo is great when using GraphQL to fetch data in your front-end, but you can also use Apollo Client to do local state management, just like you would use the [React Context API](https://reactjs.org/docs/context.html), MobX or Redux. You can use those other options as well, but using Apollo Client for local state management is ideal because your Apollo cache will be the single source of truth in your application's front-end.
 
-You can read more about local state management with Apollo Client [here](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/). Since Falcon Client does not support Apollo's hooks yet you should use the examples with Render Prop. You can use the dropdown above their code examples to change the examples from hooks to render props.
+You can read more about local state management with Apollo Client [here](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/). Since Falcon Client does not support Apollo's hooks yet, you should use the examples with Render Prop. You can use the dropdown above their code examples to change the examples from hooks to render props.
 
 #### Using and updating local client state
 
