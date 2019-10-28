@@ -14,33 +14,6 @@ If you already know how to use Apollo Client, you pretty much know how to use it
 
 Your initialized local state and the resolvers go in `client/src/clientState.js`.
 
-## Falcon's additional components
-
-Falcon comes with a few pre-defined queries and mutations when you create a project with [`create-falcon-app`](getting-started/installation.md#create-falcon-app). These are primarily from our [`@deity/falcon-front-kit`](https://github.com/deity-io/falcon/tree/master/packages/falcon-front-kit) package and can be of great use when starting out with an eCommerce application with an integrated blog.
-
-A pattern you will see quite a bit in our included (but optional) components is to create a custom `Query` component with the query added as a default prop.
-
-```jsx
-export class CustomerQuery extends Query {
-  static defaultProps = {
-    query: GET_CUSTOMER
-  };
-}
-```
-
-You can also use our wrapper `Query` component, which extends Apollo's `Query` component. The wrapper component will handle loading and error states for you. If you're curious how this works, you can check out the source code [here](). You can use our `Query` component in the same way you would use the Apollo Client version.
-
-```jsx
-import { GET_BLOG_POST } from "./my-queries";
-import { Query } from "@deity/falcon-data";
-
-export class BlogPostQuery extends Query {
-  static defaultProps = {
-    query: GET_BLOG_POST
-  };
-}
-```
-
 ## The long version
 
 This will go in-depth about how to use Apollo for managing the client state of your Falcon application.
