@@ -18,7 +18,7 @@ Falcon utilizes Apollo's standard `Query` and `Mutation` components.
 
 Falcon comes with a few pre-defined queries and mutations when you create a project with [`create-falcon-app`](getting-started/installation.md#create-falcon-app). These are primarily from our [`@deity/falcon-front-kit`](https://github.com/deity-io/falcon/tree/master/packages/falcon-front-kit) package and can be of great use when starting out with an eCommerce application with an integrated blog.
 
-A pattern you will see quite a bit in our included (but optional) components is to create a custom `Query` component with the query added as a default prop.
+Something you will see in our optional components is a custom `Query` component with the query added as a default prop. This can come in handy if you use the same query in multiple files.
 
 ```jsx
 export class CustomerQuery extends Query {
@@ -28,7 +28,7 @@ export class CustomerQuery extends Query {
 }
 ```
 
-You can also use our wrapper `Query` component, which extends Apollo's `Query` component. The wrapper component will handle loading and error states for you. If you're curious how this works, you can check out the source code [here](). You can use our `Query` component in the same way you would use the Apollo Client version.
+You can also use our wrapper `Query` component, which extends Apollo's `Query` component. The wrapper component will handle loading and error states for you. If you're curious how this works, you can check out the source code [here](https://github.com/deity-io/falcon/blob/dev/packages/falcon-data/src/Query/Query.tsx). You can use our `Query` component in the same way you would use the Apollo Client version.
 
 ```jsx
 import { GET_BLOG_POST } from "./my-queries";
