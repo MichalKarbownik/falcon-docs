@@ -247,7 +247,7 @@ You can read more about local state management with Apollo Client [here](https:/
 
 #### Using and updating local client state
 
-When using local client state you need to write resolvers (queries and mutations) to access and edit the data. You can read more about that in Apollo's documentation about [local resolvers](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#local-resolvers).
+When using local client state, you need to write resolvers to query and mutate the data. You can read more about that in Apollo's documentation about [local resolvers](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#local-resolvers).
 
 You can use `client/src/clientState.js` to define your client's initial state and resolvers.
 
