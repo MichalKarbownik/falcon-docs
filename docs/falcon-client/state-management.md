@@ -79,7 +79,7 @@ The `Query` component subscribes to the data through an observable. The result i
 
 If you need near real-time data you can read more about that in the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/queries/#polling-and-refetching).
 
-If you need to notify the user when you are refetching data or if their network status has changes you can read more about that in the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/queries/#loading-and-error-state).
+If you need to notify the user when you are refetching data or if their network status has changes, you can read more about that in the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/queries/#loading-and-error-state).
 
 #### Manually firing a query
 
