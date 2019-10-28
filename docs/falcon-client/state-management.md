@@ -276,7 +276,7 @@ const FilterButton = ({ filter, children }) => (
 );
 ```
 
-You can then subscribe to this data with a `Query` component. The `@client` directive in the GraphQL query let's Apollo Client know to fetch this data locally as opposed to fetching it from a server. All cache writes and reads are synchronous, so you don't have to worry about loading state.
+You can then subscribe to this data with a `Query` component. The `@client` directive in the GraphQL query lets Apollo Client know to fetch this data locally, as opposed to fetching it from a server. All cache writes and reads are synchronous, so you don't have to worry about loading state.
 
 ```jsx
 import React from "react";
