@@ -6,7 +6,7 @@ Falcon comes with [Apollo Client](https://www.apollographql.com/docs/react/v2.5/
 
 ## The short version
 
-If you already know how to use Apollo Client, you pretty much already know how to use it with Falcon. If you need a refresher, continue to the [long version](falcon-client/state-management.md#the-long-version) or the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/get-started/).
+If you already know how to use Apollo Client, you pretty much know how to use it with Falcon. If you need a refresher, continue to the [long version](falcon-client/state-management.md#the-long-version) or the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/get-started/).
 
 ### Fetching and sending data from and to the server
 
