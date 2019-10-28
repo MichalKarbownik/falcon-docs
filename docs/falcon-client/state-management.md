@@ -75,7 +75,7 @@ const Dogs = ({ onDogSelected }) => (
 );
 ```
 
-The `Query` component subscribes to the data through an observable. The result is first checked in the Apollo Client cache. If the result isn't in the cache it will make a request to the server. When the data is received from the server it will be stored in the cache.
+The `Query` component subscribes to the data through an observable. The result is first checked in the Apollo Client cache. If the result isn't in the cache, it will make a request to the server. When the data is received from the server, it will be stored in the cache.
 
 If you need near real-time data you can read more about that in the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/queries/#polling-and-refetching).
 
