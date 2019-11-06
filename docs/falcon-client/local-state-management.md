@@ -34,7 +34,7 @@ You can use `client/src/clientState.js` to define your client's initial state an
 
 ##### Mutations
 
-You can use `cache.writeData` for one-off mutations that don't depend on the date that's currently in the cache. This is an alternative for writing a `Mutation` component. More on that at [writing resolvers for local client state](falcon-client/local-state-management.md#writing-resolvers-for-local-client-state).
+You can use `cache.writeData` for one-off mutations that don't depend on the data that's currently in the cache. This is an alternative for writing a `Mutation` component. More on that at [writing resolvers for local client state](#writing-resolvers-for-local-client-state).
 
 > It's important to note that direct writes are not implemented as GraphQL mutations under the hood, so you shouldn't include them in your schema. They also do not validate that the data you're writing to the cache is in the shape of valid GraphQL data. If either of these features are important to you, you should opt to use a local resolver instead. - [Apollo Docs](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#direct-writes)
 
