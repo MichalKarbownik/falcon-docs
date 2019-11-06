@@ -28,7 +28,7 @@ export class CustomerQuery extends Query {
 }
 ```
 
-You can also use our wrapper `Query` component, which extends Apollo's `Query` component. The wrapper component will handle loading and error states for you. If you're curious how this works, you can check out the source code [here](https://github.com/deity-io/falcon/blob/dev/packages/falcon-data/src/Query/Query.tsx). You can use our `Query` component in the same way you would use the Apollo Client version.
+You can also use our wrapper `Query` component, which extends Apollo's `Query` component. The wrapper component will handle loading and error states for you. If you're curious how this works, you can check out the source code [here](https://github.com/deity-io/falcon/blob/v1.3/packages/falcon-ecommerce-uikit/src/Query/Query.tsx). You can use our `Query` component in the same way you would use the Apollo Client version.
 
 ```jsx
 import { GET_BLOG_POST } from "./my-queries";
