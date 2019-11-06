@@ -94,7 +94,7 @@ First, you should write the GraphQL query. In this example we use a sidebar comp
 ```js
 /// components/Sidebar/SidebarQuery.js
 import gql from "graphql-tag";
-import { Query } from "@deity/falcon-data";
+import { Query } from "@deity/falcon-ecommerce-uikit";
 
 export const GET_SIDEBAR_STATE = gql`
   query Sidebar {
