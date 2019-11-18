@@ -2,13 +2,19 @@
 title: Local State Management
 ---
 
-This page covers how to manage your local (client-side) state. If you're looking for information about querying or mutating data through a server, you can read more about that [here](falcon-client/data-management.md).
+This page covers how to manage your local (client-side) state. If you're looking for information about querying or mutating data through a server,
+you can read more about that [here](falcon-client/data-management.md).
 
-Falcon comes with [Apollo Client](https://www.apollographql.com/docs/react/v2.5/api/apollo-client/) for client-side state management when you use [`create-falcon-app`](getting-started/installation.md#create-falcon-app) to generate a new application. Apollo Client will be pre-configured and does not require any additional setup. You can start using it right away.
+Falcon comes with [Apollo Client](https://www.apollographql.com/docs/react/v2.5/api/apollo-client/) for client-side state management when you
+use [`create-falcon-app`](getting-started/installation.md#create-falcon-app) to generate a new application.
+Apollo Client will be pre-configured and does not require any additional setup. You can start using it right away.
 
 ## The short version
 
-If you already know how to use Apollo Client, you pretty much know how to use it with Falcon. If you need a refresher, continue to the [long version](falcon-client/local-state-management.md#the-long-version) or the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/get-started/). We also provide a few [additional components](falcon-client/local-state-management.md#falcons-additional-components) you can use.
+If you already know how to use Apollo Client, you pretty much know how to use it with Falcon.
+If you need a refresher, continue to the [long version](falcon-client/local-state-management.md#the-long-version) or
+the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/get-started/).
+We also provide a few [additional components](falcon-client/local-state-management.md#falcons-additional-components) you can use.
 
 ### Initial state
 
@@ -22,9 +28,13 @@ If you're unfamiliar with GraphQL queries it is recommended to check out [this g
 
 ### Local state management
 
-Apollo is great when using GraphQL to fetch data on your front-end, but you can also use Apollo Client to do local state management, just like you would use the [React Context API](https://reactjs.org/docs/context.html), MobX or Redux. You can use those other options as well, but using Apollo Client for local state management is ideal because your Apollo cache will be the single source of truth in your application's front-end.
+Apollo is great when using GraphQL to fetch data on your front-end, but you can also use Apollo Client to do local state management,
+just like you would use the [React Context API](https://reactjs.org/docs/context.html), MobX or Redux. You can use those other options as well,
+but using Apollo Client for local state management is ideal because your Apollo cache will be the single source of truth in your application's front-end.
 
-You can read more about local state management with Apollo Client [here](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/). Since hooks are not supported below version 2.0 of Falcon, you might need to use the examples with Render Prop. You can use the dropdown above their code examples to change the examples from hooks to render props.
+You can read more about local state management with Apollo Client [here](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/).
+Since hooks are not supported below version 2.0 of Falcon, you might need to use the examples with Render Prop.
+You can use the dropdown above their code examples to change the examples from hooks to render props.
 
 #### Using and updating local client state
 
@@ -34,9 +44,12 @@ You can use `client/src/clientState.js` to define your client's initial state an
 
 ##### Mutations
 
-You can use `cache.writeData` for one-off mutations that don't depend on the data that's currently in the cache. This is an alternative for writing a `Mutation` component. More on that at [writing resolvers for local client state](#writing-resolvers-for-local-client-state).
+You can use `cache.writeData` for one-off mutations that don't depend on the data that's currently in the cache. This is an alternative for writing
+a `Mutation` component. More on that at [writing resolvers for local client state](#writing-resolvers-for-local-client-state).
 
-> It's important to note that direct writes are not implemented as GraphQL mutations under the hood, so you shouldn't include them in your schema. They also do not validate that the data you're writing to the cache is in the shape of valid GraphQL data. If either of these features are important to you, you should opt to use a local resolver instead. - [Apollo Docs](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#direct-writes)
+> It's important to note that direct writes are not implemented as GraphQL mutations under the hood, so you shouldn't include them in your schema.
+> They also do not validate that the data you're writing to the cache is in the shape of valid GraphQL data.
+> If either of these features are important to you, you should opt to use a local resolver instead. - [Apollo Docs](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#direct-writes)
 
 ```jsx
 import React from "react";
@@ -57,7 +70,8 @@ const FilterButton = ({ filter, children }) => (
 );
 ```
 
-You can then subscribe to this data with a `Query` component. The `@client` directive in the GraphQL query lets Apollo Client know to fetch this data locally, as opposed to fetching it from a server. All cache writes and reads are synchronous, so you don't have to worry about loading state.
+You can then subscribe to this data with a `Query` component. The `@client` directive in the GraphQL query lets Apollo Client know to fetch this data locally,
+as opposed to fetching it from a server. All cache writes and reads are synchronous, so you don't have to worry about loading state.
 
 ```jsx
 import React from "react";
@@ -85,11 +99,14 @@ const FilterButton = ({ filter, children }) => (
 );
 ```
 
-The other way is by creating a `Mutation` component with a GraphQL mutation that calls a local client-side resolver. Writing a `Mutation` is recommended by Apollo when your mutation depends on existing values in the cache. To do this you need to specify a function in your local resolver map, located in `client/src/clientState.js`.
+The other way is by creating a `Mutation` component with a GraphQL mutation that calls a local client-side resolver.
+Writing a `Mutation` is recommended by Apollo when your mutation depends on existing values in the cache.
+To do this you need to specify a function in your local resolver map, located in `client/src/clientState.js`.
 
 ###### Writing resolvers for local client state
 
-First, you should write the GraphQL query. In this example we use a sidebar component to showcase how you would write your mutation resolver to toggle its `isOpen` state.
+First, you should write the GraphQL query. In this example we use a sidebar component to showcase how you would write your mutation resolver
+to toggle its `isOpen` state.
 
 ```js
 /// components/Sidebar/SidebarQuery.js
@@ -149,7 +166,8 @@ export default {
 
 Note: You need to return `null` here since all GraphQL types are nullable by default.
 
-At this point you are ready to write your `Mutation` component which will expose a function to your React components you can use to toggle the Sidebar's `isOpen` state.
+At this point you are ready to write your `Mutation` component which will expose a function to your React components you can use
+to toggle the Sidebar's `isOpen` state.
 
 ```jsx
 // SidebarMutation.js
@@ -208,11 +226,15 @@ Then, somewhere in your application:
 </SidebarContainer>
 ```
 
-In the end `<Sidebar />` only cares about the props it receives and all the other logic is abstracted away. This is a lot of work for just toggling the `isOpen` state for a sidebar, but as you can imagine this is great for abstracting away more complicated interactions with your application's data.
+In the end `<Sidebar />` only cares about the props it receives and all the other logic is abstracted away.
+This is a lot of work for just toggling the `isOpen` state for a sidebar, but as you can imagine this is great for abstracting away
+more complicated interactions with your application's data.
 
 ##### Querying local state
 
-Querying the local state works just like fetching data from a GraphQL server. The only difference is the `@client` directive you already saw in the section about mutating client state above. `@client` tells a `Query` component that the data should be pulled from the Apollo Client cache or resolved using pre-defined local resolvers.
+Querying the local state works just like fetching data from a GraphQL server. The only difference is the `@client` directive you already saw
+in the section about mutating client state above. `@client` tells a `Query` component that the data should be pulled from the Apollo Client cache
+or resolved using pre-defined local resolvers.
 
 ```jsx
 export const GET_SIDEBAR_STATE = gql`
@@ -228,11 +250,14 @@ export const GET_SIDEBAR_STATE = gql`
 
 From the [Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#initializing-the-cache):
 
-> Sometimes you may need to [reset the store](https://www.apollographql.com/docs/react/v2.5/api/apollo-client/#ApolloClient.resetStore) in your application, when a user logs out for example. If you call `client.resetStore` anywhere in your application, you will likely want to initialize your cache again. You can do this using the `client.onResetStore` method to register a callback that will call `cache.writeData` again.
+> Sometimes you may need to [reset the store](https://www.apollographql.com/docs/react/v2.5/api/apollo-client/#ApolloClient.resetStore) in your application,
+> when a user logs out for example. If you call `client.resetStore` anywhere in your application, you will likely want to initialize your cache again.
+> You can do this using the `client.onResetStore` method to register a callback that will call `cache.writeData` again.
 
 ##### Local data query flow
 
-Here's [an example from the Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#initializing-the-cache) about a query that fetches both local client state with `@client` and some data from a GraphQL server.
+Here's [an example from the Apollo documentation](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#initializing-the-cache)
+about a query that fetches both local client state with `@client` and some data from a GraphQL server.
 
 ##### Intregrating `@client` into remote queries
 
@@ -259,7 +284,8 @@ export default {
 };
 ```
 
-The result of this is that the `isLoggedIn` property will be available when you query a `Member`. In this case the `@client` directive is required to let Apollo Client know this data should be returned from your client as opposed to getting fetched from a server.
+The result of this is that the `isLoggedIn` property will be available when you query a `Member`. In this case the `@client` directive is required
+to let Apollo Client know this data should be returned from your client as opposed to getting fetched from a server.
 
 This allows you to mix data from a server as well as data from your client in a single query.
 
@@ -280,13 +306,14 @@ There are some things to consider when integrating `@client` into remote queries
 
 - [Fetch policies](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#working-with-fetch-policies).
 
-- [Forcing resolvers to run `@client` parts on every request](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#forcing-resolvers-with-clientalways-true). Use this carefully, as it can impact performance.
+- [Forcing resolvers to run `@client` parts on every request](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#forcing-resolvers-with-clientalways-true).
+Use this carefully, as it can impact performance.
 
 - [Using `@client` fields as variables (in both remote and other `@client` queries)](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#using-client-fields-as-variables).
 
 ## Additional resources
 
-### Apollo about local state management.
+### Apollo about local state management
 
 - [Apollo cache API's most relevant methods and common use cases](https://www.apollographql.com/docs/react/v2.5/essentials/local-state/#managing-the-cache)
 
