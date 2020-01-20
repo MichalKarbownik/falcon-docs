@@ -4,7 +4,8 @@ title: Basics
 
 This is a `@deity/falcon-client` host for your application.
 
-Falcon Client is the entrypoint for frontend features of Falcon stack. It acts as host for your project - provides app building capabilities and features set which can be used to create your desired shop application.
+Falcon Client is the entrypoint for frontend features of Falcon stack. It acts as host for your project - provides app building
+capabilities and features set which can be used to create your desired shop application.
 
 ## Installation
 
@@ -22,7 +23,6 @@ yarn add @deity/falcon-client
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
-
 
 ## Quick Start
 
@@ -48,19 +48,23 @@ The page will reload if you make edits (both backend and frontend HMR is enabled
 falcon-client start -- --inspect=[host:port]
 ```
 
-To debug the node server, you can use `falcon-client start --inspect`. This will start the node server and enable the inspector agent. The `=[host:port]` is optional and defaults to `=127.0.0.1:9229`. For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
+To debug the node server, you can use `falcon-client start --inspect`. This will start the node server and enable the inspector agent.
+The `=[host:port]` is optional and defaults to `=127.0.0.1:9229`.
+For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
 
 ```bash
 falcon-client start -- --inspect-brk=[host:port]
 ```
 
-This is the same as --inspect, but will also break before user code starts. (to give a debugger time to attach before early code runs) For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
+This is the same as --inspect, but will also break before user code starts. (to give a debugger time to attach before early code runs).
+For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
 
 ```bash
 rs
 ```
 
-If your application is running, and you need to manually restart your server, you do not need to completely kill and rebundle your application. Instead you can just type `rs` and press enter in terminal.
+If your application is running, and you need to manually restart your server, you do not need to completely kill
+and rebundle your application. Instead you can just type `rs` and press enter in terminal.
 
 ```bash
 falcon-client test
@@ -101,11 +105,14 @@ Falcon client offers wide range of Progressive Web App features out of the box
 
 ### Webmanifest
 
-The web app manifest provides information about an application (such as its name, author, icon, and description) in a JSON text file. The manifest informs details for websites installed on the homescreen of a device, providing users with quicker access and a richer experience.
+The web app manifest provides information about an application (such as its name, author, icon, and description) in a JSON text file.
+The manifest informs details for websites installed on the homescreen of a device,
+providing users with quicker access and a richer experience.
 
 For more information, see [this](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 
-Web App Manifest file should be located in `./src/manifest.webmanifest` and could be edited according to your needs. Pleas bear in mind that paths to icons files should be relative:
+Web App Manifest file should be located in `./src/manifest.webmanifest` and could be edited according to your needs.
+Please bear in mind that paths to icons files should be relative:
 
 ```json
 {
@@ -119,11 +126,13 @@ During build process webpack will take care about resolving file paths and gener
 
 ### Web Cache
 
-All files emitted by webpack build into `./build/public/static/` directory contain hash part in file name, which is generated from its content. It allow us to set browser cache via setting `Cache-Control: max-age=31536000` header, which is 1 year.
+All files emitted by webpack build into `./build/public/static/` directory contain hash part in file name,
+which is generated from its content. It allow us to set browser cache via setting `Cache-Control: max-age=31536000` header, which is 1 year.
 
 ### Service Worker
 
-Production build generate Service Worker (file `./build/static/sw.js`) which is automatically installed in web browser. It cache all files from `./build/public/` and turns on offline capabilities.
+Production build generate Service Worker (file `./build/static/sw.js`) which is automatically installed in web browser.
+It cache all files from `./build/public/` and turns on offline capabilities.
 
 For more information see [this](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker)
 
@@ -133,7 +142,9 @@ To make your shop SEO-friendly, following mechanisms are involved out of the box
 
 ### Server Side Rendering
 
-SSR take place when a website is first opened. All operations are carried out on the server and the browser gets an HTML with all information, same as with typical websites with static pages which search engines can index. After JavaScript is loaded the web turns into a "single page app" and works respectively.
+SSR take place when a website is first opened. All operations are carried out on the server and the browser gets an HTML
+with all information, same as with typical websites with static pages which search engines can index.
+After JavaScript is loaded the web turns into a "single page app" and works respectively.
 
 ### Dynamic meta description
 
@@ -182,7 +193,9 @@ you can configure Google Tag Manager via `config` property in `config/default.js
 
 `falcon-client` provides out of the box support for `css` and `scss`, and you should write them in `*.css` and `*.scss` files accordingly.
 
-However, css modules convention is also supported [see the details](https://github.com/css-modules/css-modules). To make it work you need to add `module` prefix to the file extension. For example, vanilla css with modules should be located in `*.module.css`, and scss with modules in `*.module.scss`.
+However, css modules convention is also supported [see the details](https://github.com/css-modules/css-modules).
+To make it work you need to add `module` prefix to the file extension. For example,
+vanilla css with modules should be located in `*.module.css`, and scss with modules in `*.module.scss`.
 
 ### Internal Server Error page
 

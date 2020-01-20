@@ -1,0 +1,19 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: CI check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: yarn --non-interactive
+        working-directory: ./website
+      - name: Lint Markdown files
+        run: yarn lint:md
+        working-directory: ./website

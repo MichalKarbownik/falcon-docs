@@ -83,7 +83,8 @@ Logger will produce the following log message:
 TRACE: My time (10ms)
 ```
 
-Of course, `(10ms)` may vary depending on your code. If log level is set higher than `trace` - the calculations won't be performed, and the result will be returned right away.
+Of course, `(10ms)` may vary depending on your code. If log level is set higher than `trace` -
+the calculations won't be performed, and the result will be returned right away.
 
 > The rest of the methods are available from the original [Pino module](http://getpino.io/#/docs/api).
 

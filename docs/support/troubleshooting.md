@@ -18,7 +18,8 @@ Please make sure you have Node version 8.10+
 
 ### `npx create-falcon-app` generates outdated code for my shop
 
-Make sure you don’t have create-falcon-app package installed globally on your machine (npm and yarn) - this is the recommended way since it makes sure you are always using the latest version when using the npx command
+Make sure you don’t have create-falcon-app package installed globally on your machine (npm and yarn) -
+this is the recommended way since it makes sure you are always using the latest version when using the npx command
 
 ### FalconServer: "apis" is not iterable
 
@@ -26,4 +27,5 @@ Make sure your Falcon-Server config is set properly [read the documentation](/do
 
 ### Error: No category found with id = 25
 
-Category 25 does not exist in your back-end. This category number is hard-coded in the Falcon demo application. It can be easily modified [here](https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/src/pages/Home.js#L32)
+Category 25 does not exist in your back-end. This category number is hard-coded in the Falcon demo application.
+It can be easily modified [here](https://github.com/deity-io/falcon/blob/dev/examples/shop-with-blog/client/src/pages/Home.js#L32)

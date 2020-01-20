@@ -44,7 +44,7 @@ cd my-app/client
 npm start
 ```
 
-then open http://localhost:3000 in your browser
+then open <http://localhost:3000> in your browser
 
 ![DEITY create-falcon-app](assets/create-falcon-app.gif)
 
@@ -75,7 +75,7 @@ yarn create falcon-app my-app
 
 That command will create a `my-app` folder with 2 folders inside:
 
-```
+```text
 my-app/
  |- server
  |- client
@@ -84,7 +84,8 @@ my-app/
 Folder `server` contains the server application which is responsible for communication with external APIs and services.
 Folder `client` contains the client application responsible for front-end rendering.
 
-Once `npx create-falcon-app my-app` or `yarn create falcon-app my-app` is done you can start both services. In one terminal window run the following commands to start the server part:
+Once `npx create-falcon-app my-app` or `yarn create falcon-app my-app` is done you can start both services.
+In one terminal window run the following commands to start the server part:
 
 ```bash
 cd my-app/server
@@ -112,7 +113,9 @@ You can also use `npx create-falcon-app -h` (or `yarn create falcon-app -h`) to 
 
 ### Using your backend services
 
-By default the `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works. If you cannot start the server part (from within the server folder) or you see any problems with server behavior please contact us via our [community slack channel](http://slack.deity.io).
+By default the `shop-with-blog` example uses demo Magento 2 and WordPress servers provided by DEITY so you can check how DEITY Falcon works.
+If you cannot start the server part (from within the server folder) or you see any problems with server behavior please contact us via our
+[community slack channel](http://slack.deity.io).
 
 #### Magento 2
 
