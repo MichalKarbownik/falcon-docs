@@ -18,7 +18,7 @@ Within the Falcon application, you can use these API credentials in the configur
        "clientId": "YOUR_ID",
        "clientSecret": "YOUR_SECRET",
        "gqlUrl": "YOUR_URL/graphql",
-       "gqlToken"YOUR_TOKEN"
+       "gqlToken": "YOUR_TOKEN"
      }
    }
  }
