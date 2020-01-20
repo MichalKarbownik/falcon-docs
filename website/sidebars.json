@@ -29,7 +29,7 @@
       "falcon-server/customizing-extension-api"
     ],
     "Payments": ["payments/intro", "payments/api", "payments/plugins"],
-    "Backend": ["backend/installing-magento2", "backend/installing-wordpress"],
+    "Backend": ["backend/installing-magento2", "backend/installing-wordpress", "backend/installing-bigcommerce"],
     "Miscellaneous": ["miscellaneous/falcon-logger", "miscellaneous/config"],
     "Deployment": ["deployment/intro"],
     "Support": ["support/troubleshooting", "support/flowcharts"]
