@@ -4,7 +4,7 @@ title: BigCommerce
 
 > BigCommerce is part of the Falcon Platform (Paid version)
 
-In order to connect Falcon with your BigCommerce Store you will need a BigCommerce API Account with modify permissions https://support.bigcommerce.com/s/article/Store-API-Accounts.
+In order to connect Falcon with your BigCommerce Store you will need a BigCommerce API Account with modify permissions <https://support.bigcommerce.com/s/article/Store-API-Accounts>
 
 Within the Falcon application you can use these API credentials in the configuration files (default.json, local.json, etc).
 
