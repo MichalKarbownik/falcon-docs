@@ -22,7 +22,7 @@ class CustomExtension extends Extension {
       ],
       resolvers: {
         Query: {
-          findCustomItem: () {
+          findCustomItem: () => {
             // add your logic here
             return {
               name: 'Item'
