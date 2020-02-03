@@ -84,7 +84,7 @@ You can do so by changing your [Falcon-Server config](miscellaneous/config.md).
 To connect through [oAuth](https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html) you need to create a new Magento integration:
 * sign in to Magento Admin panel
 * go to *System* / *Extensions* / *Integrations* and press *Add new Integration*)
-* Fill in the *Name* and go to  *Role Resources* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
+* Fill in the *Name* and go to  *API* tab, set *Resource Access* to *Custom* and check the following permissions in the list below:
   * Sales
   * Catalog
   * Stores -> Settings -> All stores
